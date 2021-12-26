@@ -1,68 +1,62 @@
-import React, { Component } from "react";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../authorization/actions/auth";
 
-class NavbarPage extends Component {
-state = {
-  isOpen: false
+const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+	const authLinks = (
+		<ul className="nav-links">
+			<li>
+				<Link to="/dashboard">
+					<i className="fas fa-user"></i>{" "}
+					<span className="hide-sm">Dashboard</span>
+				</Link>
+			</li>
+			<li>
+				<Link onClick={logout} to="/" replace>
+					<i className="fas fa-sign-out-alt"></i>{" "}
+					<span className="hide-sm"> &nbsp;Logout</span>
+				</Link>
+			</li>
+		</ul>
+	);
+	const guestLinks = (
+		<ul className="nav-links">
+			<li>
+				<Link to="/dashboardpage">Dash Board Page</Link>
+			</li>
+			<li>
+				<Link to="/problem">Contest Header</Link>
+			</li>
+			<li>
+				<Link to="/register">Register</Link>
+			</li>
+			<li>
+				<Link to="/login">Login</Link>
+			</li>
+		</ul>
+	);
+
+	return (
+		<nav className="navbar bg-dark">
+			<h1>
+				<Link to="/">HOME</Link>
+			</h1>
+			{!loading && (
+				<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+			)}
+		</nav>
+	);
 };
 
-toggleCollapse = () => {
-  this.setState({ isOpen: !this.state.isOpen });
-}
+Navbar.propTypes = {
+	logout: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+};
 
-render() {
-  return (
-    <Router>
-      <MDBNavbar color="default-color" dark expand="md">
-        <MDBNavbarBrand>
-          <strong className="white-text">PCSB</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="#!">Profile</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Sign In</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Sign Up</MDBNavLink>
-            </MDBNavItem>
-            
-          </MDBNavbarNav>
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon fab icon="twitter" />
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
-                <MDBIcon fab icon="google-plus-g" />
-              </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <MDBIcon icon="user" />
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-    </Router>
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
 
-export default NavbarPage;
+export default connect(mapStateToProps, { logout })(Navbar);
