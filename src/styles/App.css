@@ -2,7 +2,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
 * {
-	font-family: "Poppins", sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -24,7 +23,7 @@ a {
 	background: #6cafa4;
 	color: #fff;
 	outline: none;
-	border: none;
+	border: 2px solid #6cafa4;
 	border-radius: 8px;
 	font-size: 18px;
 	cursor: pointer;
@@ -424,16 +423,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 1rem 10rem;
+  margin-top: 4rem;
 }
 
 .contest-header-bottom{
   display: flex;
   width: 80%;
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 

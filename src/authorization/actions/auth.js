@@ -9,6 +9,7 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 } from "./types";
+import * as Requests from "../../config/index";
 import setAuthToken from "../utils/setAuthToken";
 
 // Load User
@@ -18,7 +19,7 @@ export const loadUser = () => async (dispatch) => {
 	}
 
 	try {
-		const res = await axios.get("http://localhost:5000/users/auth");
+		const res = await axios.get("https://online-judge-csi.herokuapp.com/api/auth/profile");
 
 		dispatch({
 			type: USER_LOADED,
@@ -45,7 +46,7 @@ export const register =
 
 		try {
 			const res = await axios.post(
-				"http://localhost:5000/users/",
+				"https://online-judge-csi.herokuapp.com/api/auth/signup",
 				body,
 				config
 			);
@@ -79,20 +80,15 @@ export const login = (email, password) => async (dispatch) => {
 
 	const body = JSON.stringify({ email, password });
 
-	try {
-		const res = await axios.post(
-			"http://localhost:5000/users/auth",
-			body,
-			config
-		);
-
+	Requests.login(body,config)
+	.then((res) => {
 		dispatch({
 			type: LOGIN_SUCCESS,
 			payload: res.data,
 		});
 
 		dispatch(loadUser());
-	} catch (err) {
+	}).catch((e) => {
 		const errors = err.response.data.errors;
 
 		if (errors) {
@@ -102,7 +98,7 @@ export const login = (email, password) => async (dispatch) => {
 		dispatch({
 			type: LOGIN_FAIL,
 		});
-	}
+	})
 };
 
 // Logout / Clear Profile

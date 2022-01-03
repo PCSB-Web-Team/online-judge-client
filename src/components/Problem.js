@@ -1,8 +1,6 @@
 import React from "react";
 import Editor from "./Editor";
 import copy from "../assets/copy.png";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
 const Problem = () => {
   const copytoclipboard = (i) => {
@@ -16,7 +14,7 @@ const Problem = () => {
 
   return (
     <div className="problem">
-      <div className="problem-main"><br></br>
+      <div className="problem-main">
         <h1>A. Problem 1</h1>
         <div className="problem-head-info">
           <span>Time Limit : 1000ms per test</span>
@@ -63,7 +61,7 @@ const Problem = () => {
           <strong>Input</strong>
         </p>
         <p className="sample-tests">
-          <span className="copied">Copied!</span>
+          <p className="copied">Copied!</p>
           <img
             src={copy}
             alt="copy"
@@ -81,7 +79,7 @@ const Problem = () => {
           <strong>Output</strong>
         </p>
         <p className="sample-tests">
-          <span className="copied">Copied!</span>
+          <p className="copied">Copied!</p>
           <img
             src={copy}
             alt="copy"
@@ -113,12 +111,4 @@ const Problem = () => {
   );
 };
 
-Problem.propTypes = {
-	auth: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-	auth: state.auth,
-});
-
-export default connect(mapStateToProps)(Problem);
+export default Problem;
