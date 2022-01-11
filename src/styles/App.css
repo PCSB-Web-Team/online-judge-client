@@ -2,6 +2,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
 * {
+	font-family: "Poppins", sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -20,10 +21,34 @@ a {
 	width: 52%;
 	padding: 10px;
 	margin: 10px;
-	background: #6cafa4;
+	background: #444343;
 	color: #fff;
 	outline: none;
-	border: 2px solid #6cafa4;
+	border: none;
+	border-radius: 8px;
+	font-size: 18px;
+	cursor: pointer;
+}
+.btn_1 {
+	width: 54%;
+	padding: 0px;
+	margin: 0px;
+	background: #444343;
+	color: #fff;
+	outline: none;
+	border: none;
+	border-radius: 8px;
+	font-size: 18px;
+	cursor: pointer;
+}
+.btn_2 {
+	width: 10%;
+	padding: 10px;
+	margin: 15px;
+	background: #444343;
+	color: #fff;
+	outline: none;
+	border: none;
 	border-radius: 8px;
 	font-size: 18px;
 	cursor: pointer;
@@ -31,14 +56,24 @@ a {
 
 .btn:hover {
 	background: transparent;
-	border: 2px solid #6cafa4;
-	color: #6cafa4;
+	border: 2px solid #444343;
+	color: #444343;
+}
+.btn_1:hover {
+	background: transparent;
+	border: 0px solid #444343;
+	color: #444343;
+}
+.btn_2:hover {
+	background: transparent;
+	border: 0px solid #444343;
+	color: #444343;
 }
 
 :root {
 	--primary-color: #17a2b8;
 	--dark-color: #343a40;
-	--light-color: #f4f4f4;
+	--light-color: #a7a4a4;
 	--danger-color: #dc3545;
 	--success-color: #28a745;
 }
@@ -87,7 +122,7 @@ a {
 	width: 100%;
 	top: 0;
 	opacity: 0.9;
-	background: #6cafa4;
+	background: #444343;
 }
 
 .navbar .nav-links {
@@ -105,8 +140,8 @@ a {
 	margin-right: 0.6rem;
 }
 
-/* Landing Page */
-.landing {
+/* Home Page */
+.Home {
 	position: relative;
 	background: white no-repeat center 80% / cover;
 	height: 100vh;
@@ -121,7 +156,7 @@ a {
 	height: 100%;
 }
 
-.landing-inner {
+.Home-inner {
 	color: rgb(49, 44, 44);
 	height: 60%;
 	width: 60%;
@@ -133,15 +168,15 @@ a {
 	text-align: center;
 }
 
-.landing-inner h1 {
+.Home-inner h1 {
 	font-size: 60px;
 }
-.landing-inner p {
+.Home-inner p {
 	font-size: 18px;
 	max-width: 60%;
 }
 
-.landing-inner .buttons {
+.Home-inner .buttons {
 	margin-top: 1rem;
 }
 
@@ -168,7 +203,7 @@ a {
 }
 
 .link a {
-	color: #6cafa4;
+	color: #444343;
 }
 
 /* Mobile Styles */
@@ -423,15 +458,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 1rem 10rem;
-  margin-top: 4rem;
 }
 
 .contest-header-bottom{
   display: flex;
   width: 80%;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-bottom: 2rem;
 }
 
@@ -458,4 +494,33 @@ body {
   font-size: 1.5rem;
   width: 100px;
   margin-left: 20px;
+}
+
+.eye_icon{
+  margin: 0% 30%;
+}
+
+/* Loader */
+.loader {
+	border-top-color: #3498db;
+	-webkit-animation: spinner 1.5s linear infinite;
+	animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

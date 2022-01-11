@@ -1,17 +1,20 @@
 import React from "react";
 import Editor from "./Editor";
-import copy from "../assets/copy.png";
+import copy from "../../assets/copy.png";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const Problem = () => {
-  const copytoclipboard = (i) => {
+const Problem = () =>
+{
+  const copytoclipboard = (i) =>
+  {
     const tests = document.querySelectorAll(".sample-tests");
     tests[i].querySelector('.copied').style.display = 'block';
     navigator.clipboard.writeText(tests[i].querySelector("code").textContent);
-    setTimeout(()=>{
+    setTimeout(() =>
+    {
       tests[i].querySelector('.copied').style.display = 'none';
-    },1000);
+    }, 1000);
   };
 
   return (
@@ -63,7 +66,7 @@ const Problem = () => {
           <strong>Input</strong>
         </p>
         <p className="sample-tests">
-          <span className="copied">Copied!</span>
+          <div className="copied">Copied!</div>
           <img
             src={copy}
             alt="copy"
@@ -81,7 +84,7 @@ const Problem = () => {
           <strong>Output</strong>
         </p>
         <p className="sample-tests">
-          <span className="copied">Copied!</span>
+          <div className="copied">Copied!</div>
           <img
             src={copy}
             alt="copy"
@@ -114,11 +117,11 @@ const Problem = () => {
 };
 
 Problem.propTypes = {
-	auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-	auth: state.auth,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps)(Problem);

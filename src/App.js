@@ -1,44 +1,69 @@
 import React, { useEffect } from "react";
 import "../src/styles/App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Landing from "./components/Landing";
+import Home from "./components/Home";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
+import Loader from "./components/Loader/Loader";
 import NotFound from "./components/NotFound";
-import DashBoardPage from "./pages/DashBoardPage/DashBoardPage";
+import DashBoard from "./pages/DashBoard/DashBoard";
+import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem"
-import setAuthToken from "../src/authorization/utils/setAuthToken";
-import store from "./store";
-import { loadUser } from "../src/authorization/actions/auth";
+import { Requests } from "./utils/Index";
+import { login } from "./store/actions";
+import { connect } from "react-redux";
+import MySubmission from "./pages/Submission/MySubmission";
 
-if (localStorage.token) {
-	setAuthToken(localStorage.token);
-}
-
-function App() {
-	useEffect(() => {
-		store.dispatch(loadUser());
+function App(props)
+{
+	const navigate = useNavigate()
+	useEffect(() =>
+	{
+		const token = localStorage.getItem("pcsb-oj-token")
+		if (token)
+		{
+			navigate("/Loader")
+			Requests.getUserByToken(token).then((res) =>
+			{
+				props.log(res.data)
+				navigate("/dashBoard");
+			}).catch(error => { navigate("/Home") })
+		}
 	}, []);
+
 	return (
-		<>
-			<div className="App">
-				<Router>
-					<Navbar />
-					<Switch>
-						<Route exact path="/" component={Landing} />
-						{/* <PrivateRoute exact path="/problem" component={Problem} /> */}
-						<Route exact path="/register" component={Register} />
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/dashboardpage" component={DashBoardPage} />
-						<Route exact path="/problem" component={Problem} />
-						{/* <Route exact path="/contestheader" component={ContestHeader} />						 */}
-						<Route exact path="" component={NotFound} />
-					</Switch>
-				</Router>
-			</div>
-		</>
+
+		<div className="App">
+			<Navbar />
+			<Routes>
+				<Route path="login" element={<Login />} />
+				<Route path="register" element={<Register />} />
+				<Route path="dashBoard" element={<DashBoard />} />
+				<Route path="home" element={<Home />} />
+				<Route path="problem" element={<Problem />} />
+				<Route path="loader" element={<Loader />} />
+				<Route path="leaderboard" element={<LeaderBoard />} />
+				<Route path="mySubmission" element={<MySubmission />} />
+				<Route path="/" element={<Home />} />
+				<Route path="" element={<NotFound />} />
+
+			</Routes>
+		</div>
 	);
 }
 
-export default App;
+function mapStateToProps(state)
+{
+	return {
+		isAuthenticated: state.isAuthenticated
+	}
+}
+function mapActionToProps(dispatch)
+{
+	return {
+		log: (userData) => dispatch(login(userData))
+	}
+}
+
+export default connect(mapStateToProps, mapActionToProps)(App);

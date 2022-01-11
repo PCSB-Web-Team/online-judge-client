@@ -1,103 +1,95 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Form } from "formik";
+import { TextField } from "./TextField";
+import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { Requests, Validators } from "../../utils/Index";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
-import { register } from "../../authorization/actions/auth";
-import PropTypes from "prop-types";
-import Alert from "../../components/Alert";
-import { setAlert } from "../../authorization/actions/alert";
+import { login } from "../../store/actions";
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		password: "",
-		password2: "",
-	});
+const Register = (props) =>
+{
+  let navigate = useNavigate();
+  const validate = Yup.object({
+    name: Validators.name,
+    email: Validators.email,
+    password: Validators.password,
+    phoneNumber: Validators.phoneNumber,
+    confirmPassword: Validators.confirmPassword,
+  })
+  return (
+    <Formik
+      initialValues={{
+        name: "",
+        phoneNumber: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+      }}
+      validationSchema={validate}
+      onSubmit={async values =>
+      {
+        Requests.signup(values).then(res =>
+        {
+          console.log(res)
+          localStorage.setItem('pcsb-oj-token', res.data.token);
+          props.login(res.data);
+          alert("Register successful")
+          navigate("/dashboardpage");
 
-	const { name, email, password, password2 } = formData;
+        }).catch(error =>
+        {
+          alert("Enter Valid Data !")
+        })
 
-	const onChange = (e) =>
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+      }}
+    >
+      {formik => (
+        <div className="register-form">
+          <h1 className="heading">Sign Up</h1>
+          <p className="lead">
+            <i className="fas fa-user"></i> Create Your Account
+          </p>
+          <Form className="form" onSubmit={formik.handleSubmit}>
+            <div className="form-group">
+              <TextField placeholder="Name" name="name" type="text" />
+            </div>
+            <div className="form-group">
+              <TextField placeholder="Email" name="email" type="email" />
+            </div>
+            <div className="form-group">
+              <TextField placeholder="Phone Number" name="phoneNumber" type="tel" />
+            </div>
+            <div className="form-group">
+              <TextField placeholder="password" name="password" type="password" />
+            </div>
+            <div className="form-group">
+              <TextField placeholder="Confirm Password" name="confirmPassword" type="password" />
+            </div>
+            <button className="btn btn-primary" type="submit">Sign Up</button>
+            <button className="btn btn-primary" type="reset">Reset</button>
+          </Form>
+          <p className="link">
+            Already have an account? <Link to="/login">Sign In</Link>
+          </p>
+        </div>
+      )}
+    </Formik>
+  )
+}
 
-	const onSubmit = async (e) => {
-		console.log("Form data", e);
-		e.preventDefault();
-		if (password !== password2) {
-			setAlert("Password do not match", "danger");
-		} else {
-			register({ name, email, password });
-		}
-	};
+function mapStateToProps(state)
+{
+  return {
+    isAuthenticated: state.isAuthenticated
+  }
+}
+function mapActionToProps(dispatch)
+{
+  return {
+    login: (userData) => dispatch(login(userData))
+  }
+}
 
-	// Redirect if logged in
-	if (isAuthenticated) {
-		return <Redirect to="/dashboard" />;
-	}
-
-	return (
-		<div className="register-form">
-			<h1 className="heading">Sign Up</h1>
-			<p className="lead">
-				<i className="fas fa-user"></i> Create Your Account
-			</p>
-			<Alert />
-			<br />
-			<form className="form" onSubmit={(e) => onSubmit(e)}>
-				<div className="form-group">
-					<input
-						type="text"
-						placeholder="Name"
-						name="name"
-						value={name}
-						onChange={(e) => onChange(e)}
-					/>
-				</div>
-				<div className="form-group">
-					<input
-						type="email"
-						placeholder="Email Address"
-						name="email"
-						value={email}
-						onChange={(e) => onChange(e)}
-					/>
-				</div>
-				<div className="form-group">
-					<input
-						type="password"
-						placeholder="Password"
-						name="password"
-						minLength="6"
-						value={password}
-						onChange={(e) => onChange(e)}
-					/>
-				</div>
-				<div className="form-group">
-					<input
-						type="password"
-						placeholder="Confirm Password"
-						name="password2"
-						minLength="6"
-						value={password2}
-						onChange={(e) => onChange(e)}
-					/>
-				</div>
-				<input type="submit" className="btn btn-primary" value="Register" />
-			</form>
-			<p className="link">
-				Already have an account? <Link to="/login">Sign In</Link>
-			</p>
-		</div>
-	);
-};
-
-Register.propTypes = {
-	setAlert: PropTypes.func.isRequired,
-	register: PropTypes.func.isRequired,
-	isAuthenticated: PropTypes.bool,
-};
-
-const mapStateToProps = (state) => ({
-	isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { setAlert, register })(Register);
+export default connect(mapStateToProps, mapActionToProps)(Register);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AceEditor from "react-ace";
-import caret from "../assets/caret.png";
+import caret from "../../assets/caret.png";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python";
@@ -9,8 +9,6 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "brace/mode/c_cpp";
 import "brace/snippets/c_cpp";
 import "brace/ext/language_tools";
-import axios from "axios";
-import { useSelector } from "react-redux";
 
 const Editor = () => {
   const vals = {
@@ -44,36 +42,7 @@ int main(){
   const [lang, setLang] = useState("C");
 
   const [isCustom, setIsCustom] = useState(false);
-
-  const token = useSelector((state) => state);
   // console.log(localStorage.getItem("values"));
-
-  const langs_id = {
-    C: 49,
-    "C++": 53,
-    Python: 71,
-    Java: 62,
-  };
-
-  const handleSubmit = async () => {
-    const data = {
-      languageId : langs_id[lang],
-      code : values[lang],
-      userId : "61ce11ad24ab40f40eefd47c",
-      questionId : "61bdc39f2ec733f9552507dd"
-    };
-
-    console.log(token);
-    
-    try {
-      const res = await axios.post("https://online-judge-csi.herokuapp.com/api/submission",data);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-
-
-  };
 
   const modes = {
     C: "c_cpp",
@@ -149,7 +118,7 @@ int main(){
             <p>Run</p>
             <img src={caret} alt="caret" />
           </div>
-          <div className="submit-btn" onClick={handleSubmit}>
+          <div className="submit-btn">
             <p>Submit</p>
           </div>
         </div>

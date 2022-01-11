@@ -1,78 +1,81 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Formik, Form } from "formik";
+import { TextField } from "./TextField";
+import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { Requests, Validators } from "../../utils/Index";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { login } from "../../authorization/actions/auth";
-import Alert from "../../components/Alert";
+import { login } from "../../store/actions";
 
-const Login = ({ login, isAuthenticated }) => {
-	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-	});
+const Login = (props) =>
+{
+  let navigate = useNavigate();
+  const validate = Yup.object({
+    email: Validators.email,
+    password: Validators.password,
+  })
 
-	const { email, password } = formData;
+  return (
+    <Formik
+      initialValues={{
+        email: "",
+        password: "",
+      }}
+      validationSchema={validate}
+      onSubmit={async values =>
+      {
+        console.log(values)
+        Requests.login(values).then(res =>
+        {
+          navigate("/loader")
+          localStorage.setItem('pcsb-oj-token', res.data.token);
+          console.log(res.data);
+          props.log(res.data)
+          navigate("/dashboard");
+        }).catch(error =>
+        {
+          alert("Invalid Data")
+        })
+      }}
+    >
+      {formik => (
+        <div className="register-form">
+          <h1 className="heading">Sign Up</h1>
+          <p className="lead">
+            <i className="fas fa-user"></i> Create Your Account
+          </p>
+          <Form className="form" onSubmit={formik.handleSubmit}>
+            <div className="form-group">
+              <TextField placeholder="Email" name="email" type="email" />
+            </div>
+            <div className="form-group">
+              <TextField placeholder="password" name="password" type="password" />
+            </div>
 
-	const onChange = (e) =>
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+            <button className="btn btn-primary" type="submit">Login</button>
+            <button className="btn btn-danger mt-3 ml-3" type="reset">Reset</button>
+          </Form>
+          <p className="link">
+            Don"t have an account? <Link to="/register">Sign Up</Link>
+          </p>
+        </div>
+      )}
+    </Formik>
+  )
+}
 
-	const onSubmit = async (e) => {
-		e.preventDefault();
+function mapStateToProps(state)
+{
+  return {
+    isAuthenticated: state.isAuthenticated
+  }
+}
+function mapActionToProps(dispatch)
+{
+  return {
+    log: (userData) => dispatch(login(userData))
+  }
+}
 
-		login(email, password);
-	};
-
-	// Redirect if logged in
-	if (isAuthenticated) {
-		return <Redirect to="/problem" />;
-	}
-
-	return (
-		<div className="login-form">
-			<h1 className="heading">Sign In</h1>
-			<p className="lead">
-				<i className="fas fa-user"></i> Sign Into Your Account
-			</p>
-			<Alert />
-			<br />
-			<form className="form" onSubmit={(e) => onSubmit(e)}>
-				<div className="form-group">
-					<input
-						type="email"
-						placeholder="Email Address"
-						name="email"
-						value={email}
-						onChange={(e) => onChange(e)}
-						required
-					/>
-				</div>
-				<div className="form-group">
-					<input
-						type="password"
-						placeholder="Password"
-						name="password"
-						minLength="6"
-						value={password}
-						onChange={(e) => onChange(e)}
-						required
-					/>
-				</div>
-				<input type="submit" className="btn" value="Login" />
-			</form>
-			<p className="link">
-				Don't have an account? <Link to="/register">Sign Up</Link>
-			</p>
-		</div>
-	);
-};
-
-Login.propTypes = {
-	login: PropTypes.func.isRequired,
-	isAuthenticated: PropTypes.bool,
-};
-
-const mapStateToProps = (state) => ({
-	isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, mapActionToProps)(Login);

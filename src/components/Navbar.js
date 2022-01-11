@@ -1,62 +1,75 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { logout } from "../authorization/actions/auth";
+import { login, logout } from "../store/actions";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-	const authLinks = (
-		<ul className="nav-links">
-			<li>
-				<Link to="/dashboard">
-					<i className="fas fa-user"></i>{" "}
-					<span className="hide-sm">Dashboard</span>
-				</Link>
-			</li>
-			<li>
-				<Link onClick={logout} to="/" replace>
-					<i className="fas fa-sign-out-alt"></i>{" "}
-					<span className="hide-sm"> &nbsp;Logout</span>
-				</Link>
-			</li>
-		</ul>
-	);
-	const guestLinks = (
-		<ul className="nav-links">
-			<li>
-				<Link to="/dashboardpage">Dash Board Page</Link>
-			</li>
-			<li>
-				<Link to="/problem">Contest Header</Link>
-			</li>
-			<li>
-				<Link to="/register">Register</Link>
-			</li>
-			<li>
-				<Link to="/login">Login</Link>
-			</li>
-		</ul>
-	);
-
+const Navbar = (props) =>
+{
+	function logout()
+	{
+		props.logout();
+		localStorage.setItem("pcsb-oj-token", null)
+	}
 	return (
 		<nav className="navbar bg-dark">
 			<h1>
 				<Link to="/">HOME</Link>
 			</h1>
-			{!loading && (
-				<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-			)}
+			{props.isAuthenticated ? null :
+				<ul className="nav-links">
+					<li>
+						<Link to="/register">Register</Link>
+					</li>
+					<li>
+						<Link to="/login">Login</Link>
+					</li>
+				</ul>
+			}
+
+			{props.isAuthenticated ? (
+				<ul className="nav-links">
+					<li>
+						<Link to="/dashboard">
+							<span className="hide-sm">Questions</span>
+						</Link>
+					</li>
+					<li>
+						<Link to="/mySubmission">
+							<span className="hide-sm">My Submission</span>
+						</Link>
+					</li>
+					<li>
+						<Link to="/leaderboard">
+							<span className="hide-sm">LeaderBoard</span>
+						</Link>
+					</li>
+					<li>
+						<Link onClick={logout} to="/" replace>
+							<i className="fas fa-sign-out-alt"></i>{" "}
+							<span className="hide-sm"> &nbsp;Logout</span>
+						</Link>
+					</li>
+				</ul>
+			) : null}
+
 		</nav>
 	);
 };
 
-Navbar.propTypes = {
-	logout: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired,
-};
 
-const mapStateToProps = (state) => ({
-	auth: state.auth,
-});
 
-export default connect(mapStateToProps, { logout })(Navbar);
+function mapStateToProps(state)
+{
+	return {
+		isAuthenticated: state.isAuthenticated
+	}
+}
+function mapActionToProps(dispatch)
+{
+	return {
+		login: () => dispatch(login()),
+		logout: () => dispatch(logout()),
+	}
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Navbar);

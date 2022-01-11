@@ -1,18 +1,17 @@
 import React from 'react'
-import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'
-import { classNames } from '../../components/Utils'
-import { SortIcon, SortUpIcon, SortDownIcon } from '../../components/Icons'
+import { useTable, useFilters, useAsyncDebounce, useGlobalFilter, useSortBy, usePagination } from 'react-table'
+import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
 
-// Define a default UI for filtering
 function GlobalFilter({
   globalFilter,
   setGlobalFilter,
-}) {
+})
+{
   const [value, setValue] = React.useState(globalFilter)
-  const onChange = useAsyncDebounce(value => {
+  const onChange = useAsyncDebounce(value =>
+  {
     setGlobalFilter(value || undefined)
   }, 200)
-
   return (
     <label className="flex gap-x-2 items-baseline">
       <span className="text-gray-700">Search: </span>
@@ -20,94 +19,28 @@ function GlobalFilter({
         type="text"
         className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         value={value || ""}
-        onChange={e => {
+        onChange={e =>
+        {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
-        // placeholder={`${count} records...`}
-        placeholder= {"Search"}
+        placeholder={"Search"}
       />
     </label>
   )
 }
 
-// This is a custom filter UI for selecting
-// a unique option from a list
-export function SelectColumnFilter({
-  column: { filterValue, setFilter, preFilteredRows, id, render },
-}) {
-  // Calculate the options for filtering
-  // using the preFilteredRows
-  const options = React.useMemo(() => {
-    const options = new Set()
-    preFilteredRows.forEach(row => {
-      options.add(row.values[id])
-    })
-    return [...options.values()]
-  }, [id, preFilteredRows])
 
-  // Render a multi-select box
-  return (
-    <label className="flex gap-x-2 items-baseline">
-      <span className="text-gray-700">{render("Header")}: </span>
-      <select
-        className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        name={id}
-        id={id}
-        value={filterValue}
-        onChange={e => {
-          setFilter(e.target.value || undefined)
-        }}
-      >
-        <option value="">All</option>
-        {options.map((option, i) => (
-          <option key={i} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </label>
-  )
-}
-
-export function StatusPill({ value }) {
-  const status = value ? value.toLowerCase() : "unknown";
-
-  return (
-    <span
-      className={
-        classNames(
-          "px-3 py-1 uppercase leading-wide font-bold text-xs rounded-full shadow-sm",
-          status.startsWith("solved") ? "bg-green-100 text-green-800" : null,
-          status.startsWith("unsolved") ? "bg-yellow-100 text-yellow-800" : null,
-          // status.startsWith("wrong") ? "bg-red-100 text-red-800" : null,
-        )
-      }
-    >
-      {status}
-    </span>
-  );
-};
-
-export function AvatarCell({value}) {
-  return (
-    <div className="flex ">
-      
-      <div className="ml-4">
-        <div className="text-sm font-medium text-gray-900">{value}</div>
-        </div>
-    </div>
-  )
-}
-
-function Table({ columns, data }) {
-  // Use the state and functions returned from useTable to build your UI
+function Table({ columns, data })
+{
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, 
+    page,
+    nextPage,
+    previousPage,
     state,
     preGlobalFilteredRows,
     setGlobalFilter,
@@ -115,12 +48,11 @@ function Table({ columns, data }) {
     columns,
     data,
   },
-    useFilters, // useFilters!
+    useFilters,
     useGlobalFilter,
     useSortBy,
-    usePagination,  // new
+    usePagination,
   )
-
   return (
     <>
       <div className="sm:flex sm:gap-x-2">
@@ -139,7 +71,6 @@ function Table({ columns, data }) {
           )
         )}
       </div>
-      {/* table */}
       <div className="mt-4 flex flex-col">
         <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -149,7 +80,7 @@ function Table({ columns, data }) {
                   {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                       {headerGroup.headers.map(column => (
-                        
+
                         <th
                           scope="col"
                           className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -157,7 +88,6 @@ function Table({ columns, data }) {
                         >
                           <div className="flex items-center justify-between">
                             {column.render('Header')}
-                            {/* Add a sort direction indicator */}
                             <span>
                               {column.isSorted
                                 ? column.isSortedDesc
@@ -177,11 +107,13 @@ function Table({ columns, data }) {
                   {...getTableBodyProps()}
                   className="bg-white divide-y divide-gray-200"
                 >
-                  {page.map((row, i) => {  // new
+                  {page.map((row) =>
+                  {
                     prepareRow(row)
                     return (
                       <tr {...row.getRowProps()}>
-                        {row.cells.map(cell => {
+                        {row.cells.map(cell =>
+                        {
                           return (
                             <td
                               {...cell.getCellProps()}
@@ -200,11 +132,15 @@ function Table({ columns, data }) {
                   })}
                 </tbody>
               </table>
+              <div>
+                <button className="btn_2 btn-primary" onClick={() => previousPage()}>Previous</button>
+                <button className="btn_2 btn-primary" onClick={() => nextPage()}>Next</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
     </>
   )
 }
