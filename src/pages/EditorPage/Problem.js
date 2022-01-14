@@ -1,6 +1,6 @@
 import React from "react";
 import Editor from "./Editor";
-import copy from "../../assets/copy.png";
+import copy from "../../../src/assets/copy.png";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 

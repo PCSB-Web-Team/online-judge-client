@@ -47,7 +47,6 @@ function App(props)
 				<Route path="mySubmission" element={<MySubmission />} />
 				<Route path="/" element={<Home />} />
 				<Route path="" element={<NotFound />} />
-
 			</Routes>
 		</div>
 	);
