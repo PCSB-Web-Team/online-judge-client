@@ -30,6 +30,7 @@ function App(props)
 				navigate("/dashBoard");
 			}).catch(error => { navigate("/Home") })
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	return (
