@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import "../src/styles/App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { Requests } from "./utils/Index";
+import { login } from "./store/actions";
+import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./pages/LoginPage/Login";
@@ -10,10 +13,23 @@ import NotFound from "./components/NotFound";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem"
-import { Requests } from "./utils/Index";
-import { login } from "./store/actions";
-import { connect } from "react-redux";
 import MySubmission from "./pages/Submission/MySubmission";
+import Contest from "./pages/ContestDashboard/Contest";
+
+const data_contest = [
+	{
+		id: 1,
+		title: "contest 1",
+	},
+	{
+		id: 2,
+		title: "contest 2",
+	},
+	{
+		id: 3,
+		title: "contest 3",
+	},
+]
 
 function App(props)
 {
@@ -27,7 +43,8 @@ function App(props)
 			Requests.getUserByToken(token).then((res) =>
 			{
 				props.log(res.data)
-				navigate("/dashBoard");
+				props.log(res.data_contest);
+				navigate(`/contest/:${ data_contest.id }`);
 			}).catch(error => { navigate("/Home") })
 		}
 		// eslint-disable-next-line
@@ -40,6 +57,7 @@ function App(props)
 			<Routes>
 				<Route path="login" element={<Login />} />
 				<Route path="register" element={<Register />} />
+				<Route path="contest/:id" element={<Contest />} />
 				<Route path="dashBoard" element={<DashBoard />} />
 				<Route path="home" element={<Home />} />
 				<Route path="problem" element={<Problem />} />

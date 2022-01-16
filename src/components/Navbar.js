@@ -29,10 +29,11 @@ const Navbar = (props) =>
 			{props.isAuthenticated ? (
 				<ul className="nav-links">
 					<li>
-						<Link to="/dashboard">
-							<span className="hide-sm">Questions</span>
+						<Link to="/contest/:id">
+							<span className="hide-sm">Contest</span>
 						</Link>
 					</li>
+
 					<li>
 						<Link to="/mySubmission">
 							<span className="hide-sm">My Submission</span>
