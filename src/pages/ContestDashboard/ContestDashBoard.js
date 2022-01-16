@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router'
 import Card from '../../components/Card';
 
-const Contest = ({ data1 }) =>
+const ContestDashBoard = ({ data1 }) =>
 {
     const { id } = useParams();
 
@@ -20,4 +20,4 @@ const Contest = ({ data1 }) =>
     )
 }
 
-export default Contest
+export default ContestDashBoard

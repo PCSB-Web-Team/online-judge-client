@@ -1,6 +1,6 @@
 import React from "react"
 import Table from "../../components/Table"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const getData = () =>
 {
@@ -54,6 +54,7 @@ const getData = () =>
 
 function DashBoard()
 {
+  const { id } = useParams();
   let navigate = useNavigate();
   function handleClick()
   {
@@ -94,7 +95,7 @@ function DashBoard()
     <div className="min-h-screen bg-gray-100 text-gray-900">
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="DashBoard"><br /><br />
-          <h1 className="text-xl font-semibold">Problem Statement</h1>
+          <h1 className="text-xl font-semibold">Problem Statement {id} </h1>
         </div>
         <div className="mt-6">
           <Table columns={columns} data={data} />

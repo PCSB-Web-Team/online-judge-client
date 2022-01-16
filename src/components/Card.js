@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import caret from '../assets/user.png'
 import { useNavigate, useParams } from 'react-router';
+import { Requests } from "../../src/utils/Index";
+
 const Card = (props) =>
 {
     const contestId = useParams();
     let navigate = useNavigate();
-    function handleClick()
+    const [loading, setLoading] = useState(false);
+    useEffect(() =>
+    {
+        const token = localStorage.getItem("pcsb-oj-token")
+        if (token)
+        {
+            setLoading(false)
+            Requests.getUserByToken(token).then((res) =>
+            {
+                props.log(res.data)
+
+            }).catch(error => { navigate("/contest") })
+        }
+        else
+        {
+            navigate("/contest")
+        }
+        // eslint-disable-next-line
+        setLoading(true)
+    }, []);
+
+    function handleClick(props)
     {
 
-        navigate("/dashboard")
+        navigate("/login")
+
     }
     return (
         <div className="card p-8 m-2 shadow">
