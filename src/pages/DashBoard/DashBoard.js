@@ -2,8 +2,11 @@ import React from 'react'
 import { useParams } from 'react-router'
 import Card from '../../components/Card';
 
+
+
 const Dashboard = ({ data1 }) =>
 {
+
     const { id } = useParams();
 
     return (

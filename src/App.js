@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../src/styles/App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Requests } from "./utils/Index";
@@ -31,22 +31,26 @@ const data_contest = [
 ];
 
 function App(props) {
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
+    setLoading(true);
     const token = localStorage.getItem("pcsb-oj-token");
+    console.log(token);
     if (token) {
-      navigate("/Loader");
       Requests.getUserByToken(token)
         .then((res) => {
           props.log(res.data);
           props.log(res.data_contest);
-          navigate(`/contest/:${data_contest.id}`);
+          setLoading(false);
         })
         .catch((error) => {
-          navigate("/Home");
-        });
+			navigate("/login");});
+    } else {
+      navigate("/login");
     }
-    // eslint-disable-next-line
+    setLoading(false);
   }, []);
 
   return (
@@ -55,14 +59,17 @@ function App(props) {
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path=":contest-id" element={<ContestDashboard />}>
+        <Route path="/:contest-id" element={<ContestDashboard />}>
           <Route path=":question-id" element={<Problem />} />
           <Route path="leaderboard" element={<LeaderBoard />} />
           <Route path="submissions" element={<MySubmission />} />
-          <Route path="submissions/:submission-id" element={<div></div>}></Route>
+          <Route
+            path="submissions/:submission-id"
+            element={<div></div>}
+          ></Route>
         </Route>
         <Route path="/" element={<Dashboard />} />
-        <Route path="" element={<NotFound />} />
+        <Route element={<NotFound />} />
       </Routes>
     </div>
   );

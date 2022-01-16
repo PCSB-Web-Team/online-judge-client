@@ -32,7 +32,7 @@ const Login = (props) =>
           localStorage.setItem('pcsb-oj-token', res.data.token);
           console.log(res.data);
           props.log(res.data)
-          navigate("/dashboard");
+          navigate("/");
         }).catch(error =>
         {
           alert("Invalid Data")
