@@ -8,7 +8,7 @@ const Navbar = (props) =>
 	function logout()
 	{
 		props.logout();
-		localStorage.setItem("pcsb-oj-token", null)
+		localStorage.setItem("pcsb-oj-token", undefined)
 	}
 	return (
 		<nav className="navbar bg-dark">

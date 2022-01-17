@@ -29,11 +29,11 @@ function App(props)
 			{
 				props.log(res.data)
 
-			}).catch(error => { navigate("/dashboard") })
+			}).catch(error => { navigate("/contest") })
 		}
 		else
 		{
-			navigate("/dashboard")
+			navigate("/contest")
 		}
 		// eslint-disable-next-line
 		setLoading(true)
@@ -52,7 +52,7 @@ function App(props)
 					<Route path="submissions" element={<MySubmission />} />
 					<Route path="submissions/:submission-id" element={<MySubmission />} />
 				</Route>
-				<Route path="/" element={<ContestDashBoard />} />
+				<Route path="/contest" element={<ContestDashBoard />} />
 				<Route element={<NotFound />} />
 			</Routes>
 		</div >
