@@ -5,32 +5,19 @@ import { Requests } from "../../src/utils/Index";
 
 const Card = (props) =>
 {
-    const contestId = useParams();
-    let navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
-    useEffect(() =>
-    {
-        const token = localStorage.getItem("pcsb-oj-token")
-        if (token)
-        {
-            setLoading(false)
-            Requests.getUserByToken(token).then((res) =>
-            {
-                props.log(res.data)
-
-            }).catch(error => { navigate("/contest") })
-        }
-        else
-        {
-            navigate("/contest")
-        }
-        // eslint-disable-next-line
-        setLoading(true)
-    }, []);
+    const navigate = useNavigate();
 
     function handleClick(props)
     {
-
+        Requests.contest(data).then((res) =>
+        {
+            props.log(res.data);
+        })
+        const token = localStorage.getItem("pcsb-oj-token");
+        if (token)
+        {
+            navigate(`/contest/${ id }`)
+        }
         navigate("/login")
 
     }

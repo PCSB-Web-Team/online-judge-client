@@ -1,108 +1,23 @@
-import React from "react"
-import Table from "../../components/Table"
-import { useNavigate, useParams } from "react-router-dom";
+import React from 'react'
+import { useParams } from 'react-router'
+import Card from '../../components/Card';
 
-const getData = () =>
+
+const Dashboard = () =>
 {
-  const data = [
-    {
-      name: "Problem 1",
-      title: "lorem ipsum",
-      status: "Solved",
-      max_score: "15",
-      score: 0,
-    },
-    {
-      name: "Problem 2",
-      title: "lorem ipsum",
-      status: "Unsolved",
-      max_score: "20",
-      score: 0,
-    },
-    {
-      name: "Problem 3",
-      title: "lorem ipsum",
-      status: "Solved",
-      max_score: "10",
-      score: 0,
-    },
-    {
-      name: "Problem 4",
-      title: "lorem ipsum",
-      status: "Solved",
-      max_score: "10",
-      score: 0,
-    },
-    {
-      name: "Problem 5",
-      title: "lorem ipsum",
-      status: "Unsolved",
-      max_score: "20",
-      score: 0,
-    },
-    {
-      name: "Problem 6",
-      title: "lorem ipsum",
-      status: "Unsolved",
-      max_score: "20",
-      score: 0,
-    },
-  ]
-  return [...data]
-}
-
-
-function DashBoard()
-{
-  const { id } = useParams();
-  let navigate = useNavigate();
-  function handleClick()
-  {
-
-    navigate("/problem")
-  }
-  const columns = React.useMemo(() => [
-    {
-      Header: "Name",
-      accessor: "name",
-    },
-    {
-      Header: "Title",
-      accessor: "title",
-    },
-
-    {
-      Header: "Score",
-      accessor: "score",
-    },
-    {
-      Header: "Max Score",
-      accessor: "max_score",
-
-    },
-    {
-      Header: "Solve",
-      accessor: "status",
-      Cell: () => (
-        <button className="btn_1 btn-primary" onClick={handleClick} > Solve </button>
-      ),
-    },
-  ], [])
-
-  const data = React.useMemo(() => getData(), [])
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="DashBoard"><br /><br />
-          <h1 className="text-xl font-semibold">Problem Statement {id} </h1>
+    <div>
+      <div className="container "><br /><br />
+        <h1 class="font-bold pb-2 p-8 border-b border-gray-200">Contest</h1>
+        <div class="mt-8 grid m-12 lg:grid-cols-3 gap-10">
+          <Card id={1} description={"Contest 1"} date={"15 Jan 2022"} />
+          <Card id={2} description={"Contest 2"} date={"16 Jan 2022"} />
+          <Card id={3} description={"Contest 3"} date={"17 Jan 2022"} />
         </div>
-        <div className="mt-6">
-          <Table columns={columns} data={data} />
-        </div>
-      </main>
+      </div>
     </div>
-  );
+  )
 }
 
-export default DashBoard;
+export default Dashboard

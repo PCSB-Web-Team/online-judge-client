@@ -12,6 +12,10 @@ export const signup = (data) =>
 {
     return backend.post("/auth/signup", data);
 }
+export const contest = (data) =>
+{
+    return backend.post("/contest", data);
+}
 export const getUserByToken = (token) =>
 {
     return backend.get("/auth/", {

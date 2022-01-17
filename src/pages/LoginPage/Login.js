@@ -28,11 +28,10 @@ const Login = (props) =>
         console.log(values)
         Requests.login(values).then(res =>
         {
-          navigate("/loader")
           localStorage.setItem('pcsb-oj-token', res.data.token);
           console.log(res.data);
           props.log(res.data)
-          navigate("/dashboard");
+          navigate("/");
         }).catch(error =>
         {
           alert("Invalid Data")
