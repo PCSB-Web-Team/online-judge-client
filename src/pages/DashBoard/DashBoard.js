@@ -18,7 +18,7 @@ const Dashboard = () => {
         <h1 class="font-bold pb-2 p-8 border-b border-gray-200">Contest</h1>
         <div class="mt-8 grid m-12 lg:grid-cols-3 gap-10">{
           data.map((contest) => {
-            return <Card id={contest._id} title={contest.title} date={contest.startsOn.split("T")[0]} />
+            return <Card contestId={contest._id} title={contest.title} date={contest.startsOn.split("T")[0]} />
           })
         }
         </div>

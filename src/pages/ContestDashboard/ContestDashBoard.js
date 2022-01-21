@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import DashboardTable from "../../components/DashboardTable";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { getQuestions } from "../../utils/Requests";
+import { getContests, getQuestions } from "../../utils/Requests";
+import { Link, useParams, Outlet } from "react-router-dom";
 
 function ContestDashboard() {
-  const [question, setQuestion] = useState([]);
+  const [data, setData] = useState([]);
+  const { contestId } = useParams();
+
   useEffect(() => {
     console.log("object");
     Requests.getQuestions().then(res => {
       console.log(res);
-      setQuestion(res.data);
-    })
+      setData(res.data);
+      getContests(contestId);
+    }).catch((error) => { })
   }, [])
 
   return (
@@ -22,14 +25,41 @@ function ContestDashboard() {
           <br />
           <h1 className="text-xl font-semibold">Problem Statement</h1>
         </div>
-        <div className="mt-6">
-          {
-            question.map((question) => {
-              return <DashboardTable id={question._id} title={question.title} description={question.description} />
-            })
-          }
+        <div className="mt-4 flex flex-col">
+          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table className='min-w-full'>
+              <thead className='bg-gray-50'>
+                <tr>
+                  <th scope='col'
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                    Title</th>
+                  <th scope='col'
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                    Max Score</th>
+                  <th scope='col'
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                    Solve</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {
+                  data.map((question) => (
+                    <tr key={contestId}>
+                      <td className="px-6 py-4 whitespace-nowrap">{question.title}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{question.number}</td>
+                      <td>
+                        <Link to={`/${question.contestId}/${question._id}`}
+                          className="btn btn-small ">Solve</Link>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       </main>
+      <Outlet />
     </div>
   );
 }

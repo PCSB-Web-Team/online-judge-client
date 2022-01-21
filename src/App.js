@@ -15,32 +15,24 @@ import MySubmission from "./pages/Submission/MySubmission";
 import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
 import Dashboard from "./pages/DashBoard/DashBoard";
 
-function App(props)
-{
+function App(props) {
 	const [loading, setLoading] = useState(false);
-
 	const navigate = useNavigate();
-	useEffect(() =>
-	{
+	useEffect(() => {
 		setLoading(true);
 		const token = localStorage.getItem("pcsb-oj-token");
-		console.log(token);
-		if (token)
-		{
+		// console.log(token);
+		if (token) {
 			Requests.getUserByToken(token)
-				.then((res) =>
-				{
+				.then((res) => {
 					props.log(res.data);
 
 					setLoading(false);
-
 				})
-				.catch((error) =>
-				{
+				.catch((error) => {
 					navigate("/");
 				});
-		} else
-		{
+		} else {
 			navigate("/");
 		}
 		setLoading(false);
@@ -52,30 +44,27 @@ function App(props)
 			<Routes>
 				<Route path="login" element={<Login />} />
 				<Route path="register" element={<Register />} />
-				<Route path="/:contest-id" element={<ContestDashboard />}>
-					<Route path=":question-id" element={<Problem />} />
-					<Route path="leaderboard" element={<LeaderBoard />} />
-					<Route path="submissions" element={<MySubmission />} />
-					<Route
-						path="submissions/:submission-id"
-						element={<div></div>}
-					></Route>
-				</Route>
 				<Route path="/" element={<Dashboard />} />
+				<Route path=":contest" element={<ContestDashboard />} />
+				<Route path=":question-id" element={<Problem />} />
+				<Route path="leaderboard" element={<LeaderBoard />} />
+				<Route path="submissions" element={<MySubmission />} />
+				<Route
+					path="submissions/:submission-id"
+					element={<div></div>}
+				></Route>
 				<Route element={<NotFound />} />
 			</Routes>
 		</div>
 	);
 }
 
-function mapStateToProps(state)
-{
+function mapStateToProps(state) {
 	return {
 		isAuthenticated: state.isAuthenticated,
 	};
 }
-function mapActionToProps(dispatch)
-{
+function mapActionToProps(dispatch) {
 	return {
 		log: (userData) => dispatch(login(userData)),
 	};

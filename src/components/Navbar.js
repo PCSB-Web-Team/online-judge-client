@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
 
-const Navbar = (props) =>
-{
-	function logout()
-	{
+const Navbar = (props) => {
+	function logout() {
 		props.logout();
 		localStorage.removeItem("pcsb-oj-token")
 	}
@@ -29,11 +27,10 @@ const Navbar = (props) =>
 			{props.isAuthenticated ? (
 				<ul className="nav-links">
 					<li>
-						<Link to={`/contest/:${props.id}`}>
+						<Link to={`/`}>
 							<span className="hide-sm">DashBoard</span>
 						</Link>
 					</li>
-
 					<li>
 						<Link to="/mySubmission">
 							<span className="hide-sm">My Submission</span>
@@ -59,14 +56,12 @@ const Navbar = (props) =>
 
 
 
-function mapStateToProps(state)
-{
+function mapStateToProps(state) {
 	return {
 		isAuthenticated: state.isAuthenticated
 	}
 }
-function mapActionToProps(dispatch)
-{
+function mapActionToProps(dispatch) {
 	return {
 		login: () => dispatch(login()),
 		logout: () => dispatch(logout()),
