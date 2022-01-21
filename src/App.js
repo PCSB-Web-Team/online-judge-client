@@ -15,21 +15,6 @@ import MySubmission from "./pages/Submission/MySubmission";
 import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
 import Dashboard from "./pages/DashBoard/DashBoard";
 
-const data_contest = [
-	{
-		id: 1,
-		title: "contest 1",
-	},
-	{
-		id: 2,
-		title: "contest 2",
-	},
-	{
-		id: 3,
-		title: "contest 3",
-	},
-];
-
 function App(props)
 {
 	const [loading, setLoading] = useState(false);
@@ -48,14 +33,15 @@ function App(props)
 					props.log(res.data);
 
 					setLoading(false);
+
 				})
 				.catch((error) =>
 				{
-					navigate("/login");
+					navigate("/");
 				});
 		} else
 		{
-			navigate("/login");
+			navigate("/");
 		}
 		setLoading(false);
 	}, []);

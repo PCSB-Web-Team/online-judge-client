@@ -29,8 +29,8 @@ const Navbar = (props) =>
 			{props.isAuthenticated ? (
 				<ul className="nav-links">
 					<li>
-						<Link to="/contest/:id">
-							<span className="hide-sm">Contest</span>
+						<Link to={`/contest/:${props.id}`}>
+							<span className="hide-sm">DashBoard</span>
 						</Link>
 					</li>
 

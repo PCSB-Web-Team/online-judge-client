@@ -12,9 +12,13 @@ export const signup = (data) =>
 {
     return backend.post("/auth/signup", data);
 }
-export const contest = (data) =>
+export const getContests = (contestData) =>
 {
-    return backend.post("/contest", data);
+    return backend.get("/contest");
+}
+export const getQuestions = () =>
+{
+    return backend.get("/question/all");
 }
 export const getUserByToken = (token) =>
 {

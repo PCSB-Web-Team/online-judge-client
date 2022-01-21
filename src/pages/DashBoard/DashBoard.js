@@ -1,47 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux";
-import { useParams } from 'react-router'
-import { useNavigate } from 'react-router';
 import Card from '../../components/Card';
 import { Requests } from '../../utils/Index';
-import { contest } from '../../utils/Requests';
+import { getContests } from '../../utils/Requests';
 
-const Dashboard = (props) =>
-{
-  const navigate = useNavigate();
+const Dashboard = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    Requests.getContests().then(res => {
+      setData(res.data);
+    }).catch((error) => { })
+  }, [])
   return (
 
-    <div onSubmit={async values =>
-    {
-      Requests.contest(values).then(res =>
-      {
-        props.contest(res.data.id);
-        navigate(`/contest/`)
-      })
-    }
-    }>
+    <div>
       <div className="container "><br /><br />
         <h1 class="font-bold pb-2 p-8 border-b border-gray-200">Contest</h1>
-        <div class="mt-8 grid m-12 lg:grid-cols-3 gap-10">
-          <Card id={1} description={"Contest 1"} date={"15 Jan 2022"} />
-          <Card id={2} description={"Contest 2"} date={"16 Jan 2022"} />
-          <Card id={3} description={"Contest 3"} date={"17 Jan 2022"} />
+        <div class="mt-8 grid m-12 lg:grid-cols-3 gap-10">{
+          data.map((contest) => {
+            return <Card id={contest._id} title={contest.title} date={contest.startsOn.split("T")[0]} />
+          })
+        }
         </div>
       </div>
     </div>
   )
 }
 
-function mapStateToProps(state)
-{
+function mapStateToProps(state) {
   return {
     isAuthenticated: state.isAuthenticated
   }
 }
-function mapActionToProps(dispatch)
-{
+function mapActionToProps(dispatch) {
   return {
-    contest: (userData) => dispatch(contest(userData))
+    getContests: (userData) => dispatch(getContests(userData))
   }
 }
 

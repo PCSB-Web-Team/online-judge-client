@@ -1,94 +1,18 @@
-import React from "react";
-import Table from "../../components/Table";
-import { useNavigate } from "react-router-dom";
-
-const getData = () => {
-  const data = [
-    {
-      name: "Problem 1",
-      title: "lorem ipsum",
-      status: "Solved",
-      max_score: "15",
-      score: 0,
-    },
-    {
-      name: "Problem 2",
-      title: "lorem ipsum",
-      status: "Unsolved",
-      max_score: "20",
-      score: 0,
-    },
-    {
-      name: "Problem 3",
-      title: "lorem ipsum",
-      status: "Solved",
-      max_score: "10",
-      score: 0,
-    },
-    {
-      name: "Problem 4",
-      title: "lorem ipsum",
-      status: "Solved",
-      max_score: "10",
-      score: 0,
-    },
-    {
-      name: "Problem 5",
-      title: "lorem ipsum",
-      status: "Unsolved",
-      max_score: "20",
-      score: 0,
-    },
-    {
-      name: "Problem 6",
-      title: "lorem ipsum",
-      status: "Unsolved",
-      max_score: "20",
-      score: 0,
-    },
-  ];
-  return [...data];
-};
+import React, { useEffect, useState } from "react";
+import DashboardTable from "../../components/DashboardTable";
+import { Requests } from "../../utils/Index";
+import { connect } from "react-redux";
+import { getQuestions } from "../../utils/Requests";
 
 function ContestDashboard() {
-  let navigate = useNavigate();
-  function handleClick() {
-    navigate("/problem");
-  }
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Name",
-        accessor: "name",
-      },
-      {
-        Header: "Title",
-        accessor: "title",
-      },
-
-      {
-        Header: "Score",
-        accessor: "score",
-      },
-      {
-        Header: "Max Score",
-        accessor: "max_score",
-      },
-      {
-        Header: "Solve",
-        accessor: "status",
-        Cell: () => (
-          <button className="btn_1 btn-primary" onClick={handleClick}>
-            {" "}
-            Solve{" "}
-          </button>
-        ),
-      },
-    ],
-    []
-  );
-
-  const data = React.useMemo(() => getData(), []);
+  const [question, setQuestion] = useState([]);
+  useEffect(() => {
+    console.log("object");
+    Requests.getQuestions().then(res => {
+      console.log(res);
+      setQuestion(res.data);
+    })
+  }, [])
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
@@ -99,11 +23,26 @@ function ContestDashboard() {
           <h1 className="text-xl font-semibold">Problem Statement</h1>
         </div>
         <div className="mt-6">
-          <Table columns={columns} data={data} />
+          {
+            question.map((question) => {
+              return <DashboardTable id={question._id} title={question.title} description={question.description} />
+            })
+          }
         </div>
       </main>
     </div>
   );
 }
 
-export default ContestDashboard;
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.isAuthenticated
+  }
+}
+function mapActionToProps(dispatch) {
+  return {
+    getQuestions: (userData) => dispatch(getQuestions(userData))
+  }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(ContestDashboard);

@@ -522,3 +522,7 @@ body {
 		transform: rotate(360deg);
 	}
 }
+
+.left-space{
+  padding-left:30% ;
+}

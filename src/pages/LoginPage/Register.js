@@ -7,6 +7,7 @@ import { Requests, Validators } from "../../utils/Index";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../store/actions";
+import { getContests } from "../../utils/Requests";
 
 const Register = (props) =>
 {
@@ -30,6 +31,9 @@ const Register = (props) =>
       validationSchema={validate}
       onSubmit={async values =>
       {
+        Requests.getContests(values).then(res =>
+        {
+        })
         Requests.signup(values).then(res =>
         {
           console.log(res)
@@ -88,7 +92,8 @@ function mapStateToProps(state)
 function mapActionToProps(dispatch)
 {
   return {
-    login: (userData) => dispatch(login(userData))
+    login: (userData) => dispatch(login(userData)),
+    getContests: (contestData) => dispatch(getContests(contestData))
   }
 }
 

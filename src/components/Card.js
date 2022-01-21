@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import caret from '../assets/user.png'
-import { useNavigate, useParams } from 'react-router';
-import { Requests } from "../../src/utils/Index";
+import { Link } from 'react-router-dom';
 
 const Card = (props) =>
 {
-
     return (
         <div className="card p-8 m-2 shadow">
             <img src={caret} alt="contest" className="h-32 sm:h-48 w-full object-cover" />
             <div className="m-4">
-                <span className="font-bold">Contest {props.id}</span>
-                <span className="block text-gray-500 text-sm">{props.description}</span><br />
-                <input type="button" value="Enter Contest" type="submit" className='btn_1' />
+                <span className="font-bold">{props.title}</span><br /><br />
+                <Link to={`/contest/${ props.id }`} className='btn'>Enter Contest</Link>
             </div>
-            <div className="badge">
+            <div className="badge"><br />
                 <span>{props.date}</span>
             </div>
         </div>

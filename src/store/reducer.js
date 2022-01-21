@@ -1,13 +1,15 @@
 import
-	{
-		LOGIN,
-		LOGOUT,
-	} from "./actions";
+{
+	LOGIN,
+	LOGOUT,
+	GETCONTESTS,
+} from "./actions";
 
 const initialState = {
 	token: localStorage.getItem("pcsb-oj-token"),
 	isAuthenticated: false,
 	userData: null,
+	contestData: null,
 };
 
 export default function auth(state = initialState, action)
@@ -21,6 +23,13 @@ export default function auth(state = initialState, action)
 				...state,
 				isAuthenticated: true,
 				userData: payload,
+			}
+		}
+		case GETCONTESTS: {
+			return {
+				...state,
+				isAuthenticated: true,
+				contestData: payload,
 			}
 		}
 		case LOGOUT: {
