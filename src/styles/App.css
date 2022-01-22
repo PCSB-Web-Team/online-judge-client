@@ -78,67 +78,6 @@ a {
 	--success-color: #28a745;
 }
 
-.alert {
-	padding: 0.8rem;
-	margin: 1rem 0;
-	opacity: 0.9;
-	background: var(--light-color);
-	color: #333;
-}
-
-.alert-primary {
-	background: var(--primary-color);
-	color: #fff;
-}
-
-.alert-light {
-	background: var(--light-color);
-	color: #333;
-}
-
-.alert-dark {
-	background: var(--dark-color);
-	color: #fff;
-}
-
-.alert-danger {
-	background: var(--danger-color);
-	color: #fff;
-}
-
-.alert-success {
-	background: var(--success-color);
-	color: #fff;
-}
-
-/* Navbar */
-.navbar {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.7rem 2rem;
-	position: fixed;
-	z-index: 1;
-	width: 100%;
-	top: 0;
-	opacity: 0.9;
-	background: #444343;
-}
-
-.navbar .nav-links {
-	display: flex;
-	list-style: none;
-}
-
-.navbar a {
-	color: #fff;
-	padding: 1rem;
-	margin: 0 1rem;
-}
-
-.navbar .welcome span {
-	margin-right: 0.6rem;
-}
 
 /* Home Page */
 .Home {
@@ -206,28 +145,9 @@ a {
 	color: #444343;
 }
 
-/* Mobile Styles */
-@media (max-width: 700px) {
-	/* Navbar */
-	.navbar {
-		display: block;
-		text-align: center;
-	}
-
-	.navbar ul {
-		text-align: center;
-		justify-content: center;
-	}
-
-	.navbar h1 {
-		margin-bottom: 1rem;
-	}
-
-	.navbar .welcome {
-		display: none;
-	}
-}
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Open+Sans&display=swap");
+
+/* editor */
 
 * {
   margin: 0;
