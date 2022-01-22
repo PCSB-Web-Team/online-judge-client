@@ -3,12 +3,12 @@ import Editor from "./Editor";
 import { Requests } from "../../utils/Index";
 import copy from "../../../src/assets/copy.png";
 import { connect } from "react-redux";
-import { getSpecificQuestions,getQuestions } from "../../utils/Requests";
+import { getSpecificQuestions } from "../../utils/Requests";
 import { useParams, Outlet } from "react-router-dom";
 
 const Problem = () => {
   const [data, setData] = useState([]);
-  const { contestId, questionId, _id } = useParams();
+  const { questionId } = useParams();
 
   useEffect(() => {
     Requests.getSpecificQuestions(questionId).then(res => {
@@ -27,7 +27,7 @@ const Problem = () => {
 
   return (
     <div className="problem">
-      <><div key={data} className="problem-main"><br></br>
+      <><div key={data} className="problem-main">
         <h1>A. {data.title}</h1>
         <div className="problem-head-info">
           <span>Time Limit : 1000ms per test</span>
@@ -38,7 +38,7 @@ const Problem = () => {
         </p>
         {/* <h2>Input : {data.example[0].input}</h2>  */}
         {/* <h2>Output : {data.example[0].output}</h2> */}
-        
+
         <h2>Example</h2>
         <p>
           <strong>Input</strong>
@@ -67,7 +67,7 @@ const Problem = () => {
             onClick={() => copytoclipboard(1)}
           />
           <code>
-           {/* {data.example[0].input} */}
+            {/* {data.example[0].input} */}
           </code>
         </p>
         <p>

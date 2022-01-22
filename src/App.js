@@ -25,7 +25,6 @@ function App(props) {
       Requests.getUserByToken(token)
         .then((res) => {
           props.log(res.data);
-
           setLoading(false);
         })
         .catch((error) => {
@@ -37,28 +36,28 @@ function App(props) {
     setLoading(false);
   }, []);
 
-	return (
-		<div className="App">
-			<Navbar />
-			<Routes>
-				{props.isAuthenticated ?
-					<>
-						<Route path="/" element={<Dashboard />} />
-						<Route path=":contestId" element={<ContestDashboard />} />
-						<Route path=":contestId/:questionId" element={<Problem />} />
-						{/* <Route path=":contestId/:questionId/submission" element={<Problem />} /> */}
-						<Route path=":contestId/leaderboard" element={<LeaderBoard />} />
-						<Route path=":contestId/submissions" element={<MySubmission />} />
-					</> :
-					<>
-						<Route path="login" element={<Login />} />
-						<Route path="register" element={<Register />} />
-						<Route path="/" element={<Dashboard />} />
-						<Route element={<NotFound />} />
-					</>}
-			</Routes>
-		</div>
-	);
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
+        {props.isAuthenticated ?
+          <>
+            <Route path="/" element={<Dashboard />} />
+            <Route path=":contestId" element={<ContestDashboard />} />
+            <Route path=":contestId/:questionId" element={<Problem />} />
+            {/* <Route path=":contestId/:questionId/submission" element={<Problem />} /> */}
+            <Route path=":contestId/leaderboard" element={<LeaderBoard />} />
+            <Route path=":contestId/submissions" element={<MySubmission />} />
+          </> :
+          <>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route element={<NotFound />} />
+          </>}
+      </Routes>
+    </div>
+  );
 }
 
 function mapStateToProps(state) {

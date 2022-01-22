@@ -40,7 +40,7 @@ const Navbar = (props, { fixed }) => {
 				<div
 					className={
 						"lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none" +
-						(navbarOpen ? " block rounded shadow-lg" : " hidden")
+						(navbarOpen ? " block rounded " : " hidden")
 					}
 					id="example-navbar-warning"
 				>

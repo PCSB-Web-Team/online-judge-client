@@ -52,7 +52,7 @@ function ContestDashboard() {
                   question.map((questions) => (
                     <tr key={question}>
                       <td className="px-6 py-4 whitespace-nowrap">{questions.title}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{questions.number}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{questions.score}</td>
                       <td>
                         <Link to={`/${questions.contestId}/${questions._id}`}
                           className="btn btn-small ">Solve</Link>
