@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { getContests, getQuestions } from "../../utils/Requests";
+import { getQuestions } from "../../utils/Requests";
 import { Link, useParams, Outlet } from "react-router-dom";
 
 function ContestDashboard() {
-  const [data, setData] = useState([]);
+  const [question, setQuestion] = useState([]);
   const { contestId } = useParams();
-
   useEffect(() => {
-    console.log("object");
-    Requests.getQuestions().then(res => {
-      console.log(res);
-      setData(res.data);
-      getContests(contestId);
+    console.log(contestId);
+    Requests.getQuestions(contestId).then(res => {
+      setQuestion(res.data);
     }).catch((error) => { })
   }, [])
 
@@ -43,12 +40,12 @@ function ContestDashboard() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {
-                  data.map((question) => (
-                    <tr key={contestId}>
-                      <td className="px-6 py-4 whitespace-nowrap">{question.title}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{question.number}</td>
+                  question.map((questions) => (
+                    <tr key={question}>
+                      <td className="px-6 py-4 whitespace-nowrap">{questions.title}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{questions.number}</td>
                       <td>
-                        <Link to={`/${question.contestId}/${question._id}`}
+                        <Link to={`/${questions.contestId}/${questions._id}`}
                           className="btn btn-small ">Solve</Link>
                       </td>
                     </tr>

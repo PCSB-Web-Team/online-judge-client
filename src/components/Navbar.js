@@ -13,7 +13,30 @@ const Navbar = (props) => {
 			<h1>
 				<Link to="/">HOME</Link>
 			</h1>
-			{props.isAuthenticated ? null :
+			{props.isAuthenticated ? 
+			<ul className="nav-links">
+				<li>
+					<Link to={`/`}>
+						<span className="hide-sm">DashBoard</span>
+					</Link>
+				</li>
+				<li>
+					<Link to="/mySubmission">
+						<span className="hide-sm">My Submission</span>
+					</Link>
+				</li>
+				<li>
+					<Link to="/leaderboard">
+						<span className="hide-sm">LeaderBoard</span>
+					</Link>
+				</li>
+				<li>
+					<Link onClick={logout} to="/" replace>
+						<i className="fas fa-sign-out-alt"></i>{" "}
+						<span className="hide-sm"> &nbsp;Logout</span>
+					</Link>
+				</li>
+			</ul> :
 				<ul className="nav-links">
 					<li>
 						<Link to="/register">Register</Link>
@@ -24,31 +47,6 @@ const Navbar = (props) => {
 				</ul>
 			}
 
-			{props.isAuthenticated ? (
-				<ul className="nav-links">
-					<li>
-						<Link to={`/`}>
-							<span className="hide-sm">DashBoard</span>
-						</Link>
-					</li>
-					<li>
-						<Link to="/mySubmission">
-							<span className="hide-sm">My Submission</span>
-						</Link>
-					</li>
-					<li>
-						<Link to="/leaderboard">
-							<span className="hide-sm">LeaderBoard</span>
-						</Link>
-					</li>
-					<li>
-						<Link onClick={logout} to="/" replace>
-							<i className="fas fa-sign-out-alt"></i>{" "}
-							<span className="hide-sm"> &nbsp;Logout</span>
-						</Link>
-					</li>
-				</ul>
-			) : null}
 
 		</nav>
 	);

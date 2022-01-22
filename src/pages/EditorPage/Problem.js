@@ -3,78 +3,42 @@ import Editor from "./Editor";
 import { Requests } from "../../utils/Index";
 import copy from "../../../src/assets/copy.png";
 import { connect } from "react-redux";
-import { getContests, getQuestions } from "../../utils/Requests";
-import { Link, useParams, Outlet } from "react-router-dom";
-import PropTypes from "prop-types";
+import { getSpecificQuestions,getQuestions } from "../../utils/Requests";
+import { useParams, Outlet } from "react-router-dom";
 
-const Problem = () =>
-{
+const Problem = () => {
   const [data, setData] = useState([]);
-  const { contestId } = useParams();
+  const { contestId, questionId, _id } = useParams();
 
   useEffect(() => {
-    console.log("object");
-    Requests.getQuestions().then(res => {
-      console.log(res);
+    Requests.getSpecificQuestions(questionId).then(res => {
       setData(res.data);
-      getContests(contestId);
+      console.log(data);
     }).catch((error) => { })
   }, [])
-  const copytoclipboard = (i) =>
-  {
+  const copytoclipboard = (i) => {
     const tests = document.querySelectorAll(".sample-tests");
     tests[i].querySelector('.copied').style.display = 'block';
     navigator.clipboard.writeText(tests[i].querySelector("code").textContent);
-    setTimeout(() =>
-    {
+    setTimeout(() => {
       tests[i].querySelector('.copied').style.display = 'none';
     }, 1000);
   };
 
   return (
     <div className="problem">
-      <div className="problem-main"><br></br>
-        <h1>A. Problem 1</h1>
+      <><div key={data} className="problem-main"><br></br>
+        <h1>A. {data.title}</h1>
         <div className="problem-head-info">
           <span>Time Limit : 1000ms per test</span>
-          <span>Memory Limit : 256MB per test</span>
-          <span>Standard Input</span>
-          <span>Standard Output</span>
+          <span>Memory Limit : {data.memory}MB</span><br />
         </div>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi
-          molestiae earum repellendus laborum fugiat cupiditate sapiente nihil,
-          quod molestias asperiores, rem dolorem animi iste excepturi blanditiis
-          quisquam ad, cumque velit!Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Quasi molestiae earum repellendus laborum fugiat
-          cupiditate sapiente nihil, quod molestias asperiores, rem dolorem
-          animi iste excepturi blanditiis quisquam ad, cumque velit!
+          {data.description}
         </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi
-          molestiae earum repellendus laborum fugiat cupiditate sapiente nihil,
-          quod molestias asperiores, rem dolorem animi iste excepturi blanditiis
-          quisquam ad, cumque velit!
-        </p>
-        <h2>Input</h2>
-        <p>
-          The first line contains a single integer t (1≤t≤1000) — the number of
-          test cases. Next t cases follow. The first and only line of each test
-          case contains a non-empty string s consisting of characters E and/or
-          N. The length of s is equal to the size of array n and 2≤n≤50. For
-          each i from 1 to n: if si= E then ai is equal to ai+1 (an=a1 for i=n);
-          if si= N then a<sub>i</sub> is not equal to a<sub>i+1</sub> (a
-          <sub>n</sub>≠a
-          <sub>1</sub> for i=n).
-        </p>
-        <h2>Output</h2>
-        <p>
-          For each test case, print YES if it's possible to choose array a that
-          are consistent with information from s you know. Otherwise, print NO.
-          It can be proved, that if there exists some array a, then there exists
-          an array a of positive integers with values less or equal to 10
-          <sup>9</sup>.
-        </p>
+        {/* <h2>Input : {data.example[0].input}</h2>  */}
+        {/* <h2>Output : {data.example[0].output}</h2> */}
+        
         <h2>Example</h2>
         <p>
           <strong>Input</strong>
@@ -88,10 +52,7 @@ const Problem = () =>
             onClick={() => copytoclipboard(0)}
           />
           <code>
-            4<br /> EEE
-            <br /> EN
-            <br /> ENNEENE
-            <br /> NENN
+            {/* <br /> {data.example[0].input} */}
           </code>
         </p>
         <p>
@@ -106,10 +67,7 @@ const Problem = () =>
             onClick={() => copytoclipboard(1)}
           />
           <code>
-            YES <br />
-            NO
-            <br /> YES
-            <br /> YES
+           {/* {data.example[0].input} */}
           </code>
         </p>
         <p>
@@ -125,18 +83,22 @@ const Problem = () =>
           a=[1,3,3,7].
         </p>
       </div>
-      <Editor />
+        <Editor />
+      </>
       <Outlet />
     </div>
   );
 };
 
-Problem.propTypes = {
-  auth: PropTypes.object.isRequired,
-};
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.isAuthenticated
+  }
+}
+function mapActionToProps(dispatch) {
+  return {
+    getSpecificQuestions: (userData) => dispatch(getSpecificQuestions(userData))
+  }
+}
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps)(Problem);
+export default connect(mapStateToProps, mapActionToProps)(Problem);

@@ -12,13 +12,17 @@ export const signup = (data) =>
 {
     return backend.post("/auth/signup", data);
 }
-export const getContests = (contestData) =>
+export const getContests = () =>
 {
     return backend.get("/contest");
 }
-export const getQuestions = () =>
+export const getQuestions = (contestId) =>
 {
-    return backend.get("/question/all");
+    return backend.get(`/question/contest/${contestId}`);
+}
+export const getSpecificQuestions = (_id) =>
+{
+    return backend.get(`/question/${_id}`);
 }
 export const getUserByToken = (token) =>
 {

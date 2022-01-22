@@ -41,26 +41,21 @@ function App(props) {
 		<div className="App">
 			<Navbar />
 			<Routes>
-				{props.isAuthenticated ? null :
+				{props.isAuthenticated ?
+					<>
+						<Route path="/" element={<Dashboard />} />
+						<Route path=":contestId" element={<ContestDashboard />} />
+						<Route path=":contestId/:questionId" element={<Problem />} />
+						{/* <Route path=":contestId/:questionId/submission" element={<Problem />} /> */}
+						<Route path=":contestId/leaderboard" element={<LeaderBoard />} />
+						<Route path=":contestId/submissions" element={<MySubmission />} />
+					</> :
 					<>
 						<Route path="login" element={<Login />} />
 						<Route path="register" element={<Register />} />
 						<Route path="/" element={<Dashboard />} />
 						<Route element={<NotFound />} />
 					</>}
-				{props.isAuthenticated ? (
-					<>
-						<Route path="/" element={<Dashboard />} />
-						<Route path=":contest" element={<ContestDashboard />} />
-						<Route path=":question-id" element={<Problem />} />
-						<Route path="leaderboard" element={<LeaderBoard />} />
-						<Route path="submissions" element={<MySubmission />} />
-						<Route
-							path="submissions/:submission-id"
-							element={<div></div>}
-						></Route>
-					</>
-				) : null}
 			</Routes>
 		</div>
 	);
