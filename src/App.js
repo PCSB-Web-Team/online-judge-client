@@ -13,68 +13,71 @@ import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
 import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
-import Dashboard from "./pages/DashBoard/DashBoard";
+import Dashboard from "./pages/Dashboard/DashBoard";
 
 function App(props) {
-	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate();
-	useEffect(() => {
-		setLoading(true);
-		const token = localStorage.getItem("pcsb-oj-token");
-		if (token) {
-			Requests.getUserByToken(token)
-				.then((res) => {
-					props.log(res.data);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    setLoading(true);
+    const token = localStorage.getItem("pcsb-oj-token");
+    if (token) {
+      Requests.getUserByToken(token)
+        .then((res) => {
+          props.log(res.data);
 
-					setLoading(false);
-				})
-				.catch((error) => {
-					navigate("/");
-				});
-		} else {
-			navigate("/");
-		}
-		setLoading(false);
-	}, []);
+          setLoading(false);
+        })
+        .catch((error) => {
+          navigate("/");
+        });
+    } else {
+      navigate("/");
+    }
+    setLoading(false);
+  }, []);
 
-	return (
-		<div className="App">
-			<Navbar />
-			<Routes>
-				{props.isAuthenticated ? null :
-					<>
-						<Route path="login" element={<Login />} />
-						<Route path="register" element={<Register />} />
-						<Route path="/" element={<Dashboard />} />
-						<Route element={<NotFound />} />
-					</>}
-				{props.isAuthenticated ? (
-					<>
-						<Route path="/" element={<Dashboard />} />
-						<Route path=":contest" element={<ContestDashboard />} />
-						<Route path=":question-id" element={<Problem />} />
-						<Route path="leaderboard" element={<LeaderBoard />} />
-						<Route path="submissions" element={<MySubmission />} />
-						<Route
-							path="submissions/:submission-id"
-							element={<div></div>}
-						></Route>
-					</>
-				) : null}
-			</Routes>
-		</div>
-	);
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
+        {props.isAuthenticated ? null : (
+          <>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route element={<NotFound />} />
+          </>
+        )}
+        {props.isAuthenticated ? (
+          <>
+            <Route path="/" element={<Dashboard />} />
+            <Route path=":contest">
+              <Route path="" element={<ContestDashboard />}></Route>
+              <Route path="/:contest/:question-id" element={<Problem />} />
+              <Route path="leaderboard" element={<LeaderBoard />} />
+              <Route path="submissions" element={<MySubmission />} />
+            </Route>
+            <Route
+              path="submissions/:submission-id"
+              element={<div></div>}
+            ></Route>
+          </>
+        ) : null}
+      </Routes>
+    </div>
+  );
 }
 
 function mapStateToProps(state) {
-	return {
-		isAuthenticated: state.isAuthenticated,
-	};
+  return {
+    isAuthenticated: state.isAuthenticated,
+  };
 }
 function mapActionToProps(dispatch) {
-	return {
-		log: (userData) => dispatch(login(userData)),
-	};
+  return {
+    log: (userData) => dispatch(login(userData)),
+  };
 }
 
 export default connect(mapStateToProps, mapActionToProps)(App);

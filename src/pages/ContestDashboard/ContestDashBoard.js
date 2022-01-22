@@ -9,13 +9,13 @@ function ContestDashboard() {
   const { contestId } = useParams();
 
   useEffect(() => {
-    console.log("object");
-    Requests.getQuestions().then(res => {
-      console.log(res);
-      setData(res.data);
-      getContests(contestId);
-    }).catch((error) => { })
-  }, [])
+    Requests.getQuestions()
+      .then((res) => {
+        setData(res.data);
+        getContests(contestId);
+      })
+      .catch((error) => {});
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
@@ -27,33 +27,48 @@ function ContestDashboard() {
         </div>
         <div className="mt-4 flex flex-col">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className='min-w-full'>
-              <thead className='bg-gray-50'>
+            <table className="min-w-full">
+              <thead className="bg-gray-50">
                 <tr>
-                  <th scope='col'
-                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Title</th>
-                  <th scope='col'
-                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Max Score</th>
-                  <th scope='col'
-                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Solve</th>
+                  <th
+                    scope="col"
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                  >
+                    Title
+                  </th>
+                  <th
+                    scope="col"
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                  >
+                    Max Score
+                  </th>
+                  <th
+                    scope="col"
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                  >
+                    Solve
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {
-                  data.map((question) => (
-                    <tr key={contestId}>
-                      <td className="px-6 py-4 whitespace-nowrap">{question.title}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{question.number}</td>
-                      <td>
-                        <Link to={`/${question.contestId}/${question._id}`}
-                          className="btn btn-small ">Solve</Link>
-                      </td>
-                    </tr>
-                  ))
-                }
+                {data.map((question) => (
+                  <tr key={contestId}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {question.title}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {question.number}
+                    </td>
+                    <td>
+                      <Link
+                        to={`/${question.contestId}/${question._id}`}
+                        className="btn btn-small "
+                      >
+                        Solve
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -66,13 +81,13 @@ function ContestDashboard() {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.isAuthenticated
-  }
+    isAuthenticated: state.isAuthenticated,
+  };
 }
 function mapActionToProps(dispatch) {
   return {
-    getQuestions: (userData) => dispatch(getQuestions(userData))
-  }
+    getQuestions: (userData) => dispatch(getQuestions(userData)),
+  };
 }
 
 export default connect(mapStateToProps, mapActionToProps)(ContestDashboard);
