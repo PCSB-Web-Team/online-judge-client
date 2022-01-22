@@ -9,8 +9,7 @@ import { connect } from "react-redux";
 import { login } from "../../store/actions";
 import { getContests } from "../../utils/Requests";
 
-const Register = (props) =>
-{
+const Register = (props) => {
   let navigate = useNavigate();
   const validate = Yup.object({
     name: Validators.name,
@@ -29,21 +28,17 @@ const Register = (props) =>
         confirmPassword: ""
       }}
       validationSchema={validate}
-      onSubmit={async values =>
-      {
-        Requests.getContests(values).then(res =>
-        {
+      onSubmit={async values => {
+        Requests.getContests(values).then(res => {
         })
-        Requests.signup(values).then(res =>
-        {
+        Requests.signup(values).then(res => {
           console.log(res)
           localStorage.setItem('pcsb-oj-token', res.data.token);
           props.login(res.data);
           alert("Register successful")
           navigate("/dashboardpage");
 
-        }).catch(error =>
-        {
+        }).catch(error => {
           alert("Enter Valid Data !")
         })
 
@@ -71,9 +66,8 @@ const Register = (props) =>
             <div className="form-group">
               <TextField placeholder="Confirm Password" name="confirmPassword" type="password" />
             </div>
-            <button className="btn btn-primary" type="submit">Sign Up</button>
-            <button className="btn btn-primary" type="reset">Reset</button>
-          </Form>
+            <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" type="submit">Login</button>
+            <button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="reset">Reset</button>          </Form>
           <p className="link">
             Already have an account? <Link to="/login">Sign In</Link>
           </p>
@@ -83,14 +77,12 @@ const Register = (props) =>
   )
 }
 
-function mapStateToProps(state)
-{
+function mapStateToProps(state) {
   return {
     isAuthenticated: state.isAuthenticated
   }
 }
-function mapActionToProps(dispatch)
-{
+function mapActionToProps(dispatch) {
   return {
     login: (userData) => dispatch(login(userData)),
     getContests: (contestData) => dispatch(getContests(contestData))

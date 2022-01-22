@@ -11,7 +11,7 @@ const Dashboard = () => {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
   return (
     <div>

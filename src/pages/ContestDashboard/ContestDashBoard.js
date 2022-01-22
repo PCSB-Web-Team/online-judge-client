@@ -17,9 +17,7 @@ function ContestDashboard() {
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900">
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="DashBoard">
-          <br />
-          <br />
+        <div className="DashBoard"><br />
           <h1 className="text-xl font-semibold">Problem Statement</h1>
         </div>
         <div className="mt-4 flex flex-col">
@@ -55,7 +53,7 @@ function ContestDashboard() {
                       <td className="px-6 py-4 whitespace-nowrap">{questions.score}</td>
                       <td>
                         <Link to={`/${questions.contestId}/${questions._id}`}
-                          className="btn btn-small ">Solve</Link>
+                          className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Solve</Link>
                       </td>
                     </tr>
                   ))

@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../store/actions";
 
-const Login = (props) =>
-{
+const Login = (props) => {
   let navigate = useNavigate();
   const validate = Yup.object({
     email: Validators.email,
@@ -23,17 +22,14 @@ const Login = (props) =>
         password: "",
       }}
       validationSchema={validate}
-      onSubmit={async values =>
-      {
+      onSubmit={async values => {
         console.log(values)
-        Requests.login(values).then(res =>
-        {
+        Requests.login(values).then(res => {
           localStorage.setItem('pcsb-oj-token', res.data.token);
           console.log(res.data);
           props.log(res.data)
           navigate("/");
-        }).catch(error =>
-        {
+        }).catch(error => {
           alert("Invalid Data")
         })
       }}
@@ -52,8 +48,8 @@ const Login = (props) =>
               <TextField placeholder="password" name="password" type="password" />
             </div>
 
-            <button className="btn btn-primary" type="submit">Login</button>
-            <button className="btn btn-danger mt-3 ml-3" type="reset">Reset</button>
+            <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" type="submit">Login</button>
+            <button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="reset">Reset</button>
           </Form>
           <p className="link">
             Don"t have an account? <Link to="/register">Sign Up</Link>
@@ -64,14 +60,12 @@ const Login = (props) =>
   )
 }
 
-function mapStateToProps(state)
-{
+function mapStateToProps(state) {
   return {
     isAuthenticated: state.isAuthenticated
   }
 }
-function mapActionToProps(dispatch)
-{
+function mapActionToProps(dispatch) {
   return {
     log: (userData) => dispatch(login(userData))
   }
