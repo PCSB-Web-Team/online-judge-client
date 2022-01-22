@@ -30,18 +30,18 @@ const ContestHeader = () => {
 
   return (
     <div className="contest-header">
-        <div className="contest-header-top"><br/><br/><br/><br/><br/>
-          <div className="contest-name">Contest Name</div>
-          <div className="score-timer">
-            <div className="score">Score</div>
-            <div id="timer"></div>
-          </div>
+      <div className="contest-header-top"><br /><br /><br /><br /><br />
+        <div className="contest-name">Contest Name</div>
+        <div className="score-timer">
+          <div className="score">Score</div>
+          <div id="timer"></div>
         </div>
-        <div className="contest-header-bottom">
-            <p>PROBLEMS | </p>
-            <p> SUBMISSIONS | </p>
-            <p> LEADERBOARD</p>
-        </div>
+      </div>
+      <div className="contest-header-bottom">
+        <p>PROBLEMS | </p>
+        <p> SUBMISSIONS | </p>
+        <p> LEADERBOARD</p>
+      </div>
     </div>
   );
 };

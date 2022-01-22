@@ -5,11 +5,9 @@ import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
 function GlobalFilter({
   globalFilter,
   setGlobalFilter,
-})
-{
+}) {
   const [value, setValue] = React.useState(globalFilter)
-  const onChange = useAsyncDebounce(value =>
-  {
+  const onChange = useAsyncDebounce(value => {
     setGlobalFilter(value || undefined)
   }, 200)
   return (
@@ -19,8 +17,7 @@ function GlobalFilter({
         type="text"
         className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         value={value || ""}
-        onChange={e =>
-        {
+        onChange={e => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
@@ -31,8 +28,7 @@ function GlobalFilter({
 }
 
 
-function Table({ columns, data })
-{
+function Table({ columns, data }) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -107,13 +103,11 @@ function Table({ columns, data })
                   {...getTableBodyProps()}
                   className="bg-white divide-y divide-gray-200"
                 >
-                  {page.map((row) =>
-                  {
+                  {page.map((row) => {
                     prepareRow(row)
                     return (
                       <tr {...row.getRowProps()}>
-                        {row.cells.map(cell =>
-                        {
+                        {row.cells.map(cell => {
                           return (
                             <td
                               {...cell.getCellProps()}
@@ -133,8 +127,8 @@ function Table({ columns, data })
                 </tbody>
               </table>
               <div>
-                <button className="btn_2 btn-primary" onClick={() => previousPage()}>Previous</button>
-                <button className="btn_2 btn-primary" onClick={() => nextPage()}>Next</button>
+                <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" onClick={() => previousPage()}>Previous</button>
+                <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" onClick={() => nextPage()}>Next</button>
               </div>
             </div>
           </div>

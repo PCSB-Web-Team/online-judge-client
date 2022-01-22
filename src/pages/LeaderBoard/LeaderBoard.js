@@ -1,8 +1,7 @@
 import React from 'react'
 import Table from '../../components/Table'
 
-const getData = () =>
-{
+const getData = () => {
   const data = [
     {
       name: 'Name 1',
@@ -116,8 +115,7 @@ const getData = () =>
   return [...data]
 }
 
-function LeaderBoard()
-{
+function LeaderBoard() {
 
   const columns = React.useMemo(() => [
     {

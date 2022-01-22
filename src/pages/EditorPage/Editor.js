@@ -10,8 +10,7 @@ import "brace/mode/c_cpp";
 import "brace/snippets/c_cpp";
 import "brace/ext/language_tools";
 
-const Editor = () =>
-{
+const Editor = () => {
   const vals = {
     C: `#include <stdio.h>
 
@@ -52,8 +51,7 @@ int main(){
     Python: "python",
   };
 
-  function onChange(newValue)
-  {
+  function onChange(newValue) {
     const newvals = { ...values };
     newvals[lang] = newValue;
     setValues(newvals);
@@ -65,8 +63,7 @@ int main(){
       <div className="editor-header">
         <select
           name="languages"
-          onChange={(e) =>
-          {
+          onChange={(e) => {
             setLang(e.target.value);
           }}
         >

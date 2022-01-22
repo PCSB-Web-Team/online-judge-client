@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
-import Loader from "./components/Loader/Loader";
 import NotFound from "./components/NotFound";
 import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem";
