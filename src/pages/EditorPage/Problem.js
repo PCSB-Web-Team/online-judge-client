@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Editor from "./Editor";
+import { Requests } from "../../utils/Index";
 import copy from "../../../src/assets/copy.png";
 import { connect } from "react-redux";
+import { getContests, getQuestions } from "../../utils/Requests";
+import { Link, useParams, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Problem = () =>
 {
+  const [data, setData] = useState([]);
+  const { contestId } = useParams();
+
+  useEffect(() => {
+    console.log("object");
+    Requests.getQuestions().then(res => {
+      console.log(res);
+      setData(res.data);
+      getContests(contestId);
+    }).catch((error) => { })
+  }, [])
   const copytoclipboard = (i) =>
   {
     const tests = document.querySelectorAll(".sample-tests");
@@ -112,6 +126,7 @@ const Problem = () =>
         </p>
       </div>
       <Editor />
+      <Outlet />
     </div>
   );
 };

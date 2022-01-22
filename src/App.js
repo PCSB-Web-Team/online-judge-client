@@ -21,7 +21,6 @@ function App(props) {
 	useEffect(() => {
 		setLoading(true);
 		const token = localStorage.getItem("pcsb-oj-token");
-		// console.log(token);
 		if (token) {
 			Requests.getUserByToken(token)
 				.then((res) => {
@@ -42,18 +41,26 @@ function App(props) {
 		<div className="App">
 			<Navbar />
 			<Routes>
-				<Route path="login" element={<Login />} />
-				<Route path="register" element={<Register />} />
-				<Route path="/" element={<Dashboard />} />
-				<Route path=":contest" element={<ContestDashboard />} />
-				<Route path=":question-id" element={<Problem />} />
-				<Route path="leaderboard" element={<LeaderBoard />} />
-				<Route path="submissions" element={<MySubmission />} />
-				<Route
-					path="submissions/:submission-id"
-					element={<div></div>}
-				></Route>
-				<Route element={<NotFound />} />
+				{props.isAuthenticated ? null :
+					<>
+						<Route path="login" element={<Login />} />
+						<Route path="register" element={<Register />} />
+						<Route path="/" element={<Dashboard />} />
+						<Route element={<NotFound />} />
+					</>}
+				{props.isAuthenticated ? (
+					<>
+						<Route path="/" element={<Dashboard />} />
+						<Route path=":contest" element={<ContestDashboard />} />
+						<Route path=":question-id" element={<Problem />} />
+						<Route path="leaderboard" element={<LeaderBoard />} />
+						<Route path="submissions" element={<MySubmission />} />
+						<Route
+							path="submissions/:submission-id"
+							element={<div></div>}
+						></Route>
+					</>
+				) : null}
 			</Routes>
 		</div>
 	);
