@@ -24,18 +24,27 @@ function ContestDashboard() {
         </div>
         <div className="mt-4 flex flex-col">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className='min-w-full'>
-              <thead className='bg-gray-50'>
+            <table className="min-w-full">
+              <thead className="bg-gray-50">
                 <tr>
-                  <th scope='col'
-                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Title</th>
-                  <th scope='col'
-                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Max Score</th>
-                  <th scope='col'
-                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Solve</th>
+                  <th
+                    scope="col"
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                  >
+                    Title
+                  </th>
+                  <th
+                    scope="col"
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                  >
+                    Max Score
+                  </th>
+                  <th
+                    scope="col"
+                    className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                  >
+                    Solve
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -63,13 +72,13 @@ function ContestDashboard() {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.isAuthenticated
-  }
+    isAuthenticated: state.isAuthenticated,
+  };
 }
 function mapActionToProps(dispatch) {
   return {
-    getQuestions: (userData) => dispatch(getQuestions(userData))
-  }
+    getQuestions: (userData) => dispatch(getQuestions(userData)),
+  };
 }
 
 export default connect(mapStateToProps, mapActionToProps)(ContestDashboard);

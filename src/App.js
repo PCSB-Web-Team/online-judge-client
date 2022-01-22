@@ -13,29 +13,29 @@ import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
 import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
-import Dashboard from "./pages/DashBoard/DashBoard";
+import Dashboard from "./pages/DashBoard/DashBoard"
 
 function App(props) {
-	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate();
-	useEffect(() => {
-		setLoading(true);
-		const token = localStorage.getItem("pcsb-oj-token");
-		if (token) {
-			Requests.getUserByToken(token)
-				.then((res) => {
-					props.log(res.data);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    setLoading(true);
+    const token = localStorage.getItem("pcsb-oj-token");
+    if (token) {
+      Requests.getUserByToken(token)
+        .then((res) => {
+          props.log(res.data);
 
-					setLoading(false);
-				})
-				.catch((error) => {
-					navigate("/");
-				});
-		} else {
-			navigate("/");
-		}
-		setLoading(false);
-	}, []);
+          setLoading(false);
+        })
+        .catch((error) => {
+          navigate("/");
+        });
+    } else {
+      navigate("/");
+    }
+    setLoading(false);
+  }, []);
 
 	return (
 		<div className="App">
@@ -62,14 +62,14 @@ function App(props) {
 }
 
 function mapStateToProps(state) {
-	return {
-		isAuthenticated: state.isAuthenticated,
-	};
+  return {
+    isAuthenticated: state.isAuthenticated,
+  };
 }
 function mapActionToProps(dispatch) {
-	return {
-		log: (userData) => dispatch(login(userData)),
-	};
+  return {
+    log: (userData) => dispatch(login(userData)),
+  };
 }
 
 export default connect(mapStateToProps, mapActionToProps)(App);
