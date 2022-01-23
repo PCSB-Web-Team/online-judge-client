@@ -2,7 +2,7 @@ import
 {
 	LOGIN,
 	LOGOUT,
-	GETCONTESTS,
+	USERSUBMISSION,
 } from "./actions";
 
 const initialState = {
@@ -25,7 +25,7 @@ export default function auth(state = initialState, action)
 				userData: payload,
 			}
 		}
-		case GETCONTESTS: {
+		case USERSUBMISSION: {
 			return {
 				...state,
 				isAuthenticated: true,

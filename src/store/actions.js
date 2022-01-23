@@ -1,6 +1,6 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const GETCONTESTS = "CONTEST";
+export const USERSUBMISSION = "USERSUBMISSION";
 
 export const login = (userData) =>
 {
@@ -9,11 +9,11 @@ export const login = (userData) =>
 		payload: userData
 	};
 }
-export const Contest = (contestData) =>
+export const Contest = (userSubmission) =>
 {
 	return {
-		type: GETCONTESTS,
-		payload: contestData
+		type: USERSUBMISSION,
+		payload: userSubmission
 	};
 }
 

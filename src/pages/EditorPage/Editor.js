@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AceEditor from "react-ace";
-import caret from "../../../src/assets/caret.png";
+import caret from "../../assets/caret.png";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python";
@@ -13,14 +13,12 @@ import "brace/ext/language_tools";
 const Editor = () => {
   const vals = {
     C: `#include <stdio.h>
-
 int main(){
   // Your code here
   return 0;
 }`,
     "C++": `#include <bits/stdc++.h>
 using namespace std;
-
 int main(){
   // Your code here
   return 0;
@@ -50,6 +48,10 @@ int main(){
     Java: "java",
     Python: "python",
   };
+
+  function handleSubmit() {
+    alert("hello")
+  }
 
   function onChange(newValue) {
     const newvals = { ...values };
@@ -118,7 +120,7 @@ int main(){
             <p>Run</p>
             <img src={caret} alt="caret" />
           </div>
-          <div className="submit-btn">
+          <div className="submit-btn" onSubmit={handleSubmit}>
             <p>Submit</p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 const ContestHeader = () => {
   useEffect(() => {
     var x = setInterval(function () {
-      var countDownDate = new Date("Dec 21, 2021 23:37:25").getTime();
+      var countDownDate = new Date("Dec 28, 2021 23:37:25").getTime();
       var now = new Date().getTime();
 
       var distance = countDownDate - now;
@@ -30,18 +30,18 @@ const ContestHeader = () => {
 
   return (
     <div className="contest-header">
-      <div className="contest-header-top"><br /><br /><br /><br /><br />
-        <div className="contest-name">Contest Name</div>
-        <div className="score-timer">
-          <div className="score">Score</div>
-          <div id="timer"></div>
+        <div className="contest-header-top">
+          <div className="contest-name">Contest Name</div>
+          <div className="score-timer">
+            <div className="score">Score</div>
+            <div id="timer"></div>
+          </div>
         </div>
-      </div>
-      <div className="contest-header-bottom">
-        <p>PROBLEMS | </p>
-        <p> SUBMISSIONS | </p>
-        <p> LEADERBOARD</p>
-      </div>
+        <div className="contest-header-bottom">
+            <p>PROBLEMS | </p>
+            <p> SUBMISSIONS | </p>
+            <p> LEADERBOARD</p>
+        </div>
     </div>
   );
 };

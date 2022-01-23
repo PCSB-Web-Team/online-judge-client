@@ -22,6 +22,9 @@ export const getSpecificQuestions = (_id) => {
 export const getSubmission = () => {
     return backend.get("/submission");
 }
+export const userSubmission = (userId) => {
+    return backend.get(`/submission/user/${userId}`);
+}
 export const getUserByToken = (token) => {
     return backend.get("/auth/", {
         headers: { Authorization: `Bearer ${token}` }

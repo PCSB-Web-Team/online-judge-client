@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { getSubmission } from "../../utils/Requests";
-import { Link, useParams, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function MySubmission() {
     const [data, setData] = useState([]);
-    const { contestId } = useParams();
 
     useEffect(() => {
-        console.log("data");
         Requests.getSubmission().then(res => {
             setData(res.data);
-            console.log(res.data);
+            // console.log(res.data);
         }).catch((error) => { })
     }, [])
 

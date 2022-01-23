@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
-import { Link, useParams, Outlet } from "react-router-dom";
+import { Link,  Outlet } from "react-router-dom";
 
 const Navbar = (props) => {
-	const {contestId} = useParams();
 	const [navbarOpen, setNavbarOpen] = React.useState(false);
+
 	function logout() {
 		props.logout();
 		localStorage.removeItem("pcsb-oj-token")
@@ -59,7 +59,7 @@ const Navbar = (props) => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to={`/${contestId}/submission`} className={
+								<Link to={`/${props._id}/submission`} className={
 									(props.transparent
 										? "lg:text-white lg:hover:text-gray-300 text-gray-800"
 										: "text-gray-800 hover:text-gray-600") +
@@ -100,13 +100,13 @@ const Navbar = (props) => {
 								}>
 									Register</Link>
 							</li>
-							<li className="nav-item" className={
+							<li className="nav-item">
+								<Link to="/login" className={
 								(props.transparent
 									? "lg:text-white lg:hover:text-gray-300 text-gray-800"
 									: "text-gray-800 hover:text-gray-600") +
 								" px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
 							}>
-								<Link to="/login">
 									Login</Link>
 							</li>
 						</ul>
