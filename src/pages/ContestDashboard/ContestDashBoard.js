@@ -22,8 +22,13 @@ function ContestDashboard() {
       {isLoading ? (
         <div><Loader></Loader></div>
       ) : (
-        <div className="min-h-screen bg-gray-100 text-gray-900">
+      <div className="min-h-screen bg-gray-100 text-gray-900">
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <div class="grid grid-cols-3 divide-x">
+        <Link to = "/">Question |</Link>
+        <Link to = "/">Submission |</Link>
+        <Link to = "/">LeaderBoard</Link>
+      </div>
         <div className="DashBoard"><br />
           <h1 className="text-xl font-semibold">Problem Statement</h1>
         </div>

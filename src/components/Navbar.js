@@ -60,7 +60,7 @@ const Navbar = (props) => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to={`/${props._id}/submission`} className={
+								<Link to={`/submission`} className={
 									(props.transparent
 										? "lg:text-white lg:hover:text-gray-300 text-gray-800"
 										: "text-gray-800 hover:text-gray-600") +
