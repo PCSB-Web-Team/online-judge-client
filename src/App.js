@@ -46,7 +46,7 @@ function App(props) {
             <Route path=":contestId/:questionId" element={<Problem />} />
             {/* <Route path=":contestId/:questionId/submission" element={<Problem />} /> */}
             <Route path=":contestId/leaderboard" element={<LeaderBoard />} />
-            <Route path=":contestId/submissions" element={<MySubmission />} />
+            <Route path=":contestId/submission" element={<MySubmission />} />
           </> :
           <>
             <Route path="login" element={<Login />} />

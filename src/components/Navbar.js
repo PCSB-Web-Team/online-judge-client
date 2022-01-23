@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
+import { Link, useParams, Outlet } from "react-router-dom";
 
-const Navbar = (props, { fixed }) => {
+const Navbar = (props) => {
+	const {contestId} = useParams();
 	const [navbarOpen, setNavbarOpen] = React.useState(false);
 	function logout() {
 		props.logout();
@@ -58,7 +59,7 @@ const Navbar = (props, { fixed }) => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to="/mySubmission" className={
+								<Link to={`/${contestId}/submission`} className={
 									(props.transparent
 										? "lg:text-white lg:hover:text-gray-300 text-gray-800"
 										: "text-gray-800 hover:text-gray-600") +
@@ -111,11 +112,7 @@ const Navbar = (props, { fixed }) => {
 						</ul>
 					}
 				</div>
-			</div>
-
-
-
-
+			</div><Outlet/>
 		</nav>
 	);
 };

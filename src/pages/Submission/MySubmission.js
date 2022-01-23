@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { getQuestions } from "../../utils/Requests";
+import { getSubmission } from "../../utils/Requests";
 import { Link, useParams, Outlet } from "react-router-dom";
 
 function MySubmission() {
-    const [question, setQuestion] = useState([]);
+    const [data, setData] = useState([]);
     const { contestId } = useParams();
+
     useEffect(() => {
-        console.log(contestId);
-        Requests.getQuestions(contestId).then(res => {
-            setQuestion(res.data);
+        console.log("data");
+        Requests.getSubmission().then(res => {
+            setData(res.data);
+            console.log(res.data);
         }).catch((error) => { })
     }, [])
 
@@ -43,19 +45,26 @@ function MySubmission() {
                                         scope="col"
                                         className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                                     >
-                                        Solve
+                                        Status
+                                    </th>
+                                    <th
+                                        scope="col"
+                                        className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                                    >
+                                        view
                                     </th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 {
-                                    question.map((questions) => (
-                                        <tr key={question}>
-                                            <td className="px-6 py-4 whitespace-nowrap">{questions.title}</td>
+                                    data.map((questions) => (
+                                        <tr key={data}>
+                                            <td className="px-6 py-4 whitespace-nowrap">{questions._id}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{questions.score}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{questions.score}</td>
                                             <td>
                                                 <Link to={`/${questions.contestId}/${questions._id}`}
-                                                    className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Solve</Link>
+                                                    className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">View</Link>
                                             </td>
                                         </tr>
                                     ))
@@ -77,7 +86,7 @@ function mapStateToProps(state) {
 }
 function mapActionToProps(dispatch) {
     return {
-        getQuestions: (userData) => dispatch(getQuestions(userData)),
+        getSubmission: (userData) => dispatch(getSubmission(userData)),
     };
 }
 

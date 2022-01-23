@@ -20,7 +20,7 @@ export const getSpecificQuestions = (_id) => {
     return backend.get(`/question/${_id}`);
 }
 export const getSubmission = () => {
-    return backend.get("/submission/");
+    return backend.get("/submission");
 }
 export const getUserByToken = (token) => {
     return backend.get("/auth/", {
