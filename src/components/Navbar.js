@@ -48,7 +48,8 @@ const Navbar = (props) => {
 					{props.isAuthenticated ?
 						<ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 							<li className="nav-item">
-								<Link to={`/`} className={
+								<Link to={`/`}
+						onClick={() => setNavbarOpen()} className={
 									(props.transparent
 										? "lg:text-white lg:hover:text-gray-300 text-gray-800"
 										: "text-gray-800 hover:text-gray-600") +
