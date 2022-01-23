@@ -7,13 +7,13 @@ import { getSpecificQuestions } from "../../utils/Requests";
 import { useParams, Outlet } from "react-router-dom";
 
 const Problem = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ example: [] });
   const { questionId } = useParams();
 
   useEffect(() => {
     Requests.getSpecificQuestions(questionId).then(res => {
       setData(res.data);
-      console.log(data);
+      console.log(data.example);
     }).catch((error) => { })
   }, [])
   const copytoclipboard = (i) => {
@@ -36,9 +36,14 @@ const Problem = () => {
         <p>
           {data.description}
         </p>
-        {/* <h2>Input : {data.example[0].input}</h2>  */}
-        {/* <h2>Output : {data.example[0].output}</h2> */}
-
+        {data.example.map((example) => {
+          return (
+            <div>
+              <h2>Input : {example.input}</h2>
+              <h2>Output : {example.output}</h2>
+            </div>
+          )
+        })}
         <h2>Example</h2>
         <p>
           <strong>Input</strong>

@@ -9,6 +9,7 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "brace/mode/c_cpp";
 import "brace/snippets/c_cpp";
 import "brace/ext/language_tools";
+import { userSubmission } from "../../utils/Requests";
 
 const Editor = () => {
   const vals = {
@@ -50,7 +51,7 @@ int main(){
   };
 
   function handleSubmit() {
-    alert("hello")
+    console.log("object");
   }
 
   function onChange(newValue) {
