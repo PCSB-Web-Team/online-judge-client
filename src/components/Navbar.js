@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
-import { Link,  Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Navbar = (props) => {
 	const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -49,12 +49,12 @@ const Navbar = (props) => {
 						<ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
 							<li className="nav-item">
 								<Link to={`/`}
-						onClick={() => setNavbarOpen()} className={
-									(props.transparent
-										? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-										: "text-gray-800 hover:text-gray-600") +
-									" px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-								}>
+									onClick={() => setNavbarOpen()} className={
+										(props.transparent
+											? "lg:text-white lg:hover:text-gray-300 text-gray-800"
+											: "text-gray-800 hover:text-gray-600") +
+										" px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+									}>
 
 									<span className="hide-sm">DashBoard</span>
 								</Link>
@@ -103,17 +103,17 @@ const Navbar = (props) => {
 							</li>
 							<li className="nav-item">
 								<Link to="/login" className={
-								(props.transparent
-									? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-									: "text-gray-800 hover:text-gray-600") +
-								" px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-							}>
+									(props.transparent
+										? "lg:text-white lg:hover:text-gray-300 text-gray-800"
+										: "text-gray-800 hover:text-gray-600") +
+									" px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+								}>
 									Login</Link>
 							</li>
 						</ul>
 					}
 				</div>
-			</div><Outlet/>
+			</div><Outlet />
 		</nav>
 	);
 };

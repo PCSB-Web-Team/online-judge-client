@@ -1,8 +1,7 @@
-import
-{
-	LOGIN,
-	LOGOUT,
-	USERSUBMISSION,
+import {
+LOGIN,
+LOGOUT,
+USERSUBMISSION,
 } from "./actions";
 
 const initialState = {
@@ -12,12 +11,10 @@ const initialState = {
 	contestData: null,
 };
 
-export default function auth(state = initialState, action)
-{
+export default function auth(state = initialState, action) {
 	const { type, payload } = action;
 
-	switch (type)
-	{
+	switch (type) {
 		case LOGIN: {
 			return {
 				...state,

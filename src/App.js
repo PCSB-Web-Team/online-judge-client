@@ -12,6 +12,7 @@ import Loader from "./components/Loader/Loader";
 import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
+import AllSubmission from "./pages/Submission/AllSubmission";
 import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
 import Dashboard from "./pages/DashBoard/DashBoard"
 
@@ -43,25 +44,25 @@ function App(props) {
         <div><Loader></Loader></div>
       ) : (
         <div className="App">
-      <Navbar />
-      <Routes>
-        {props.isAuthenticated ?
-          <>
-            <Route path="/" element={<Dashboard />} />
-            <Route path=":contestId" element={<ContestDashboard />} />
-            <Route path=":contestId/:questionId" element={<Problem />} />
-            {/* <Route path=":contestId/:questionId/submission" element={<Problem />} /> */}
-            <Route path=":contestId/leaderboard" element={<LeaderBoard />} />
-            <Route path=":contestId/submission" element={<MySubmission />} />
-          </> :
-          <>
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="/" element={<Dashboard />} />
-            <Route element={<NotFound />} />
-          </>}
-      </Routes>
-    </div>
+          <Navbar />
+          <Routes>
+            {props.isAuthenticated ?
+              <>
+                <Route path="/" element={<Dashboard />} />
+                <Route path=":contestId" element={<ContestDashboard />} />
+                <Route path=":contestId/:questionId" element={<Problem />} />
+                <Route path=":contestId/:questionId/submission" element={<MySubmission />} />
+                <Route path=":contestId/leaderboard" element={<LeaderBoard />} />
+                <Route path=":contestId/submission" element={<AllSubmission />} />
+              </> :
+              <>
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="/" element={<Dashboard />} />
+                <Route element={<NotFound />} />
+              </>}
+          </Routes>
+        </div>
       )}
     </div>
   );

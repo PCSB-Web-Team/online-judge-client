@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { userSubmission } from "../../utils/Requests";
+import { questionSubmission } from "../../utils/Requests";
 import { Link, Outlet } from "react-router-dom";
 import Loader from "../../components/Loader/Loader"
 
@@ -11,7 +11,7 @@ function MySubmission() {
 
     useEffect(() => {
         setIsLoading(true);
-        Requests.userSubmission().then(res => {
+        Requests.questionSubmission().then(res => {
             setData(res.data);
             setIsLoading(false);
         }).catch((error) => { })
@@ -94,7 +94,7 @@ function mapStateToProps(state) {
 }
 function mapActionToProps(dispatch) {
     return {
-        userSubmission: (userData) => dispatch(userSubmission(userData)),
+        questionSubmission: (userData) => dispatch(questionSubmission(userData)),
     };
 }
 

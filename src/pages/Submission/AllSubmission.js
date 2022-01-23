@@ -3,9 +3,9 @@ import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { userSubmission } from "../../utils/Requests";
 import { Link, Outlet } from "react-router-dom";
-import Loader from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader";
 
-function LeaderBoard() {
+function AllSubmission() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -98,4 +98,4 @@ function mapActionToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapActionToProps)(LeaderBoard);
+export default connect(mapStateToProps, mapActionToProps)(AllSubmission);
