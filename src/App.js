@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
 import NotFound from "./components/NotFound";
+import Loader from "./components/Loader/Loader";
 import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
@@ -15,16 +16,17 @@ import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
 import Dashboard from "./pages/DashBoard/DashBoard"
 
 function App(props) {
-  const [loading, setLoading] = useState(false);
+  const [isloading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
     const token = localStorage.getItem("pcsb-oj-token");
     if (token) {
+      setIsLoading(true);
       Requests.getUserByToken(token)
         .then((res) => {
           props.log(res.data);
-          setLoading(false);
+          setIsLoading(false);
         })
         .catch((error) => {
           navigate("/");
@@ -32,11 +34,15 @@ function App(props) {
     } else {
       navigate("/");
     }
-    setLoading(false);
+    setIsLoading(false);
   }, []);
 
   return (
-    <div className="App">
+    <div>
+      {isloading ? (
+        <div><Loader></Loader></div>
+      ) : (
+        <div className="App">
       <Navbar />
       <Routes>
         {props.isAuthenticated ?
@@ -55,6 +61,8 @@ function App(props) {
             <Route element={<NotFound />} />
           </>}
       </Routes>
+    </div>
+      )}
     </div>
   );
 }

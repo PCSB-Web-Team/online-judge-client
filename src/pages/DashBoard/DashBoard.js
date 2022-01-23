@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Card from "../../components/Card";
 import { Requests } from "../../utils/Index";
 import { getContests } from "../../utils/Requests";
+import Loader from "../../components/Loader/Loader"
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -21,7 +22,7 @@ const Dashboard = () => {
   return (
     <div>
       {isLoading ? (
-        <div className=" text-6xl text-white">Loading</div>
+        <div className=" text-6xl text-white"><Loader/></div>
       ) : ( 
         <div className="container ">
           <h1 class="font-bold pb-2 p-8 border-b border-gray-200">Contest</h1>

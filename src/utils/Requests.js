@@ -19,9 +19,6 @@ export const getQuestions = (contestId) => {
 export const getSpecificQuestions = (_id) => {
     return backend.get(`/question/${_id}`);
 }
-export const getSubmission = () => {
-    return backend.get("/submission");
-}
 export const userSubmission = (userId) => {
     return backend.get(`/submission/user/${userId}`);
 }

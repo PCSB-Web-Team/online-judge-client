@@ -3,19 +3,26 @@ import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { getQuestions } from "../../utils/Requests";
 import { Link, useParams, Outlet } from "react-router-dom";
+import Loader from "../../components/Loader/Loader"
 
 function ContestDashboard() {
   const [question, setQuestion] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
   useEffect(() => {
-    console.log(contestId);
+    setIsLoading(true);
     Requests.getQuestions(contestId).then(res => {
       setQuestion(res.data);
+      setIsLoading(false);
     }).catch((error) => { })
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
+    <div>
+      {isLoading ? (
+        <div><Loader></Loader></div>
+      ) : (
+        <div className="min-h-screen bg-gray-100 text-gray-900">
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="DashBoard"><br />
           <h1 className="text-xl font-semibold">Problem Statement</h1>
@@ -64,6 +71,8 @@ function ContestDashboard() {
         </div>
       </main>
       <Outlet />
+    </div>
+      )}
     </div>
   );
 }
