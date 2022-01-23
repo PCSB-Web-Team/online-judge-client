@@ -2,94 +2,93 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
 * {
-	font-family: "Poppins", sans-serif;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 i {
-	font-family: "Poppins", sans-serif;
-	cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 :root {
-	--primary-color: #17a2b8;
-	--dark-color: #343a40;
-	--light-color: #a7a4a4;
-	--danger-color: #dc3545;
-	--success-color: #28a745;
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #a7a4a4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
 }
-
 
 /* Home Page */
 .Home {
-	position: relative;
-	background: white no-repeat center 80% / cover;
-	height: 100vh;
+  position: relative;
+  background: white no-repeat center 80% / cover;
+  height: 100vh;
 }
 
 .dark-overlay {
-	background-color: rgba(218, 215, 215, 0.4);
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  background-color: rgba(218, 215, 215, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .Home-inner {
-	color: rgb(49, 44, 44);
-	height: 60%;
-	width: 60%;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+  color: rgb(49, 44, 44);
+  height: 60%;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .Home-inner h1 {
-	font-size: 60px;
+  font-size: 60px;
 }
 .Home-inner p {
-	font-size: 18px;
-	max-width: 60%;
+  font-size: 18px;
+  max-width: 60%;
 }
 
 .Home-inner .buttons {
-	margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .register-form,
 .login-form {
-	width: 80%;
-	text-align: center;
-	margin: 6rem auto;
-	justify-content: center;
+  width: 80%;
+  text-align: center;
+  margin: 6rem auto;
+  justify-content: center;
 }
 
 .form input {
-	width: 50%;
-	padding: 10px;
-	margin: 10px;
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
 }
 
 .lead {
-	font-size: 25px;
+  font-size: 25px;
 }
 
 .heading {
-	font-size: 40px;
+  font-size: 40px;
 }
 
 .link a {
-	color: #444343;
+  color: #444343;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Open+Sans&display=swap");
@@ -107,13 +106,16 @@ body {
   background-color: #f8f7ff;
 }
 
-.editor{
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+.editor {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.editor-main {
+.editor-main *{
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas",
+    monospace !important;
   font-size: 20px !important;
-  /* width: 50% !important; */
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
 }
 
 .editor-header {
@@ -201,35 +203,35 @@ body {
   top: 39%;
 }
 
-.editor-run{
+.editor-run {
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.custom-cases{
+.custom-cases {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.custom-cases img{
+.custom-cases img {
   width: 15px;
   filter: invert(0.5);
   margin-left: 5px;
   transform: translateY(2px);
 }
 
-.custom-cases p{
+.custom-cases p {
   margin-bottom: 0;
 }
 
-.caret-reverse{
+.caret-reverse {
   transform: translateY(2px) rotate(180deg) !important;
 }
 
-.run-btn{
+.run-btn {
   padding: 10px 20px;
   color: white;
   display: flex;
@@ -240,20 +242,20 @@ body {
   cursor: pointer;
 }
 
-.run-btn p{
+.run-btn p {
   color: white;
   margin-bottom: 0;
   font-weight: 600;
 }
 
-.run-btn img{
+.run-btn img {
   transform: rotate(-90deg);
   width: 20px;
   filter: invert(1);
   margin-left: 5px;
 }
 
-.submit-btn{
+.submit-btn {
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -262,22 +264,22 @@ body {
   margin-left: 20px;
 }
 
-.submit-btn p{
+.submit-btn p {
   margin-bottom: 0;
   color: white;
   font-weight: 600;
 }
 
-.run-submit{
+.run-submit {
   display: flex;
   align-items: center;
 }
 
-.custom-input{
+.custom-input {
   padding: 20px;
 }
 
-.custom-input textarea{
+.custom-input textarea {
   width: 100%;
   resize: none;
   height: 200px;
@@ -288,17 +290,17 @@ body {
   padding: 20px;
 }
 
-.custom-input textarea:focus-visible{
+.custom-input textarea:focus-visible {
   border: none;
   outline: none;
 }
-.sample-tests{
-  padding : 20px;
+.sample-tests {
+  padding: 20px;
   background: #f3f7f7;
   position: relative;
 }
 
-.sample-tests img{
+.sample-tests img {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -308,7 +310,7 @@ body {
   cursor: pointer;
 }
 
-.copied{
+.copied {
   position: absolute;
   background: #576871;
   color: white;
@@ -321,7 +323,7 @@ body {
   display: none;
 }
 
-.contest-header-top{
+.contest-header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -330,7 +332,7 @@ body {
   padding: 1rem 10rem;
 }
 
-.contest-header-bottom{
+.contest-header-bottom {
   display: flex;
   width: 80%;
   margin: auto;
@@ -338,58 +340,56 @@ body {
   margin-bottom: 2rem;
 }
 
-.contest-header-bottom p{
+.contest-header-bottom p {
   margin-left: 5px;
   font-size: 1.1rem;
   color: #576871;
 }
 
-.score-timer{
+.score-timer {
   display: flex;
   align-items: center;
 }
 
-.contest-name{
+.contest-name {
   font-size: 2rem;
 }
 
-.score{
+.score {
   font-size: 1.5rem;
 }
 
-#timer{
+#timer {
   font-size: 1.5rem;
   width: 100px;
   margin-left: 20px;
 }
 
-
-
 /* Loader */
 .loader {
-	border-top-color: #3498db;
-	-webkit-animation: spinner 1.5s linear infinite;
-	animation: spinner 1.5s linear infinite;
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
 }
 
 @-webkit-keyframes spinner {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spinner {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.left-space{
-  padding-left:30% ;
+.left-space {
+  padding-left: 30%;
 }
