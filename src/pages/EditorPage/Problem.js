@@ -65,7 +65,13 @@ const Problem = () => {
                 onClick={() => copytoclipboard(0)}
               />
               <code>
-                {/* <br /> {data.example[0].input} */}
+              {data.example.map((example) => {
+              return (
+                <div>
+                  {example.input}
+                </div>
+              )
+            })}
               </code>
             </p>
             <p>
@@ -80,7 +86,13 @@ const Problem = () => {
                 onClick={() => copytoclipboard(1)}
               />
               <code>
-                {/* {data.example[0].input} */}
+              {data.example.map((example) => {
+              return (
+                <div>
+                  {example.output}
+                </div>
+              )
+            })}
               </code>
             </p>
             <p>
