@@ -24,14 +24,6 @@
   margin: 10px;
 }
 
-.lead {
-  font-size: 25px;
-}
-
-.heading {
-  font-size: 40px;
-}
-
 .link a {
   color: #3b9ed8;
 }
@@ -257,20 +249,6 @@
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 1rem 10rem;
-}
-
-.contest-header-bottom {
-  display: flex;
-  width: 80%;
-  margin: auto;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-}
-
-.contest-header-bottom p {
-  margin-left: 5px;
-  font-size: 1.1rem;
-  color: #576871;
 }
 
 .score-timer {

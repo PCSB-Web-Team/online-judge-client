@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { getSpecificQuestions } from "../../utils/Requests";
 import { useParams, Outlet } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import ContestHeader from "./ContestHeader";
 
 const Problem = () => {
   const [data, setData] = useState({ example: [] });
@@ -40,7 +41,7 @@ const Problem = () => {
       ) : (
         <div className="problem">
           <>
-            <div key={data} className="problem-main">
+            <div key={data} className="problem-main"><ContestHeader/>
               <h1>A. {data.title}</h1>
               <div className="problem-head-info">
                 <span>Time Limit : 1000ms per test</span>

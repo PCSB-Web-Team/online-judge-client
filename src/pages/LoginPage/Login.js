@@ -39,8 +39,8 @@ const Login = (props) => {
     >
       {(formik) => (
         <div className="register-form">
-          <h1 className="heading">Sign Up</h1>
-          <p className="lead">
+          <h1 className="text-4xl p-4">Sign Up</h1>
+          <p className="text-xl p-2">
             <i className="fas fa-user"></i> Create Your Account
           </p>
           <Form className="form" onSubmit={formik.handleSubmit}>
@@ -68,9 +68,10 @@ const Login = (props) => {
               Reset
             </button>
           </Form>
-          <p className="link">
+          <p className="link p-3">
             Don"t have an account? <Link to="/register">Sign Up</Link>
           </p>
+          <div className="p-60"></div>
         </div>
       )}
     </Formik>

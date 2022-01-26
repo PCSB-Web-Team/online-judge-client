@@ -45,7 +45,7 @@ function App(props) {
           <Loader></Loader>
         </div>
       ) : (
-        <div className="App">
+        <div className="App bg-gray-50">
           <Navbar />
           <Routes>
             {props.isAuthenticated ? (

@@ -26,9 +26,11 @@ const Dashboard = () => {
           <Loader />
         </div>
       ) : (
-        <div className="container ">
-          <h1 class="font-bold pb-2 p-8 border-b border-gray-200">Contest</h1>
-          <div class="mt-8 grid m-12 lg:grid-cols-3 gap-10">
+        <div className="container">
+          <h1 className="font-bold pb-2 p-8 border-b">
+            Contest
+          </h1>
+          <div className="mt-8 grid m-12 lg:grid-cols-3 gap-16">
             {data.map((contest) => {
               return (
                 <Card
@@ -39,6 +41,7 @@ const Dashboard = () => {
               );
             })}
           </div>
+          <div className="p-40"></div>
         </div>
       )}
     </div>

@@ -45,8 +45,8 @@ const Register = (props) => {
     >
       {formik => (
         <div className="register-form">
-          <h1 className="heading">Sign Up</h1>
-          <p className="lead">
+          <h1 className="text-4xl p-3">Sign Up</h1>
+          <p className="text-xl p-2">
             <i className="fas fa-user"></i> Create Your Account
           </p>
           <Form className="form" onSubmit={formik.handleSubmit}>
@@ -56,7 +56,7 @@ const Register = (props) => {
             <div className="form-group">
               <TextField placeholder="Email" name="email" type="email" />
             </div>
-            <div className="form-group">
+            <div Name="form-group">
               <TextField placeholder="Phone Number" name="phoneNumber" type="tel" />
             </div>
             <div className="form-group">
@@ -67,9 +67,9 @@ const Register = (props) => {
             </div>
             <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" type="submit">Login</button>
             <button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="reset">Reset</button>          </Form>
-          <p className="link">
+          <p className="link p-3">
             Already have an account? <Link to="/login">Sign In</Link>
-          </p>
+          </p><div className="p-40"></div>
         </div>
       )}
     </Formik>
