@@ -9,9 +9,9 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "brace/mode/c_cpp";
 import "brace/snippets/c_cpp";
 import "brace/ext/language_tools";
-import { userSubmission } from "../../utils/Requests";
+import { connect } from "react-redux";
+import { contest } from "../../store/actions";
 import { Requests } from "../../utils/Index";
-import { useNavigate } from "react-router-dom";
 
 const Editor = () => {
   const vals = {
@@ -35,15 +35,21 @@ int main(){
   };
 
   const [values, setValues] = useState(
-    localStorage.getItem("values") !== null
-      ? JSON.parse(localStorage.getItem("values"))
+    localStorage.getItem("pcsb-code") !== null
+      ? JSON.parse(localStorage.getItem("pcsb-code"))
       : vals
   );
 
+  const languageIds = {
+    Python: 71,
+    C: 75,
+    "C++": 76,
+    Java: 62,
+  };
   const [lang, setLang] = useState("C");
-  const navigate = useNavigate();
   const [isCustom, setIsCustom] = useState(false);
-
+  const [customInput, setCustomInput] = useState("");
+  const [customOutput, setCustomOutput] = useState("");
   const modes = {
     C: "c_cpp",
     "C++": "c_cpp",
@@ -51,32 +57,32 @@ int main(){
     Python: "python",
   };
 
-  // const handleSubmit = (props) => {async values => {
-  //   console.log(values)
-  //   Requests.login(values).then(res => {
-  //     localStorage.setItem('pcsb-oj-token', res.data.token);
-  //     console.log(res.data);
-  //     props.log(res.data)
-  //     navigate("/");
-  //   }).catch(error => {
-  //     alert("Invalid Data")
-  //   })
-  // }}
-  function handleSubmit(){
-    console.log("object");
-  }
-
-  function handleRun() {
-    console.log("Run");
-  }
-
   function onChange(newValue) {
     const newvals = { ...values };
     newvals[lang] = newValue;
     setValues(newvals);
-    localStorage.setItem("values", JSON.stringify(newvals));
+    localStorage.setItem("pcsb-code", JSON.stringify(newvals));
   }
 
+  function handleSubmit(props) {
+    Requests.submitcode()
+      .then((res) => {})
+      .catch((error) => {});
+  }
+
+  function handleRun(props) {
+    const runData = {
+      languageId: languageIds[lang],
+      code: values[lang],
+      stdin: customInput,
+    };
+    Requests.runcode(runData)
+      .then((res) => {
+        console.log(res.data);
+        setCustomOutput(res.data);
+      })
+      .catch((error) => {});
+  }
   return (
     <div className="editor">
       <div className="editor-header">
@@ -101,9 +107,15 @@ int main(){
         >
           <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
         </svg>
-        <button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="reset">Reset</button>        
+        <button
+          className="submit-btn text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          type="reset"
+          value={null}
+          onChange={(e) => null}
+        >
+          Reset
+        </button>
       </div>
-
       <AceEditor
         mode={modes[lang]}
         theme="monokai"
@@ -134,22 +146,53 @@ int main(){
           />
         </div>
         <div className="run-submit">
-          <div className="run-btn" onClick={handleRun}>
+          <button
+            className="run-btn text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={handleRun}
+          >
             <p>Run</p>
             <img src={caret} alt="caret" />
-          </div>
-          <div className="submit-btn" onClick={handleSubmit}>
+          </button>
+          <button
+            className="submit-btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            type="submit"
+            onClick={handleSubmit}
+          >
             <p>Submit</p>
-          </div>
+          </button>
         </div>
       </div>
       {isCustom ? (
         <div className="custom-input">
-          <textarea name="custom-input" />
+          <textarea
+            name="custom-input"
+            value={customInput}
+            onChange={(e) => {
+              setCustomInput(e.target.value);
+            }}
+          />
         </div>
       ) : null}
+      <div className="custom-input">
+        outPut
+        <p>{customOutput}       
+        </p>
+      </div>
     </div>
   );
 };
 
-export default Editor;
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.isAuthenticated,
+  };
+}
+
+function mapActionToProps(dispatch) {
+  return {
+    submitCode: (userSubmission) => dispatch(contest(userSubmission)),
+    runCode: (userSubmission) => dispatch(contest(userSubmission)),
+  };
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Editor);

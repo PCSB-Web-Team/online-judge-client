@@ -13,7 +13,7 @@ const Login = (props) => {
   const validate = Yup.object({
     email: Validators.email,
     password: Validators.password,
-  })
+  });
 
   return (
     <Formik
@@ -22,19 +22,22 @@ const Login = (props) => {
         password: "",
       }}
       validationSchema={validate}
-      onSubmit={async values => {
-        console.log(values)
-        Requests.login(values).then(res => {
-          localStorage.setItem('pcsb-oj-token', res.data.token);
-          console.log(res.data);
-          props.log(res.data)
-          navigate("/");
-        }).catch(error => {
-          alert("Invalid Data")
-        })
+      onSubmit={async (values) => {
+        console.log(values);
+        Requests.login(values)
+          .then((res) => {
+            localStorage.setItem("pcsb-oj-token", res.data.token);
+            localStorage.setItem("userId", res.data._id);
+            console.log(res.data);
+            props.log(res.data);
+            navigate("/");
+          })
+          .catch((error) => {
+            alert("Invalid Data");
+          });
       }}
     >
-      {formik => (
+      {(formik) => (
         <div className="register-form">
           <h1 className="heading">Sign Up</h1>
           <p className="lead">
@@ -45,11 +48,25 @@ const Login = (props) => {
               <TextField placeholder="Email" name="email" type="email" />
             </div>
             <div className="form-group">
-              <TextField placeholder="password" name="password" type="password" />
+              <TextField
+                placeholder="password"
+                name="password"
+                type="password"
+              />
             </div>
 
-            <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" type="submit">Login</button>
-            <button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="reset">Reset</button>
+            <button
+              className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+              type="submit"
+            >
+              Login
+            </button>
+            <button
+              className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              type="reset"
+            >
+              Reset
+            </button>
           </Form>
           <p className="link">
             Don"t have an account? <Link to="/register">Sign Up</Link>
@@ -57,18 +74,18 @@ const Login = (props) => {
         </div>
       )}
     </Formik>
-  )
-}
+  );
+};
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.isAuthenticated
-  }
+    isAuthenticated: state.isAuthenticated,
+  };
 }
 function mapActionToProps(dispatch) {
   return {
-    log: (userData) => dispatch(login(userData))
-  }
+    log: (userData) => dispatch(login(userData)),
+  };
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Login);

@@ -8,7 +8,7 @@ export const login = (userData) => {
 		payload: userData
 	};
 }
-export const Contest = (userSubmission) => {
+export const contest = (userSubmission) => {
 	return {
 		type: USERSUBMISSION,
 		payload: userSubmission

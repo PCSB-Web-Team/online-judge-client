@@ -8,7 +8,7 @@ const initialState = {
 	token: localStorage.getItem("pcsb-oj-token"),
 	isAuthenticated: false,
 	userData: null,
-	contestData: null,
+	userSubmission: null,
 };
 
 export default function auth(state = initialState, action) {
@@ -26,7 +26,7 @@ export default function auth(state = initialState, action) {
 			return {
 				...state,
 				isAuthenticated: true,
-				contestData: payload,
+				userSubmission: payload,
 			}
 		}
 		case LOGOUT: {

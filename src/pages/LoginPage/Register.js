@@ -37,7 +37,6 @@ const Register = (props) => {
           props.login(res.data);
           alert("Register successful")
           navigate("/dashboardpage");
-
         }).catch(error => {
           alert("Enter Valid Data !")
         })

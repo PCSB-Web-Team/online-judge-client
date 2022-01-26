@@ -14,7 +14,7 @@ import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
 import AllSubmission from "./pages/Submission/AllSubmission";
 import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
-import Dashboard from "./pages/DashBoard/DashBoard"
+import Dashboard from "./pages/DashBoard/DashBoard";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -41,26 +41,36 @@ function App(props) {
   return (
     <div>
       {isloading ? (
-        <div><Loader></Loader></div>
+        <div>
+          <Loader></Loader>
+        </div>
       ) : (
         <div className="App">
           <Navbar />
           <Routes>
-            {props.isAuthenticated ?
+            {props.isAuthenticated ? (
               <>
                 <Route path="/" element={<Dashboard />} />
                 <Route path=":contestId" element={<ContestDashboard />} />
                 <Route path=":contestId/:questionId" element={<Problem />} />
-                <Route path=":contestId/:questionId/submission" element={<MySubmission />} />
-                <Route path=":contestId/leaderboard" element={<LeaderBoard />} />
-                <Route path=":contestId/submission" element={<AllSubmission />} />
-              </> :
+                <Route
+                  path=":contestId/:questionId/submission"
+                  element={<MySubmission />}
+                />
+                <Route
+                  path=":contestId/leaderboard"
+                  element={<LeaderBoard />}
+                />
+                <Route path=":userId/submission" element={<AllSubmission />} />
+              </>
+            ) : (
               <>
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path="/" element={<Dashboard />} />
                 <Route element={<NotFound />} />
-              </>}
+              </>
+            )}
           </Routes>
         </div>
       )}

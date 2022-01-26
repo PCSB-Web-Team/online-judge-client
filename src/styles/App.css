@@ -165,11 +165,8 @@
 
 .run-btn {
   padding: 10px 20px;
-  color: white;
   display: flex;
   align-items: center;
-  background-color: #1ba94c;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -190,8 +187,6 @@
 .submit-btn {
   padding: 10px 20px;
   border-radius: 5px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-color: rgb(24, 144, 243);
   cursor: pointer;
   margin-left: 20px;
 }
