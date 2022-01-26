@@ -36,7 +36,7 @@ const Register = (props) => {
           localStorage.setItem('pcsb-oj-token', res.data.token);
           props.login(res.data);
           alert("Register successful")
-          navigate("/dashboardpage");
+          navigate("/");
         }).catch(error => {
           alert("Enter Valid Data !")
         })

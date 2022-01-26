@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const [data, setData] = React.useState();
   const { userId } = useParams();
 
   function logout() {
