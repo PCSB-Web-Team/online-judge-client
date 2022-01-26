@@ -80,8 +80,8 @@
 }
 
 .problem-main {
-  background-color: white;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: rgb(248, 248, 248);
+  box-shadow: rgba(201, 207, 212, 0.2) 0px 8px 24px;
   padding: 3rem;
   margin-bottom: 2rem;
 }
@@ -242,30 +242,7 @@
   display: none;
 }
 
-.contest-header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  padding: 1rem 10rem;
-}
-
 .score-timer {
   display: flex;
   align-items: center;
-}
-
-.contest-name {
-  font-size: 2rem;
-}
-
-.score {
-  font-size: 1.5rem;
-}
-
-#timer {
-  font-size: 1.5rem;
-  width: 100px;
-  margin-left: 20px;
 }

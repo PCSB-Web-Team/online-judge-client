@@ -41,8 +41,9 @@ const Problem = () => {
       ) : (
         <div className="problem">
           <>
-            <div key={data} className="problem-main"><ContestHeader/>
-              <h1>A. {data.title}</h1>
+            <div key={data} className="problem-main">
+              <ContestHeader />
+              <h1 className="text-xl">A. {data.title}</h1>
               <div className="problem-head-info">
                 <span>Time Limit : 1000ms per test</span>
                 <span>Memory Limit : {data.memory}MB</span>

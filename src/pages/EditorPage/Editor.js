@@ -175,8 +175,7 @@ int main(){
       ) : null}
       <div className="custom-input">
         outPut
-        <p>{customOutput}       
-        </p>
+        <p>{customOutput}</p>
       </div>
     </div>
   );

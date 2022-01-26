@@ -29,19 +29,19 @@ const ContestHeader = () => {
   });
 
   return (
-    <div className="contest-header">      
-        <div className="contest-header-top">
-        <div className="flex ">
-            <p className="px-10">PROBLEMS</p>
-            <p className="px-10">SUBMISSIONS</p>
-            <p className="px-10">LEADERBOARD</p>
+    <div className="">
+      <div className="flex shadow">
+        <p className="px-32">PROBLEMS</p>
+        <p className="px-32">SUBMISSIONS</p>
+        <p className="px-32">LEADERBOARD</p>
+      </div>
+      <div className="flex">
+        <div className="contest-name px-32 py-4 text-lg">Contest Name</div>
+        <div className="score-timer px-72 py-4 flex">
+          <div className="score text-lg">Score : </div>
+          <div id="timer" className="text-lg"></div>
         </div>
-          <div className="contest-name">Contest Name</div>
-          <div className="score-timer">
-            <div className="score">Score</div>
-            <div id="timer"></div>
-        </div>
-        </div>
+      </div>
     </div>
   );
 };
