@@ -85,8 +85,7 @@ int main(){
   }
   function reset() {
     localStorage.setItem("pcsb-code", JSON.stringify(vals));
-    setValues(vals)
-    // window.location.reload();
+    setValues(vals);
   }
 
   return (

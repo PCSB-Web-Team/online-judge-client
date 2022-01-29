@@ -15,12 +15,17 @@ export const signup = (data) => {
 export const submitcode = (code) => {
   return backend.post("/submission/", code);
 };
+
 export const runcode = (code) => {
   return backend.post("/submission/run", code);
 };
 
 export const getContests = () => {
   return backend.get("/contest");
+};
+
+export const getSpecificContests = (contestId) => {
+  return backend.get(`/contest/${contestId}`);
 };
 
 export const getQuestions = (contestId) => {
