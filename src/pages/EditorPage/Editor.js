@@ -84,8 +84,9 @@ int main(){
       .catch((error) => {});
   }
   function reset() {
-    localStorage.removeItem("pcsb-code");
-    window.location.reload();
+    localStorage.setItem("pcsb-code", JSON.stringify(vals));
+    setValues(vals)
+    // window.location.reload();
   }
 
   return (
@@ -178,7 +179,7 @@ int main(){
       ) : null}
       <div className="custom-input">
         outPut
-        <p>{customOutput}</p>
+        <pre>{customOutput}</pre>
       </div>
     </div>
   );
