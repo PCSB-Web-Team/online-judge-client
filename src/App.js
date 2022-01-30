@@ -13,7 +13,6 @@ import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
 import AllSubmission from "./pages/Submission/AllSubmission";
-import ContestDashboard from "./pages/ContestDashboard/ContestDashBoard";
 import Dashboard from "./pages/DashBoard/DashBoard";
 
 function App(props) {
@@ -51,8 +50,6 @@ function App(props) {
             {props.isAuthenticated ? (
               <>
                 <Route path="/" element={<Dashboard />} />
-                <Route path=":contestId" element={<ContestDashboard />} />
-                <Route path=":contestId/:questionId" element={<Problem />} />
                 <Route
                   path=":contestId/:questionId/submission"
                   element={<MySubmission />}

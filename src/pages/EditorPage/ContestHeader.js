@@ -14,7 +14,6 @@ const ContestHeader = () => {
         setData(res.data.title);
       });
     }
-
   }, []);
   const id = React.useRef(null);
   const clear = () => {
