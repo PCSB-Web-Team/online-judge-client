@@ -65,9 +65,7 @@ int main(){
   }
 
   function handleSubmit(props) {
-    Requests.submitcode()
-      .then((res) => {})
-      .catch((error) => {});
+    
   }
 
   function handleRun(props) {

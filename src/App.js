@@ -61,7 +61,7 @@ function App(props) {
                   path=":contestId/leaderboard"
                   element={<LeaderBoard />}
                 />
-                <Route path=":userId/submission" element={<AllSubmission />} />
+                <Route path="/submission" element={<AllSubmission />} />
               </>
             ) : (
               <>

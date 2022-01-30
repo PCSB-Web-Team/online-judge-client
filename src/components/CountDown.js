@@ -6,8 +6,6 @@ const targetTime = moment("2035-01-01");
 export const CountdownMonths = () => {
   const [currentTime, setCurrentTime] = useState(moment());
   const timeBetween = moment.duration(targetTime.diff(currentTime));
- 
-
   
   useEffect(() => {
     const interval = setInterval(() => {

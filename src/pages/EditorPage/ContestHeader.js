@@ -8,16 +8,19 @@ const ContestHeader = () => {
   const { contestId } = useParams();
 
   useEffect(() => {
-    Requests.getSpecificContests(contestId).then((res) => {
-      setTimer(res.data.status.time);
-      setData(res.data.title);
-    });
+    if (contestId) {
+      Requests.getContestById(contestId).then((res) => {
+        setTimer(res.data.status.time);
+        setData(res.data.title);
+      });
+    }
+
   }, []);
   const id = React.useRef(null);
   const clear = () => {
     window.clearInterval(id.current);
   };
-  React.useEffect(() => {
+  useEffect(() => {
     id.current = window.setInterval(() => {
       setTimer((time) => time - 1);
     }, 1000);

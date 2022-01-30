@@ -11,7 +11,7 @@ function AllSubmission() {
 
   useEffect(() => {
     setIsLoading(true);
-    Requests.userSubmission()
+    Requests.allSubmission()
       .then((res) => {
         setData(res.data);
         console.log(data);

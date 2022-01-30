@@ -24,7 +24,7 @@ export const getContests = () => {
   return backend.get("/contest");
 };
 
-export const getSpecificContests = (contestId) => {
+export const getContestById = (contestId) => {
   return backend.get(`/contest/${contestId}`);
 };
 
@@ -34,6 +34,10 @@ export const getQuestions = (contestId) => {
 
 export const getSpecificQuestions = (_id) => {
   return backend.get(`/question/${_id}`);
+};
+
+export const allSubmission = () => {
+  return backend.get(`/submission/`);
 };
 
 export const userSubmission = (userId) => {
