@@ -13,10 +13,12 @@ const Card = (props) => {
         className="h-32 sm:h-48 w-full object-cover"
       />
       <div className="m-4">
-        <div className="font-medium text-base text-gray-darker mb-4">{props.title}</div>
+        <div className="font-medium text-base text-gray-darker mb-4">
+          {props.title}
+        </div>
         <p class="font-normal text-gray-dark text-sm mb-2">
-      Lorem ipsum dolor sit amet, consectetur
-    </p>
+          Lorem ipsum dolor sit amet, consectetur
+        </p>
         <br />
         <br />
         {props.isAuthenticated ? (

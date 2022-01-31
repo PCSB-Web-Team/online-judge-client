@@ -19,7 +19,6 @@ const Problem = () => {
         setIsLoading(false);
       })
       .catch((error) => {});
-      
   }, []);
 
   const copytoclipboard = (i) => {
@@ -119,9 +118,7 @@ function mapStateToProps(state) {
   };
 }
 function mapActionToProps(dispatch) {
-  return {
-    
-  };
+  return {};
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Problem);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AceEditor from "react-ace";
 import caret from "../../assets/caret.png";
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -34,11 +34,7 @@ int main(){
     Python: `# Your code here`,
   };
 
-  const [values, setValues] = useState(
-    localStorage.getItem("pcsb-code") !== null
-      ? localStorage.getItem("pcsb-code")
-      : vals
-  );
+  const [values, setValues] = useState(vals);
 
   const languageIds = {
     Python: 71,
@@ -57,11 +53,19 @@ int main(){
     Python: "python",
   };
 
+  useEffect(()=> {
+    const savedCode = localStorage.getItem("pcsb-code")
+    if(savedCode){
+      // setValues((vals))
+      // console.log(JSON.parse(vals));
+    }
+  },[])
+
   function onChange(newValue) {
     const newvals = { ...values };
     newvals[lang] = newValue;
     setValues(newvals);
-    localStorage.setItem("pcsb-code", newvals);
+    localStorage.setItem("pcsb-code", JSON.stringify(newvals));
   }
 
   function handleSubmit(props) {}
@@ -81,9 +85,10 @@ int main(){
   }
 
   function reset() {
-    localStorage.setItem("pcsb-code", vals);
+    localStorage.setItem("pcsb-code", JSON.stringify(vals));
     setValues(vals);
   }
+  
 
   return (
     <div className="editor">

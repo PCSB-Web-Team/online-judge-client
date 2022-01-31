@@ -3,18 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { Requests } from "../../utils/Index";
 
 const ContestHeader = (props) => {
-  const [timer, setTimer] = useState();
-  const [data, setData] = useState();
-  const { contestId } = useParams();
+  const [timer, setTimer] = useState(props.timer);
+  const [title, setTitle] = useState();
 
-  useEffect(() => {
-    if (contestId) {
-      Requests.getContestById(contestId).then((res) => {
-        setTimer(res.data.status.time);
-        setData(res.data.title);
-      });
-    }
-  }, []);
   const id = React.useRef(null);
   const clear = () => {
     window.clearInterval(id.current);
@@ -26,7 +17,7 @@ const ContestHeader = (props) => {
     return () => clear();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (timer === 0) {
       clear();
     }
@@ -39,9 +30,9 @@ const ContestHeader = (props) => {
         <p className="px-32"> <Link to={"/"}>LEADERBOARD</Link></p>
       </div>
       <div className="flex">
-        <div className="contest-name px-32 py-4 text-lg">{data}</div>
+        <div className="contest-name px-32 py-4 text-lg">{title}</div>
         <div className="score-timer px-72 py-4 flex">
-          <div>Time Left: {props.timer}</div>
+          <div>Time Left: {timer}</div>
         </div>
       </div>
     </div>

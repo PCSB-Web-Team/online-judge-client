@@ -54,7 +54,7 @@ export const allParticipant = (contestId) => {
 
 export const contestRanking = (contestId) => {
   return backend.get(`/participant/ranking/${contestId}`);
-};  
+};
 
 export const getUserByToken = (token) => {
   return backend.get("/auth/", {

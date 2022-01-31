@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { getQuestions } from "../../utils/Requests";
 import { Link, useParams, Route, Routes } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ContestHeader from "../EditorPage/ContestHeader";
@@ -14,15 +13,17 @@ function ContestDashBoard() {
   const { contestId } = useParams();
   useEffect(() => {
     setIsLoading(true);
-    Requests.getQuestions(contestId)
-      .then((res) => {
-        setQuestion(res.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {});
-    Requests.getContestById(contestId).then((res) => {
-      setTimer(res.data.status.time);
-    });
+    if (contestId) {
+      Requests.getQuestions(contestId)
+        .then((res) => {
+          setQuestion(res.data);
+          setIsLoading(false);
+        })
+        .catch((error) => {});
+      Requests.getContestById(contestId).then((res) => {
+        setTimer(res.data.status.time);
+      });
+    }
   }, []);
 
   return (
