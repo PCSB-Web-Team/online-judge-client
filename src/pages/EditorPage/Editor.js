@@ -53,13 +53,12 @@ int main(){
     Python: "python",
   };
 
-  useEffect(()=> {
-    const savedCode = localStorage.getItem("pcsb-code")
-    if(savedCode){
-      // setValues((vals))
-      // console.log(JSON.parse(vals));
+  useEffect(() => {
+    const savedCode = JSON.parse(localStorage.getItem("pcsb-code"));
+    if (savedCode) {
+      setValues(savedCode);
     }
-  },[])
+  }, []);
 
   function onChange(newValue) {
     const newvals = { ...values };
@@ -88,7 +87,6 @@ int main(){
     localStorage.setItem("pcsb-code", JSON.stringify(vals));
     setValues(vals);
   }
-  
 
   return (
     <div className="editor">
