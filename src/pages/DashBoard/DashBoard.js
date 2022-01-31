@@ -41,6 +41,7 @@ const Dashboard = (props) => {
                       contestId={contest.id}
                       title={contest.title}
                       date={contest.startsOn.split("T")[0]}
+                      {...contest}
                     />
                   );
                 })}
