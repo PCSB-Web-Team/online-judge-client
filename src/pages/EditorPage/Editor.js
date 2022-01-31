@@ -166,9 +166,9 @@ int main(){
         </div>
       </div>
       {isCustom ? (
-        <div className="custom-input">
+        <div className="p-4">
           <textarea
-            name="custom-input"
+            className="w-full border-0 shadow p-4"
             value={customInput}
             onChange={(e) => {
               setCustomInput(e.target.value);
@@ -176,9 +176,9 @@ int main(){
           />
         </div>
       ) : null}
-      <div className="custom-input">
-        outPut
-        <p>{customOutput}</p>
+      <div className="p-4">
+        Output : 
+        <div className="p-4"> <p><pre>{customOutput}</pre></p> </div>
       </div>
     </div>
   );

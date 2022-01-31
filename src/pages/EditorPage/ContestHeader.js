@@ -7,7 +7,7 @@ const ContestHeader = (props) => {
   return (
     <div className="">
       <div class="px-2">
-        <div class="flex -mx-2">
+        <div class="flex ">
           <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2"> 
               <Link to={""}>Problem</Link>

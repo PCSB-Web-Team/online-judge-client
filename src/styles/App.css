@@ -74,7 +74,7 @@
 }
 
 .problem {
-  width: 80%;
+  width: 83%;
   margin: auto;
   margin-bottom: 3rem;
 }
@@ -82,8 +82,8 @@
 .problem-main {
   background-color: rgb(248, 248, 248);
   box-shadow: rgba(201, 207, 212, 0.2) 0px 8px 24px;
-  padding: 3rem;
-  margin-bottom: 2rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
 }
 
 .problem h1 {
@@ -194,25 +194,6 @@
   align-items: center;
 }
 
-.custom-input {
-  padding: 20px;
-}
-
-.custom-input textarea {
-  width: 100%;
-  resize: none;
-  height: 200px;
-  overflow: auto;
-  background-color: white;
-  border: none;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  padding: 20px;
-}
-
-.custom-input textarea:focus-visible {
-  border: none;
-  outline: none;
-}
 .sample-tests {
   padding: 20px;
   background: #f3f7f7;
