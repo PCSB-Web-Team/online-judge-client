@@ -3,36 +3,34 @@ import { Link, useParams } from "react-router-dom";
 import { Requests } from "../../utils/Index";
 
 const ContestHeader = (props) => {
-  const [timer, setTimer] = useState(props.timer);
-  const [title, setTitle] = useState();
 
-  const id = React.useRef(null);
-  const clear = () => {
-    window.clearInterval(id.current);
-  };
-  useEffect(() => {
-    id.current = window.setInterval(() => {
-      setTimer((time) => time - 1);
-    }, 1000);
-    return () => clear();
-  }, []);
-
-  useEffect(() => {
-    if (timer === 0) {
-      clear();
-    }
-  }, [timer]);
+  const [title, setTitle] = useState()
+  
   return (
     <div className="">
-      <div className="flex shadow">
-        <p className="px-32"> <Link to={"/"}>PROBLEMS</Link> </p>
-        <p className="px-32"> <Link to={"/"}>SUBMISSIONS</Link> </p>
-        <p className="px-32"> <Link to={"/"}>LEADERBOARD</Link></p>
+      <div class="px-2">
+        <div class="flex -mx-2">
+          <div class="w-1/3 px-2">
+            <div class="bg-gray-400 hover:bg-gray-500 h-12 text-white text-center p-2"> 
+              <Link to={""}>Problem</Link>{" "}
+            </div>
+          </div>
+          <div class="w-1/3 px-2">
+            <div class="bg-gray-400 hover:bg-gray-500 h-12 text-white text-center p-2">
+              <Link to={"/"}>Submission</Link>
+            </div>
+          </div>
+          <div class="w-1/3 px-2">
+            <div class="bg-gray-400 hover:bg-gray-500 h-12 text-white text-center p-2">
+              <Link to={"/"}>Leader Board</Link>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="flex">
         <div className="contest-name px-32 py-4 text-lg">{title}</div>
-        <div className="score-timer px-72 py-4 flex">
-          <div>Time Left: {timer}</div>
+        <div className="score-timer">
+          <div>Time Left: </div>
         </div>
       </div>
     </div>
