@@ -92,7 +92,6 @@ function AllSubmission() {
               </div>
             </div>
           </main>
-          <Outlet />
         </div>
       )}
     </div>

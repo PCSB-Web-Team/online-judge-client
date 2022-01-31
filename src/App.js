@@ -10,10 +10,11 @@ import Register from "./pages/LoginPage/Register";
 import NotFound from "./components/NotFound";
 import Loader from "./components/Loader/Loader";
 import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
-import Problem from "./pages/EditorPage/Problem";
 import MySubmission from "./pages/Submission/MySubmission";
 import AllSubmission from "./pages/Submission/AllSubmission";
 import Dashboard from "./pages/DashBoard/DashBoard";
+import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
+import OverallLeaderBoard from "./pages/LeaderBoard/OverallLeaderBoard";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -54,10 +55,12 @@ function App(props) {
                   path=":contestId/:questionId/submission"
                   element={<MySubmission />}
                 />
+                <Route path="/:contestId/*" element={<ContestDashBoard />} />
                 <Route
-                  path=":contestId/leaderboard"
+                  path="/:contestId/leaderboard"
                   element={<LeaderBoard />}
                 />
+                <Route path="/leaderboard" element={<OverallLeaderBoard />} />
                 <Route path="/submission" element={<AllSubmission />} />
               </>
             ) : (

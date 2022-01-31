@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -144,7 +144,6 @@ const Navbar = (props) => {
           )}
         </div>
       </div>
-      <Outlet />
     </nav>
   );
 };

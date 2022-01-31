@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AceEditor from "react-ace";
 import caret from "../../assets/caret.png";
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -36,7 +36,7 @@ int main(){
 
   const [values, setValues] = useState(
     localStorage.getItem("pcsb-code") !== null
-      ? JSON.parse(localStorage.getItem("pcsb-code"))
+      ? localStorage.getItem("pcsb-code")
       : vals
   );
 
@@ -61,12 +61,10 @@ int main(){
     const newvals = { ...values };
     newvals[lang] = newValue;
     setValues(newvals);
-    localStorage.setItem("pcsb-code", JSON.stringify(newvals));
+    localStorage.setItem("pcsb-code", newvals);
   }
 
-  function handleSubmit(props) {
-    
-  }
+  function handleSubmit(props) {}
 
   function handleRun(props) {
     const runData = {
@@ -74,16 +72,17 @@ int main(){
       code: values[lang],
       stdin: customInput,
     };
-    Requests.runcode(runData)
+    Requests.runCode(runData)
       .then((res) => {
         console.log(res.data);
         setCustomOutput(res.data);
       })
       .catch((error) => {});
   }
+
   function reset() {
-    localStorage.setItem("pcsb-code", JSON.stringify(vals));
-    setValues(vals);
+    // localStorage.setItem("pcsb-code", JSON.stringify(vals));
+    // setValues(vals);
   }
 
   return (
@@ -121,11 +120,11 @@ int main(){
         mode={modes[lang]}
         theme="monokai"
         width="100%"
-        onChange={onChange}
+        // onChange={onChange}
         className="editor-main"
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
-        value={values[lang]}
+        // value={values[lang]}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
@@ -176,7 +175,7 @@ int main(){
       ) : null}
       <div className="custom-input">
         outPut
-        <pre>{customOutput}</pre>
+        <p>{customOutput}</p>
       </div>
     </div>
   );

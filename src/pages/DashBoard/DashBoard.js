@@ -31,33 +31,23 @@ const Dashboard = (props) => {
         </div>
       ) : (
         <div className="bg-gray-50">
-          <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <>
-                      <div className="container">
-                        <h1 className="font-bold pb-2 p-8 border-b">Contest</h1>
-                        <div className="mt-8 grid m-12 lg:grid-cols-3 gap-16">
-                          {data.map((contest) => {
-                            return (
-                              <Card
-                                contestId={contest.id}
-                                title={contest.title}
-                                date={contest.startsOn.split("T")[0]}
-                              />
-                            );
-                          })}
-                        </div>
-                        <div className="p-40"></div>
-                      </div>
-                    </>
-                  }
-                />
-                <Route path="/contest/:contestId" element={<ContestDashboard />} />
-                {/* <Route path="/:contestId/:questionId" element={<Problem />} /> */}
-                <Route element={<NotFound />} />
-          </Routes>
+          <>
+            <div className="container mx-auto">
+              <h1 className="font-bold pb-2 p-8 border-b">Contest</h1>
+              <div className=" grid p-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8">
+                {data.map((contest) => {
+                  return (
+                    <Card
+                      contestId={contest.id}
+                      title={contest.title}
+                      date={contest.startsOn.split("T")[0]}
+                    />
+                  );
+                })}
+              </div>
+              <div className="p-40"></div>
+            </div>
+          </>
         </div>
       )}
     </div>

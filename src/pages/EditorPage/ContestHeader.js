@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Requests } from "../../utils/Index";
 
-const ContestHeader = () => {
+const ContestHeader = (props) => {
   const [timer, setTimer] = useState();
   const [data, setData] = useState();
   const { contestId } = useParams();
@@ -34,14 +34,14 @@ const ContestHeader = () => {
   return (
     <div className="">
       <div className="flex shadow">
-        <p className="px-32">PROBLEMS</p>
-        <p className="px-32">SUBMISSIONS</p>
-        <p className="px-32">LEADERBOARD</p>
+        <p className="px-32"> <Link to={"/"}>PROBLEMS</Link> </p>
+        <p className="px-32"> <Link to={"/"}>SUBMISSIONS</Link> </p>
+        <p className="px-32"> <Link to={"/"}>LEADERBOARD</Link></p>
       </div>
       <div className="flex">
         <div className="contest-name px-32 py-4 text-lg">{data}</div>
         <div className="score-timer px-72 py-4 flex">
-          <div>Time Left: {timer}</div>
+          <div>Time Left: {props.timer}</div>
         </div>
       </div>
     </div>

@@ -12,11 +12,11 @@ export const signup = (data) => {
   return backend.post("/auth/signup", data);
 };
 
-export const submitcode = (code) => {
+export const submitCode = (code) => {
   return backend.post("/submission/", code);
 };
 
-export const runcode = (code) => {
+export const runCode = (code) => {
   return backend.post("/submission/run", code);
 };
 
@@ -32,7 +32,7 @@ export const getQuestions = (contestId) => {
   return backend.get(`/question/contest/${contestId}`);
 };
 
-export const getSpecificQuestions = (_id) => {
+export const getQuestionById = (_id) => {
   return backend.get(`/question/${_id}`);
 };
 
@@ -47,6 +47,14 @@ export const userSubmission = (userId) => {
 export const questionSubmission = (userId, questionId) => {
   return backend.get(`/submission/${userId}/${questionId}`);
 };
+
+export const allParticipant = (contestId) => {
+  return backend.get(`/participant/`);
+};
+
+export const contestRanking = (contestId) => {
+  return backend.get(`/participant/ranking/${contestId}`);
+};  
 
 export const getUserByToken = (token) => {
   return backend.get("/auth/", {

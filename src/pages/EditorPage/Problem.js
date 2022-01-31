@@ -3,8 +3,7 @@ import Editor from "./Editor";
 import { Requests } from "../../utils/Index";
 import copy from "../../../src/assets/copy.png";
 import { connect } from "react-redux";
-import { getSpecificQuestions } from "../../utils/Requests";
-import { useParams, Outlet } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
 const Problem = () => {
@@ -14,12 +13,13 @@ const Problem = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    Requests.getSpecificQuestions(questionId)
+    Requests.getQuestionById(questionId)
       .then((res) => {
         setData(res.data);
         setIsLoading(false);
       })
       .catch((error) => {});
+      
   }, []);
 
   const copytoclipboard = (i) => {
@@ -107,7 +107,6 @@ const Problem = () => {
             </div>
             <Editor />
           </>
-          <Outlet />
         </div>
       )}
     </div>
@@ -121,8 +120,7 @@ function mapStateToProps(state) {
 }
 function mapActionToProps(dispatch) {
   return {
-    getSpecificQuestions: (userData) =>
-      dispatch(getSpecificQuestions(userData)),
+    
   };
 }
 

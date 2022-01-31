@@ -5,14 +5,14 @@ import { userSubmission } from "../../utils/Requests";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
-function LeaderBoard() {
+function OverallLeaderBoard() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    Requests.contestRanking(contestId)
+    Requests.allParticipant(contestId)
       .then((res) => {
         setData(res.data);
         setIsLoading(false);
@@ -43,7 +43,7 @@ function LeaderBoard() {
                         scope="col"
                         className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                       >
-                        Title
+                        User
                       </th>
                       <th
                         scope="col"
@@ -55,13 +55,13 @@ function LeaderBoard() {
                         scope="col"
                         className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                       >
-                        Status
+                        Score
                       </th>
                       <th
                         scope="col"
                         className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                       >
-                        view
+                        Max Score
                       </th>
                     </tr>
                   </thead>
@@ -72,7 +72,7 @@ function LeaderBoard() {
                           {participant._id}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          {participant.score}
+                          {participant.userId}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                         {participant.score}
@@ -104,4 +104,4 @@ function mapActionToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapActionToProps)(LeaderBoard);
+export default connect(mapStateToProps, mapActionToProps)(OverallLeaderBoard);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { questionSubmission } from "../../utils/Requests";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
 function MySubmission() {
@@ -91,7 +91,6 @@ function MySubmission() {
               </div>
             </div>
           </main>
-          <Outlet />
         </div>
       )}
     </div>
