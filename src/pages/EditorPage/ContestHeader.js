@@ -1,36 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Requests } from "../../utils/Index";
+import React from "react";
+import { Link } from "react-router-dom";
+import CountDownTimer from "@inlightmedia/react-countdown-timer"
 
 const ContestHeader = (props) => {
-
-  const [title, setTitle] = useState()
   
   return (
     <div className="">
       <div class="px-2">
         <div class="flex -mx-2">
-          <div class="w-1/3 px-2">
+          <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2"> 
-              <Link to={""}>Problem</Link>{" "}
+              <Link to={""}>Problem</Link>
             </div>
           </div>
-          <div class="w-1/3 px-2">
+          <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2">
-              <Link to={"/"}>Submission</Link>
+              <Link to={"/submission"}>Submission</Link>
             </div>
           </div>
-          <div class="w-1/3 px-2">
+          <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2">
-              <Link to={"/"}>Leader Board</Link>
+              <Link to={"/leaderboard"}>Leader Board</Link>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="flex">
-        <div className="contest-name px-32 py-4 text-lg">{title}</div>
-        <div className="score-timer">
-          <div>Time Left: </div>
+          <div class="w-1/4 px-2">
+            <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center">
+              Time : <CountDownTimer dateTime={props.timer}></CountDownTimer>
+            </div>
+          </div>
         </div>
       </div>
     </div>

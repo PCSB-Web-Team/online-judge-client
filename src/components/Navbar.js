@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const { userId } = useParams();
 
   function logout() {
     props.logout();
@@ -61,8 +60,8 @@ const Navbar = (props) => {
                   onClick={() => setNavbarOpen()}
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
-                      : "text-gray-50 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -74,8 +73,8 @@ const Navbar = (props) => {
                   to={`/submission`}
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
-                      : "text-gray-50 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -87,8 +86,8 @@ const Navbar = (props) => {
                   to="/leaderboard"
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
-                      : "text-gray-50 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -102,8 +101,8 @@ const Navbar = (props) => {
                   replace
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
-                      : "text-gray-50 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -119,8 +118,8 @@ const Navbar = (props) => {
                   to="/register"
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
-                      : "text-gray-50 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -132,8 +131,8 @@ const Navbar = (props) => {
                   to="/login"
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
-                      : "text-gray-50 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >

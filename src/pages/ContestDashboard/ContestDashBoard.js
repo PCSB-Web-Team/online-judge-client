@@ -9,7 +9,6 @@ import Problem from "../EditorPage/Problem";
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
   const [timer, setTimer] = useState();
-  const [title, setTitle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
   useEffect(() => {
@@ -22,7 +21,7 @@ function ContestDashBoard() {
         })
         .catch((error) => {});
       Requests.getContestById(contestId).then((res) => {
-        setTimer(res.data.status.time);
+        setTimer(res.data.startsOn);
       });
     }
   }, []);

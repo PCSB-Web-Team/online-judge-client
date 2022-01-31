@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@heroicons/react": "^1.0.5",
+		"@inlightmedia/react-countdown-timer": "^1.1.2",
 		"@reduxjs/toolkit": "^1.7.1",
 		"@tailwindcss/forms": "^0.4.0",
 		"@testing-library/jest-dom": "^5.11.4",
