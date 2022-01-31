@@ -9,6 +9,7 @@ import Problem from "../EditorPage/Problem";
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
   const [timer, setTimer] = useState();
+  const [title, setTitle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
   useEffect(() => {
@@ -47,7 +48,7 @@ function ContestDashBoard() {
                     <div className="mt-4 flex flex-col">
                       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table className="min-w-full">
-                          <thead className="bg-gray-200 p-2">
+                          <thead className="bg-gray-300 p-2">
                             <tr>
                               <th
                                 scope="col"
@@ -73,7 +74,7 @@ function ContestDashBoard() {
                             {question.map((questions) => (
                               <tr
                                 key={question}
-                                className="bg-white hover:bg-opacity-25"
+                                className="bg-white hover:bg-opacity-50"
                               >
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   {questions.title}

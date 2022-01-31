@@ -16,7 +16,7 @@ const Navbar = (props) => {
       className={
         (props.transparent
           ? "top-0 absolute z-50 w-full"
-          : "relative shadow-lg bg-gray-300 shadow-lg") +
+          : "relative shadow-lg bg-gray-800 shadow-lg") +
         " flex flex-wrap items-center justify-between px-2 py-3 "
       }
     >
@@ -26,7 +26,7 @@ const Navbar = (props) => {
             <Link
               to="/"
               className={
-                (props.transparent ? "text-white" : "text-gray-800") +
+                (props.transparent ? "text-white" : "text-gray-50") +
                 " text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
               }
             >
@@ -40,7 +40,7 @@ const Navbar = (props) => {
           >
             <i
               className={
-                (props.transparent ? "text-white" : "text-gray-800") +
+                (props.transparent ? "text-white" : "text-gray-50") +
                 " fas fa-bars"
               }
             ></i>
@@ -48,7 +48,7 @@ const Navbar = (props) => {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center bg-gray-300 lg:bg-transparent lg:shadow-none" +
+            "lg:flex flex-grow items-center bg-gray-800 lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded " : " hidden")
           }
           id="example-navbar-warning"
@@ -61,8 +61,8 @@ const Navbar = (props) => {
                   onClick={() => setNavbarOpen()}
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
+                      : "text-gray-50 hover:text-gray-600") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -74,8 +74,8 @@ const Navbar = (props) => {
                   to={`/submission`}
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
+                      : "text-gray-50 hover:text-gray-600") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -87,8 +87,8 @@ const Navbar = (props) => {
                   to="/leaderboard"
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
+                      : "text-gray-50 hover:text-gray-600") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -102,8 +102,8 @@ const Navbar = (props) => {
                   replace
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
+                      : "text-gray-50 hover:text-gray-600") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -119,8 +119,8 @@ const Navbar = (props) => {
                   to="/register"
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
+                      : "text-gray-50 hover:text-gray-600") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
@@ -132,8 +132,8 @@ const Navbar = (props) => {
                   to="/login"
                   className={
                     (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-300 text-gray-800"
-                      : "text-gray-800 hover:text-gray-600") +
+                      ? "lg:text-white lg:hover:text-gray-300 text-gray-50"
+                      : "text-gray-50 hover:text-gray-600") +
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
