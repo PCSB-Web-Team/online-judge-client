@@ -34,7 +34,7 @@ function ContestDashBoard() {
         </div>
       ) : (
         <div className="problem problem-main editor">
-          <ContestHeader timer={timer} />
+          <ContestHeader timer={timer} /><br />
           <Routes>
             <Route
               path="/"
