@@ -81,8 +81,8 @@ int main(){
   }
 
   function reset() {
-    // localStorage.setItem("pcsb-code", JSON.stringify(vals));
-    // setValues(vals);
+    localStorage.setItem("pcsb-code", vals);
+    setValues(vals);
   }
 
   return (
@@ -120,11 +120,11 @@ int main(){
         mode={modes[lang]}
         theme="monokai"
         width="100%"
-        // onChange={onChange}
+        onChange={onChange}
         className="editor-main"
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
-        // value={values[lang]}
+        value={values[lang]}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
