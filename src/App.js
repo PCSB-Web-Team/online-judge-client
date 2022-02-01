@@ -31,8 +31,7 @@ function App(props) {
         .catch((error) => {
           navigate("/");
         });
-    } else {
-    }
+    } 
   }, []);
 
   return (
