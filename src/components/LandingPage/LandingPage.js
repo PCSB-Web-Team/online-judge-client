@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import meta from "../../assets/meta.png";
 import programmer from "../../assets/programmer.png";
 import "./LandingPage.css";
 
@@ -29,6 +28,7 @@ const LandingPage = () => {
             <img className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 img_handle" src={programmer} alt="" />
           </div>
         </div>
+        <div className="p-4"></div>
       </div>
     </div>
   );

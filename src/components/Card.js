@@ -7,7 +7,7 @@ import Countdown from "./countdown";
 
 const Card = ({ status, ...props }) => {
   return (
-    <div className="w-80 rounded-sm overflow-hidden shadow-lg m-12">
+    <div className="w-80 rounded-sm border-2 border-sky-200 hover:border-indigo-400 overflow-hidden shadow-lg m-12">
       <img
         src={caret}
         alt="contest"

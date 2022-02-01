@@ -70,7 +70,7 @@ const Login = (props) => {
           <p className="link p-3">
             Don"t have an account? <Link to="/register">Sign Up</Link>
           </p>
-          <div className="p-60"></div>
+          <div className="p-24"></div>
         </div>
       )}
     </Formik>

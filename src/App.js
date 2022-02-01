@@ -46,7 +46,7 @@ function App(props) {
           <Loader></Loader>
         </div>
       ) : (
-        <div className="App bg-gray-50">
+        <div className="background">
           <Navbar />
           <Routes>
             {props.isAuthenticated ? (
@@ -57,6 +57,7 @@ function App(props) {
                   element={<MySubmission />}
                 />
                 <Route path="/:contestId/*" element={<ContestDashBoard />} />
+                <Route path="/webteam" element={<WebTeam/>}/>
               </>
             ) : (
               <>

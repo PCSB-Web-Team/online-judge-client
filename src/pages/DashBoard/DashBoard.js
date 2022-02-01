@@ -43,7 +43,6 @@ const Dashboard = (props) => {
                   );
                 })}
               </div>
-              <div className="p-40"></div>
             </div>
           </>
         </div>
@@ -57,10 +56,5 @@ function mapStateToProps(state) {
     isAuthenticated: state.isAuthenticated,
   };
 }
-function mapActionToProps(dispatch) {
-  return {
-    getContests: (userData) => dispatch(getContests(userData)),
-  };
-}
 
-export default connect(mapStateToProps, mapActionToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
