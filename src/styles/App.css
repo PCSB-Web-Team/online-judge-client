@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+html {
+  height: 100%;
+}
 
+.background  {
+  background: linear-gradient(#141e30, #243b55);
+}
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;

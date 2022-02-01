@@ -7,14 +7,15 @@ import { connect } from "react-redux";
 import Navbar from "./components/Navbar";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
-import NotFound from "./components/NotFound";
 import Loader from "./components/Loader/Loader";
-import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 import MySubmission from "./pages/Submission/MySubmission";
-import AllSubmission from "./pages/Submission/AllSubmission";
 import Dashboard from "./pages/DashBoard/DashBoard";
 import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
 import OverallLeaderBoard from "./pages/LeaderBoard/OverallLeaderBoard";
+import LandingPage from "./components/LandingPage/LandingPage";
+import NotFound from "./components/NotFound/NotFound";
+import WebTeam from "./components/WebTeam/WebTeam";
+import Footer from "./components/Footer";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -56,22 +57,19 @@ function App(props) {
                   element={<MySubmission />}
                 />
                 <Route path="/:contestId/*" element={<ContestDashBoard />} />
-                <Route
-                  path="/:contestId/leaderboard"
-                  element={<LeaderBoard />}
-                />
-                <Route path="/leaderboard" element={<OverallLeaderBoard />} />
-                <Route path="/submission" element={<AllSubmission />} />
               </>
             ) : (
               <>
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
-                <Route path="/" element={<Dashboard />} />
-                <Route element={<NotFound />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/contest" element={<Dashboard />} />
+                <Route path="/webteam" element={<WebTeam/>}/>
+                <Route path="" element={<NotFound />} />
               </>
             )}
           </Routes>
+          <Footer/>
         </div>
       )}
     </div>

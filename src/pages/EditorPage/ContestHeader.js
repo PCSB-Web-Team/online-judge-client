@@ -1,31 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import CountDownTimer from "@inlightmedia/react-countdown-timer"
+import { Link, useParams } from "react-router-dom";
+import Countdown from "../../components/countdown";
 
 const ContestHeader = (props) => {
-  
+  const {contestId} = useParams();
   return (
     <div className="">
       <div class="px-2">
         <div class="flex ">
           <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2"> 
-              <Link to={""}>Problem</Link>
+              <Link to={`/${contestId}`}>Problem</Link>
             </div>
           </div>
           <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2">
-              <Link to={"/submission"}>Submission</Link>
+              <Link to={`/${contestId}/submission`}>Submission</Link>
             </div>
           </div>
           <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center p-2">
-              <Link to={"/leaderboard"}>Leader Board</Link>
+              <Link to={`/${contestId}/leaderboard`}>Leader Board</Link>
             </div>
           </div>
           <div class="w-1/4 px-2">
             <div class="bg-gray-500 hover:bg-gray-600 h-12 text-white text-center">
-              Time : <CountDownTimer dateTime={props.timer}></CountDownTimer>
+              Time : <Countdown seconds={props.data.status.time}/>
             </div>
           </div>
         </div>

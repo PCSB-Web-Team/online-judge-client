@@ -70,32 +70,6 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link
-                  to={`/submission`}
-                  className={
-                    (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
-                      : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  }
-                >
-                  <span className="hide-sm">My Submission</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/leaderboard"
-                  className={
-                    (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
-                      : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  }
-                >
-                  <span className="hide-sm">LeaderBoard</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
                   onClick={logout}
                   to="/"
                   replace

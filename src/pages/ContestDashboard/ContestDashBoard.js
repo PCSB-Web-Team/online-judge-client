@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { Link, useParams, Route, Routes } from "react-router-dom";
+import { Link, useParams, Route, Routes, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ContestHeader from "../EditorPage/ContestHeader";
 import Problem from "../EditorPage/Problem";
+import AllSubmission from "../Submission/AllSubmission";
+import LeaderBoard from "../LeaderBoard/LeaderBoard";
+import NotFound from "../../components/NotFound/NotFound";
 
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
-  const [timer, setTimer] = useState();
+  const [data, setData] = useState({ status: { description: "", time: 0 } });
   const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     setIsLoading(true);
     if (contestId) {
       Requests.getQuestions(contestId)
         .then((res) => {
+          console.log(res.data);
           setQuestion(res.data);
           setIsLoading(false);
         })
         .catch((error) => {});
       Requests.getContestById(contestId).then((res) => {
-        setTimer(res.data.startsOn);
+        setData(res.data);
+        setIsLoading(false);
       });
     }
   }, []);
@@ -34,7 +40,9 @@ function ContestDashBoard() {
         </div>
       ) : (
         <div className="problem problem-main editor">
-          <ContestHeader timer={timer} /><br />
+          <div className="mb-4">
+            <ContestHeader data={data} />
+          </div>
           <Routes>
             <Route
               path="/"
@@ -70,9 +78,9 @@ function ContestDashBoard() {
                             </tr>
                           </thead>
                           <tbody className="bg-gray-25 divide-y-2 divide-gray-100">
-                            {question.map((questions) => (
+                            {question.map((questions, index) => (
                               <tr
-                                key={question}
+                                key={index}
                                 className="bg-white hover:bg-opacity-50"
                               >
                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -100,6 +108,9 @@ function ContestDashBoard() {
               }
             />
             <Route path=":questionId" element={<Problem />} />
+            <Route path="submission" element={<AllSubmission />} />
+            <Route path="leaderboard" element={<LeaderBoard />} />
+            <Route path="" element={<NotFound />} />
           </Routes>
         </div>
       )}

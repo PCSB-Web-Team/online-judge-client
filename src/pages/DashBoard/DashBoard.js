@@ -5,9 +5,6 @@ import { Requests } from "../../utils/Index";
 import { getContests } from "../../utils/Requests";
 import Loader from "../../components/Loader/Loader";
 import { Routes, Route } from "react-router-dom";
-import ContestDashboard from "../ContestDashboard/ContestDashBoard";
-import NotFound from "../../components/NotFound";
-import Problem from "../EditorPage/Problem";
 
 const Dashboard = (props) => {
   const [data, setData] = useState([]);

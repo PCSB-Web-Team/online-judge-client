@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { userSubmission } from "../../utils/Requests";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import ContestHeader from "../EditorPage/ContestHeader";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -12,12 +13,16 @@ function LeaderBoard() {
 
   useEffect(() => {
     setIsLoading(true);
-    Requests.contestRanking(contestId)
-      .then((res) => {
-        setData(res.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {});
+    console.log(contestId);
+    if (contestId) {
+      Requests.contestRanking(contestId)
+        .then((res) => {
+          setData(res.data);
+          setIsLoading(false);
+          console.log(res.data);
+        })
+        .catch((error) => {});
+    }
   }, []);
 
   return (
@@ -27,11 +32,10 @@ function LeaderBoard() {
           <Loader />
         </div>
       ) : (
-        <div className="min-h-screen bg-gray-100 text-gray-900">
+        <div className="min-h-screen bg-gray-100 text-gray-900 mb-4">
           <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-            <div className="DashBoard">
-              <br />
-              <br />
+            <div className="DashBoard mb-4">
+              
               <h1 className="text-xl font-semibold">Problem Statement</h1>
             </div>
             <div className="mt-4 flex flex-col">
@@ -66,8 +70,8 @@ function LeaderBoard() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {data.map((participant) => (
-                      <tr key={data}>
+                    {data.map((participant, index) => (
+                      <tr key={index}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           {participant._id}
                         </td>
@@ -75,11 +79,9 @@ function LeaderBoard() {
                           {participant.score}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                        {participant.score}
+                          {participant.score}
                         </td>
-                        <td>
-                        {participant.score}
-                        </td>
+                        <td>{participant.score}</td>
                       </tr>
                     ))}
                   </tbody>
