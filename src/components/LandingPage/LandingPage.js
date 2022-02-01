@@ -25,7 +25,11 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="w-3/12 h-6/12">
-            <img className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 img_handle" src={programmer} alt="" />
+            <img
+              className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 img_handle"
+              src={programmer}
+              alt=""
+            />
           </div>
         </div>
         <div className="p-4"></div>

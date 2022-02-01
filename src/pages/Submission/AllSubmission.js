@@ -64,7 +64,7 @@ function AllSubmission() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {data.map((questions) => (
+                    {data.length ? data.map((questions) => (
                       <tr key={data}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           {questions._id}
@@ -84,7 +84,7 @@ function AllSubmission() {
                           </Link>
                         </td>
                       </tr>
-                    ))}
+                    )): <div>no submission</div>}
                   </tbody>
                 </table>
               </div>

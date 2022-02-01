@@ -35,7 +35,6 @@ function LeaderBoard() {
         <div className="min-h-screen text-gray-900 ">
           <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
             <div className="DashBoard mb-4">
-              
               <h1 className="text-xl font-semibold">Leader Board</h1>
             </div>
             <div className="mt-4 flex flex-col">

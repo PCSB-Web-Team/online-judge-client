@@ -33,7 +33,6 @@ function App(props) {
         });
     } else {
     }
-    setIsLoading(false);
   }, []);
 
   return (
@@ -45,24 +44,27 @@ function App(props) {
       ) : (
         <div className="background">
           <Navbar />
-          <Routes>
-            {props.isAuthenticated ? (
-              <>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/:contestId/*" element={<ContestDashBoard />} />
-                <Route path="/webteam" element={<WebTeam />} />
-              </>
-            ) : (
-              <>
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/contest" element={<Dashboard />} />
-                <Route path="/webteam" element={<WebTeam />} />
-              </>
-            )}
-             <Route path='*' element={<NotFound />} />
-          </Routes>
+          <div className="min-h-screen">
+            <Routes>
+              {props.isAuthenticated ? (
+                <>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/:contestId/*" element={<ContestDashBoard />} />
+                  <Route path="/webteam" element={<WebTeam />} />
+                  <Route path="*" element={<NotFound />} />
+                </>
+              ) : (
+                <>
+                  <Route path="login" element={<Login />} />
+                  <Route path="register" element={<Register />} />
+                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/contest" element={<Dashboard />} />
+                  <Route path="/webteam" element={<WebTeam />} />
+                  <Route path="*" element={<NotFound />} />
+                </>
+              )}
+            </Routes>
+          </div>
           <Footer />
         </div>
       )}
