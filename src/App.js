@@ -8,10 +8,8 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
 import Loader from "./components/Loader/Loader";
-import MySubmission from "./pages/Submission/MySubmission";
 import Dashboard from "./pages/DashBoard/DashBoard";
 import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
-import OverallLeaderBoard from "./pages/LeaderBoard/OverallLeaderBoard";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import WebTeam from "./components/WebTeam/WebTeam";
@@ -34,7 +32,6 @@ function App(props) {
           navigate("/");
         });
     } else {
-      navigate("/");
     }
     setIsLoading(false);
   }, []);
@@ -52,12 +49,8 @@ function App(props) {
             {props.isAuthenticated ? (
               <>
                 <Route path="/" element={<Dashboard />} />
-                <Route
-                  path=":contestId/:questionId/submission"
-                  element={<MySubmission />}
-                />
                 <Route path="/:contestId/*" element={<ContestDashBoard />} />
-                <Route path="/webteam" element={<WebTeam/>}/>
+                <Route path="/webteam" element={<WebTeam />} />
               </>
             ) : (
               <>
@@ -65,12 +58,12 @@ function App(props) {
                 <Route path="register" element={<Register />} />
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/contest" element={<Dashboard />} />
-                <Route path="/webteam" element={<WebTeam/>}/>
-                <Route path="" element={<NotFound />} />
+                <Route path="/webteam" element={<WebTeam />} />
               </>
             )}
+             <Route path='*' element={<NotFound />} />
           </Routes>
-          <Footer/>
+          <Footer />
         </div>
       )}
     </div>

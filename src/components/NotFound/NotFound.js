@@ -4,7 +4,7 @@ import "./NotFound.css"
 function NotFound() {
   return (
     <div className="mb-4">
-      <h1>Page not found</h1>
+      <h1 className="text-lg text-white mb-4">Page not found</h1>
     </div>
   );
 }

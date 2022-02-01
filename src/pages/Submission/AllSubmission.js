@@ -27,10 +27,10 @@ function AllSubmission() {
           <Loader />
         </div>
       ) : (
-        <div className="min-h-screen bg-gray-100 text-gray-900">
+        <div className="min-h-screen text-gray-900">
           <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
             <div className="DashBoard mb-4">
-              <h1 className="text-xl font-semibold">Problem Statement</h1>
+              <h1 className="text-xl font-semibold">Submission</h1>
             </div>
             <div className="mt-4 flex flex-col">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

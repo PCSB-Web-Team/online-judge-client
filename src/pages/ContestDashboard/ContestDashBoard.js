@@ -39,7 +39,7 @@ function ContestDashBoard() {
           <Loader></Loader>
         </div>
       ) : (
-        <div className="problem problem-main editor">
+        <div className="problem problem-main">
           <div className="mb-4">
             <ContestHeader data={data} />
           </div>
@@ -110,7 +110,7 @@ function ContestDashBoard() {
             <Route path=":questionId" element={<Problem />} />
             <Route path="submission" element={<AllSubmission />} />
             <Route path="leaderboard" element={<LeaderBoard />} />
-            <Route path="" element={<NotFound />} />
+            {/* <Route path='*' element={<NotFound />} /> */}
           </Routes>
         </div>
       )}

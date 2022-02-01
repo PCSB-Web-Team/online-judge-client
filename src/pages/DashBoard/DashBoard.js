@@ -30,8 +30,8 @@ const Dashboard = (props) => {
         <div className="bg-gray-50">
           <>
             <div className="container mx-auto">
-              <h1 className="font-bold pb-2 p-8 border-b">Contest</h1>
-              <div className=" grid p-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8">
+              <h1 className="font-bold pb-2 p-5 border-b">Contest</h1>
+              <div className=" grid p-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 ">
                 {data.map((contest) => {
                   return (
                     <Card
