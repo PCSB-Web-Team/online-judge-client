@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { userSubmission } from "../../utils/Requests";
-import { Link, Outlet } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
 function AllSubmission() {
@@ -101,10 +100,6 @@ function mapStateToProps(state) {
     isAuthenticated: state.isAuthenticated,
   };
 }
-function mapActionToProps(dispatch) {
-  return {
-    userSubmission: (userData) => dispatch(userSubmission(userData)),
-  };
-}
 
-export default connect(mapStateToProps, mapActionToProps)(AllSubmission);
+
+export default connect(mapStateToProps)(AllSubmission);

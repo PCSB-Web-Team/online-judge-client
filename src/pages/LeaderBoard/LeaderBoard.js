@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { userSubmission } from "../../utils/Requests";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
-import ContestHeader from "../EditorPage/ContestHeader";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -99,10 +97,5 @@ function mapStateToProps(state) {
     isAuthenticated: state.isAuthenticated,
   };
 }
-function mapActionToProps(dispatch) {
-  return {
-    userSubmission: (userData) => dispatch(userSubmission(userData)),
-  };
-}
 
-export default connect(mapStateToProps, mapActionToProps)(LeaderBoard);
+export default connect(mapStateToProps)(LeaderBoard);
