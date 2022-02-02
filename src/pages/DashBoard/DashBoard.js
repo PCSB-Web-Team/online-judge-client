@@ -27,24 +27,24 @@ const Dashboard = (props) => {
           <Loader></Loader>
         </div>
       ) : (
-        <div className="bg-gray-50">
-          <>
-            <div className="container mx-auto">
-              <h1 className="font-bold pb-2 p-5 border-b">Contest</h1>
-              <div className=" grid p-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 ">
-                {data.map((contest) => {
-                  return (
-                    <Card
-                      contestId={contest.id}
-                      title={contest.title}
-                      date={contest.startsOn.split("T")[0]}
-                      {...contest}
-                    />
-                  );
-                })}
-              </div>
+        <div className="bg-slate-50 p-5">
+          <div className="container mx-auto">
+            <h1 className="font-bold pb-2 border-b mb-8 md:text-6xl text-gray-300 text-center">
+              Contests
+            </h1>
+            <div className=" grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center content-between">
+              {data.map((contest) => {
+                return (
+                  <Card
+                    contestId={contest.id}
+                    title={contest.title}
+                    date={contest.startsOn.split("T")[0]}
+                    {...contest}
+                  />
+                );
+              })}
             </div>
-          </>
+          </div>
         </div>
       )}
     </div>

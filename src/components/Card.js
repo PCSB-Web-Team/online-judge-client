@@ -6,7 +6,7 @@ import Countdown from "./countdown";
 
 const Card = ({ status, ...props }) => {
   return (
-    <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg m-12">
+    <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full">
       <img
         src={
           props.logo ||
