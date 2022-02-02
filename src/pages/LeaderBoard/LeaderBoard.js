@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { userSubmission } from "../../utils/Requests";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
-import ContestHeader from "../EditorPage/ContestHeader";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);

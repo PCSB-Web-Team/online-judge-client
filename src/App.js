@@ -41,7 +41,7 @@ function App(props) {
           <Loader></Loader>
         </div>
       ) : (
-        <div className="background">
+        <div>
           <Navbar />
           <div className="min-h-screen">
             <Routes>

@@ -3,7 +3,7 @@ import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { Link, useParams, Route, Routes, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
-import ContestHeader from "../EditorPage/ContestHeader";
+import ContestHeader from "../../components/ContestHeader";
 import Problem from "../EditorPage/Problem";
 import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
