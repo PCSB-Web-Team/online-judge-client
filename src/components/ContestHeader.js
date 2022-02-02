@@ -19,14 +19,14 @@ const ContestHeader = (props) => {
     },
   ];
   return (
-    <div class="space-y-4 md:space-y-0 md:flex md:justify-between">
-      <div class="flex space-x-4">
+    <div class="space-y-4 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
+      <div class=" flex justify-around space-x-4">
         {tabs.map((tab, index) => (
           <NavLink
             to={tab.link}
             end
             className={({ isActive }) =>
-              `hover:border-b-2  border-sky-300 transform transition text-center rounded-lg p-2 px-8 font-light tracking-widest ${
+              `hover:border-b-2  border-sky-300 transform transition rounded-lg p-2 px-4 md:px-8 font-light ${
                 isActive ? " border-b-2 bg-sky-100" : "text-black border-b"
               }`
             }
@@ -36,7 +36,7 @@ const ContestHeader = (props) => {
         ))}
       </div>
       <div class="">
-        <div class="transform transition text-center rounded-lg p-2 px-8 font-light tracking-widest bg-green-200">
+        <div class="transform transition text-center rounded-lg p-2 px-8 font-light bg-green-200">
           <Countdown seconds={props.data.status.time} />
         </div>
       </div>

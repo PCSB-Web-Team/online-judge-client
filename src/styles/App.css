@@ -77,44 +77,6 @@ html {
   outline: none;
 }
 
-.problem {
-  width: 83%;
-  margin: auto;
-  margin-bottom: 3rem;
-}
-
-.problem-main {
-  background-color: rgb(248, 248, 248);
-  box-shadow: rgba(201, 207, 212, 0.2) 0px 8px 24px;
-  padding: 2rem;
-  margin-bottom: 1rem;
-}
-
-.problem h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.problem p {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  color: #576871;
-}
-
-.problem h2 {
-  margin-bottom: 15px;
-}
-
-.problem-head-info {
-  width: 70%;
-  margin: auto;
-  margin-bottom: 4rem;
-}
-
-.problem-head-info span {
-  margin: 0 10px;
-}
-
 .ace-monokai .ace_print-margin {
   display: none;
 }
