@@ -5,11 +5,10 @@ const Footer = () => {
   return (
     <div className="footer text-white p-2">
       <center>
-      <p className="">
-        Made with ❤️ <Link to="/webteam"> by PICT Web Team</Link>
-      </p>
+        <p className="">
+          Made with 🤍 <Link to="/webteam"> by PICT Web Team</Link>
+        </p>
       </center>
-      
     </div>
   );
 };

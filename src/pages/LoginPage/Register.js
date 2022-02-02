@@ -17,75 +17,100 @@ const Register = (props) => {
     password: Validators.password,
     phoneNumber: Validators.phoneNumber,
     confirmPassword: Validators.confirmPassword,
-  })
+  });
   return (
-    <Formik
-      initialValues={{
-        name: "",
-        phoneNumber: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-      }}
-      validationSchema={validate}
-      onSubmit={async values => {
-        Requests.getContests(values).then(res => {
-        })
-        Requests.signup(values).then(res => {
-          console.log(res)
-          localStorage.setItem('pcsb-oj-token', res.data.token);
-          props.login(res.data);
-          alert("Register successful")
-          navigate("/");
-        }).catch(error => {
-          alert("Enter Valid Data !")
-        })
-
-      }}
-    >
-      {formik => (
-        <div className="register-form">
-          <h1 className="text-4xl p-3 text-white">Sign Up</h1>
-          <p className="text-xl p-2 text-white">
-            <i className="fas fa-user text-white"></i> Create Your Account
-          </p>
-          <Form className="form" onSubmit={formik.handleSubmit}>
-            <div className="form-group">
-              <TextField placeholder="Name" name="name" type="text" />
-            </div>
-            <div className="form-group">
-              <TextField placeholder="Email" name="email" type="email" />
-            </div>
-            <div Name="form-group">
-              <TextField placeholder="Phone Number" name="phoneNumber" type="tel" />
-            </div>
-            <div className="form-group">
-              <TextField placeholder="password" name="password" type="password" />
-            </div>
-            <div className="form-group">
-              <TextField placeholder="Confirm Password" name="confirmPassword" type="password" />
-            </div>
-            <button className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" type="submit">Login</button>
-            <button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="reset">Reset</button>          </Form>
-          <p className="link p-3 text-white">
-            Already have an account? <Link to="/login">Sign In</Link>
-          </p>
-        </div>
-      )}
-    </Formik>
-  )
-}
+    <div>
+      <Formik
+        initialValues={{
+          name: "",
+          phoneNumber: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        }}
+        validationSchema={validate}
+        onSubmit={async (values) => {
+          Requests.getContests(values).then((res) => {});
+          Requests.signup(values)
+            .then((res) => {
+              console.log(res);
+              localStorage.setItem("pcsb-oj-token", res.data.token);
+              props.login(res.data);
+              alert("Register successful");
+              navigate("/");
+            })
+            .catch((error) => {
+              alert("Enter Valid Data !");
+            });
+        }}
+      >
+        {(formik) => (
+          <div className="register-form">
+            <h1 className="text-4xl p-3 text-white">Sign Up</h1>
+            <p className="text-xl p-2 text-white">
+              <i className="fas fa-user text-white"></i> Create Your Account
+            </p>
+            <Form className="form" onSubmit={formik.handleSubmit}>
+              <div className="form-group">
+                <TextField placeholder="Name" name="name" type="text" />
+              </div>
+              <div className="form-group">
+                <TextField placeholder="Email" name="email" type="email" />
+              </div>
+              <div Name="form-group">
+                <TextField
+                  placeholder="Phone Number"
+                  name="phoneNumber"
+                  type="tel"
+                />
+              </div>
+              <div className="form-group">
+                <TextField
+                  placeholder="password"
+                  name="password"
+                  type="password"
+                />
+              </div>
+              <div className="form-group">
+                <TextField
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  type="password"
+                />
+              </div>
+              <button
+                className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+                type="submit"
+              >
+                Login
+              </button>
+              <button
+                className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                type="reset"
+              >
+                Reset
+              </button>{" "}
+            </Form>
+            <p className="link p-3 text-white">
+              Already have an account? <Link to="/login">Sign In</Link>
+            </p>
+          </div>
+        )}
+      </Formik>
+    </div>
+  );
+};
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.isAuthenticated
-  }
+    isAuthenticated: state.isAuthenticated,
+  };
 }
 function mapActionToProps(dispatch) {
   return {
     login: (userData) => dispatch(login(userData)),
-    getContests: (contestData) => dispatch(getContests(contestData))
-  }
+    getContests: (contestData) => dispatch(getContests(contestData)),
+  };
 }
 
 export default connect(mapStateToProps, mapActionToProps)(Register);

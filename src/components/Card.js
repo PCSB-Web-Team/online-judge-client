@@ -1,5 +1,4 @@
 import React from "react";
-import caret from "../assets/user.png";
 import { Link } from "react-router-dom";
 import { login } from "../store/actions";
 import { connect } from "react-redux";

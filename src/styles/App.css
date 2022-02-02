@@ -9,7 +9,8 @@ html {
   background: linear-gradient(#141e30, #243b55);
   height: 100vh;
 }
-.footer{
+
+.footer {
   background: linear-gradient(#141e30, #243b55);
   height: 5vh;
 }
@@ -239,6 +240,6 @@ html {
   display: flex;
   align-items: center;
 }
-.contest_dashboard{
+.contest_dashboard {
   height: 71vh;
 }
