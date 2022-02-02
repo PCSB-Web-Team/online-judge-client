@@ -30,8 +30,10 @@ function App(props) {
         })
         .catch((error) => {
           navigate("/");
+          setIsLoading(false);
         });
     } 
+    setIsLoading(false);
   }, []);
 
   return (
@@ -43,7 +45,7 @@ function App(props) {
       ) : (
         <div className="background">
           <Navbar />
-          <div className="min-h-screen">
+          <div>
             <Routes>
               {props.isAuthenticated ? (
                 <>

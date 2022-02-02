@@ -7,14 +7,12 @@ import ContestHeader from "../EditorPage/ContestHeader";
 import Problem from "../EditorPage/Problem";
 import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
-import NotFound from "../../components/NotFound/NotFound";
 
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
-  const navigate = useNavigate();
   useEffect(() => {
     setIsLoading(true);
     if (contestId) {
@@ -47,7 +45,7 @@ function ContestDashBoard() {
             <Route
               path="/"
               element={
-                <div className="min-h-screen text-gray-900">
+                <div className="contest_dashboard text-gray-900">
                   <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
                     <div className="DashBoard">
                       <h1 className="text-xl font-semibold">Problem Solving</h1>
@@ -110,7 +108,6 @@ function ContestDashBoard() {
             <Route path=":questionId" element={<Problem />} />
             <Route path="submission" element={<AllSubmission />} />
             <Route path="leaderboard" element={<LeaderBoard />} />
-            {/* <Route path='*' element={<NotFound />} /> */}
           </Routes>
         </div>
       )}

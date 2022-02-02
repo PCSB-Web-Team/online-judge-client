@@ -6,6 +6,11 @@ html {
 
 .background {
   background: linear-gradient(#141e30, #243b55);
+  height: 100vh;
+}
+.footer{
+  background: linear-gradient(#141e30, #243b55);
+  height: 5vh;
 }
 * {
   font-family: "Poppins", sans-serif;
@@ -232,4 +237,7 @@ html {
 .score-timer {
   display: flex;
   align-items: center;
+}
+.contest_dashboard{
+  height: 71vh;
 }
