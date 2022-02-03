@@ -12,7 +12,7 @@ import Dashboard from "./pages/DashBoard/DashBoard";
 import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
-import WebTeam from "./components/WebTeam/WebTeam";
+import OurTeam from "./components/OurTeam/OurTeam";
 import Footer from "./components/Footer";
 
 function App(props) {
@@ -53,7 +53,7 @@ function App(props) {
                 <>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/:contestId/*" element={<ContestDashBoard />} />
-                  <Route path="/webteam" element={<WebTeam />} />
+                  <Route path="/ourteam" element={<OurTeam />} />
                   <Route path="*" element={<NotFound />} />
                 </>
               ) : (
@@ -62,7 +62,7 @@ function App(props) {
                   <Route path="register" element={<Register />} />
                   <Route path="/" element={<LandingPage />} />
                   <Route path="/contest" element={<Dashboard />} />
-                  <Route path="/webteam" element={<WebTeam />} />
+                  <Route path="/ourteam" element={<OurTeam />} />
                   <Route path="*" element={<NotFound />} />
                 </>
               )}
