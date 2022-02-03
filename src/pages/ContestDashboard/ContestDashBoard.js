@@ -43,36 +43,36 @@ function ContestDashBoard() {
         <Route
           path="/"
           element={
-            <div className="min-h-screen text-gray-900">
-              <div className="DashBoard">
-                <h1 className="text-xl font-semibold">Problem Solving</h1>
+            <div className="min-h-screen text-gray-900 p-5 px-16">
+              <div >
+                <h1 className="text-xl font-semibold text-cyan-500">Problem Solving</h1>
               </div>
-              <div className="mt-4 flex flex-col">
+              <div className="mt-4 flex flex-col p-1">
                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                   <table className="min-w-full">
                     <thead className="bg-gray-300 p-2">
                       <tr>
                         <th
                           scope="col"
-                          className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                          className="group px-2 py-4 text-left text-md font-medium uppercase tracking-wider"
                         >
                           Title
                         </th>
                         <th
                           scope="col"
-                          className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                          className="group px-2 py-4 text-left text-md font-medium uppercase tracking-wider"
                         >
                           Max Score
                         </th>
                         <th
                           scope="col"
-                          className="group px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                          className="group px-2 py-4 text-left text-md font-medium uppercase tracking-wider"
                         >
                           Solve
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-gray-25 divide-y-2 divide-gray-100">
+                    <tbody className="bg-gray-25 p-4 divide-y-2 divide-gray-100">
                       {question.map((questions, index) => (
                         <tr
                           key={index}
