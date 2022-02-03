@@ -32,7 +32,9 @@ function App(props) {
           navigate("/");
           setIsLoading(false);
         });
-    } 
+    } else {
+      navigate("/");
+    }
     setIsLoading(false);
   }, []);
 

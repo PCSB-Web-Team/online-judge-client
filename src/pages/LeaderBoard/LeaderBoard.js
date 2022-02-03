@@ -30,10 +30,10 @@ function LeaderBoard() {
   const pages = _.range(1, pageCount + 1);
   const pagination = (pageNo) => {
     setCurrentPage(pageNo);
-    const startIndex = (pageNo - 1)*pageSize;
+    const startIndex = (pageNo - 1) * pageSize;
     const paginatedData = _(data).slice(startIndex).take(pageSize).value();
-    setPaginatedData(paginatedData)
-  }
+    setPaginatedData(paginatedData);
+  };
 
   return (
     <div>
@@ -49,7 +49,9 @@ function LeaderBoard() {
             <div className="contest_dashboard text-gray-900 ">
               <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
                 <div className="DashBoard mb-4">
-                  <h1 className="text-xl text-cyan-500 font-semibold">Leader Board</h1>
+                  <h1 className="text-xl text-cyan-500 font-semibold">
+                    Leader Board
+                  </h1>
                 </div>
                 <div className="mt-4 flex flex-col">
                   <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

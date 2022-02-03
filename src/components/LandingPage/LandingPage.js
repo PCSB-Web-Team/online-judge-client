@@ -5,7 +5,7 @@ import "./LandingPage.css";
 
 const LandingPage = () => {
   return (
-    <div className="background">
+    <div className="home">
       <div className="p-10">
         <div className="flex">
           <div>

@@ -46,9 +46,9 @@ const Register = (props) => {
       >
         {(formik) => (
           <div className="register-form">
-            <h1 className="text-4xl p-3 text-white">Sign Up</h1>
-            <p className="text-xl p-2 text-white">
-              <i className="fas fa-user text-white"></i> Create Your Account
+            <h1 className="text-4xl p-3 ">Sign Up</h1>
+            <p className="text-xl p-2 ">
+              <i className="fas fa-user "></i> Create Your Account
             </p>
             <Form className="form" onSubmit={formik.handleSubmit}>
               <div className="form-group">
@@ -91,7 +91,7 @@ const Register = (props) => {
                 Reset
               </button>{" "}
             </Form>
-            <p className="link p-3 text-white">
+            <p className="link p-3">
               Already have an account? <Link to="/login">Sign In</Link>
             </p>
           </div>

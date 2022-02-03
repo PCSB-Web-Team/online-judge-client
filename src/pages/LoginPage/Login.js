@@ -39,9 +39,9 @@ const Login = (props) => {
     >
       {(formik) => (
         <div className="register-form">
-          <h1 className="text-4xl p-4 text-white">Sign Up</h1>
-          <p className="text-xl p-2 text-white">
-            <i className="fas fa-user text-white"></i> Create Your Account
+          <h1 className="text-4xl p-4 ">Sign Up</h1>
+          <p className="text-xl p-2 ">
+            <i className="fas fa-user "></i> Create Your Account
           </p>
           <Form className="form" onSubmit={formik.handleSubmit}>
             <div className="form-group">
@@ -55,19 +55,19 @@ const Login = (props) => {
               />
             </div>
             <button
-              className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+              className=" bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
               type="submit"
             >
               Login
             </button>
             <button
-              className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              className=" bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
               type="reset"
             >
               Reset
             </button>
           </Form>
-          <p className="link p-3 text-white">
+          <p className="link p-3 ">
             Don"t have an account? <Link to="/register">Sign Up</Link>
           </p>
           <div className="p-24"></div>
