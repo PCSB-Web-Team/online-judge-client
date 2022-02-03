@@ -7,6 +7,7 @@ import ContestHeader from "../../components/ContestHeader";
 import Problem from "../EditorPage/Problem";
 import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
+import DataTable from "react-data-table-component";
 
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
@@ -30,6 +31,56 @@ function ContestDashBoard() {
     }
   }, []);
 
+  const columns = [
+    {
+      name: "Title",
+      selector: (row) => row.title,
+      sortable: true,
+    },
+    {
+      name: "Max Score",
+      selector: (row) => row.score,
+      sortable: true,
+    },
+    
+    {
+      name: "View",
+      button: true,
+      cell: (row) => (
+        <div>
+          <button
+            type="button"
+            class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+          >
+             <Link  to={`${row._id}`}>Solve</Link>
+          </button>
+        </div>
+      ),
+    },
+  ];
+  const customStyles = {
+    rows: {
+      style: {
+        minHeight: "72px",
+      },
+    },
+    headCells: {
+      style: {
+        fontSize: "1.2rem",
+        backgroundColor: "lightgray",
+        paddingLeft: "8px",
+        paddingRight: "8px",
+      },
+    },
+    cells: {
+      style: {
+        fontSize: "1rem",
+        paddingLeft: "8px",
+        paddingRight: "8px",
+      },
+    },
+  };
+
   return isLoading ? (
     <div>
       <Loader></Loader>
@@ -43,59 +94,19 @@ function ContestDashBoard() {
         <Route
           path="/"
           element={
-            <div className="min-h-screen text-gray-900 p-5 px-16">
-              <div >
-                <h1 className="text-xl font-semibold text-cyan-500">Problem Solving</h1>
+            <div className="min-h-screen max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+              <div className="">
+                <h1 className="text-xl font-semibold text-cyan-500">
+                  Problem Solving
+                </h1>
               </div>
-              <div className="mt-4 flex flex-col p-1">
+              <div className="mt-4 flex flex-col">
                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                  <table className="min-w-full">
-                    <thead className="bg-gray-300 p-2">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="group px-2 py-4 text-left text-md font-medium uppercase tracking-wider"
-                        >
-                          Title
-                        </th>
-                        <th
-                          scope="col"
-                          className="group px-2 py-4 text-left text-md font-medium uppercase tracking-wider"
-                        >
-                          Max Score
-                        </th>
-                        <th
-                          scope="col"
-                          className="group px-2 py-4 text-left text-md font-medium uppercase tracking-wider"
-                        >
-                          Solve
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-gray-25 p-4 divide-y-2 divide-gray-100">
-                      {question.map((questions, index) => (
-                        <tr
-                          key={index}
-                          className="bg-white hover:bg-opacity-50"
-                        >
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {questions.title}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {questions.score}
-                          </td>
-                          <td>
-                            <Link
-                              to={`${questions._id}`}
-                              className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
-                            >
-                              Solve
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <DataTable
+                    columns={columns}
+                    data={question}
+                    customStyles={customStyles}
+                  />
                 </div>
               </div>
             </div>
@@ -104,7 +115,6 @@ function ContestDashBoard() {
         <Route path=":questionId" element={<Problem />} />
         <Route path="submission" element={<AllSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />
-        {/* <Route path='*' element={<NotFound />} /> */}
       </Routes>
     </div>
   );

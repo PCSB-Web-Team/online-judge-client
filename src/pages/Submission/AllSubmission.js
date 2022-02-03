@@ -24,6 +24,17 @@ function AllSubmission() {
       selector: (row) => row.status.description,
       sortable: true,
     },
+    {
+      name:"View",
+      button: true,
+      cell: () => (
+        <div class="text-center">
+          <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">
+            <Link to="/">View</Link> 
+          </button>
+        </div>
+      )
+    }
   ];
   const customStyles = {
     rows: {
@@ -71,14 +82,14 @@ function AllSubmission() {
           ) : (
             <div className="contest_dashboard text-gray-900">
               <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-                <div className="DashBoard mb-4">
+                <div className="mb-4">
                   <h1 className="text-xl text-cyan-500 font-semibold">
                     Submission
                   </h1>
                 </div>
                 <div className="mt-4 flex flex-col">
                   <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <DataTable columns={columns} data={data} customStyles={customStyles} />
+                  <DataTable columns={columns} data={data} customStyles={customStyles} />
                   </div>
                 </div>
               </main>
