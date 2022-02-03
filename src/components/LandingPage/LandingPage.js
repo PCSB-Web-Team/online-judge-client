@@ -5,7 +5,7 @@ import "./LandingPage.css";
 
 const LandingPage = () => {
   return (
-    <div className="home">
+    <div className="bg-gradient-to-r from-gray-700 to-gray-800 min-h-screen">
       <div className="p-10">
         <div className="flex">
           <div>
