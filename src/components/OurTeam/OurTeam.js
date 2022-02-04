@@ -10,7 +10,13 @@ const OurTeam = () => {
           <div className="text-2xl p-8">Our Team</div> 
             <div className="flex px-8">
               <div className="mb-24">                
-              <a href="https://www.linkedin.com/in/mansi-gundre-a6a722207/"><img src={user} className="w-6/12 rounded-full transform transition duration-500 hover:scale-125" alt="" /></a>
+              <a href=""><img src={user} className="w-6/12 rounded-full transform transition duration-500 hover:scale-125" alt="" /></a>
+              </div>
+              <div className="mb-24">                
+              <a href=""><img src={user} className="w-6/12 rounded-full transform transition duration-500 hover:scale-125" alt="" /></a>
+              </div>
+              <div className="mb-24">                
+              <a href=""><img src={user} className="w-6/12 rounded-full transform transition duration-500 hover:scale-125" alt="" /></a>
               </div>
             </div>
           </center>

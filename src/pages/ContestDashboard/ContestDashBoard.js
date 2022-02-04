@@ -8,6 +8,7 @@ import Problem from "../EditorPage/Problem";
 import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import DataTable from "react-data-table-component";
+import NotFound from "../../components/NotFound/NotFound";
 
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
@@ -29,6 +30,7 @@ function ContestDashBoard() {
         setIsLoading(false);
       });
     }
+    setIsLoading(false);
   }, []);
 
   const columns = [
@@ -44,7 +46,7 @@ function ContestDashBoard() {
     },
     
     {
-      name: "View",
+      name: "Solve",
       button: true,
       cell: (row) => (
         <div>
@@ -74,6 +76,7 @@ function ContestDashBoard() {
     },
     cells: {
       style: {
+        backgroundColor: "&:hoverlightgray",
         fontSize: "1rem",
         paddingLeft: "8px",
         paddingRight: "8px",
@@ -115,6 +118,7 @@ function ContestDashBoard() {
         <Route path=":questionId" element={<Problem />} />
         <Route path="submission" element={<AllSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
