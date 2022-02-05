@@ -9,6 +9,7 @@ import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import DataTable from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
+import ViewSubmission from "../Submission/ViewSubmission";
 
 function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
@@ -117,6 +118,7 @@ function ContestDashBoard() {
         />
         <Route path=":questionId" element={<Problem />} />
         <Route path="submission" element={<AllSubmission />} />
+        <Route path="submission/questionId" element={<ViewSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

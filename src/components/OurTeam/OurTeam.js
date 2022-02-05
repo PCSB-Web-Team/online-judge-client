@@ -11,8 +11,8 @@ const OurTeam = () => {
       <div className="text-white">
         <div className="box p-8">
           <center>
-          <div className="text-2xl p-8">Our Team</div> 
-            <div className="flex justify-center">
+          <div className="text-4xl p-8"><h2 className="font-bold">PCSB</h2>Coding Platform Team</div> 
+            <div className="flex justify-center py-4">
               <div className="mb-24">                
               <a href="https://www.linkedin.com/in/-aryanagrawal/"><img src={aryan} className="w-6/12 rounded-full transform transition duration-500 hover:scale-125" alt="" /></a>
               </div>
