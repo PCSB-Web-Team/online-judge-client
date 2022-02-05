@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import Card from "../../components/Card";
+import Card from "../../components/ContestCards/Card";
 import { Requests } from "../../utils/Index";
 import { getContests } from "../../utils/Requests";
 import Loader from "../../components/Loader/Loader";
-import { Routes, Route } from "react-router-dom";
 
 const Dashboard = (props) => {
   const [data, setData] = useState([]);

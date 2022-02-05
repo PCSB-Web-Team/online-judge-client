@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { login } from "../store/actions";
+import { login } from "../../store/actions";
 import { connect } from "react-redux";
-import Countdown from "./countdown";
+import Countdown from "../ContestHeader/Countdown";
 
 const Card = ({ status, ...props }) => {
   return (

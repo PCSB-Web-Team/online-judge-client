@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { Requests } from "./utils/Index";
 import { login } from "./store/actions";
 import { connect } from "react-redux";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
 import Loader from "./components/Loader/Loader";
@@ -13,7 +13,7 @@ import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./components/OurTeam/OurTeam";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -32,7 +32,8 @@ function App(props) {
           navigate("/");
           setIsLoading(false);
         });
-    } else {}
+    } else {
+    }
     setIsLoading(false);
   }, []);
 

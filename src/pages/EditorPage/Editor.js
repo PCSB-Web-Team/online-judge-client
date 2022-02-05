@@ -12,7 +12,6 @@ import "brace/ext/language_tools";
 import { connect } from "react-redux";
 import { contest } from "../../store/actions";
 import { Requests } from "../../utils/Index";
-import Loader from "../../components/Loader/Loader";
 
 const Editor = () => {
   const vals = {
@@ -46,7 +45,7 @@ int main(){
   const [isCustom, setIsCustom] = useState(false);
   const [customInput, setCustomInput] = useState("");
   const [customOutput, setCustomOutput] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const modes = {
     C: "c_cpp",
@@ -156,6 +155,7 @@ int main(){
           <button
             className="run-btn text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             onClick={handleRun}
+            disabled={isLoading}
           >
             <p>Run</p>
             <img src={caret} alt="caret" />
@@ -184,16 +184,16 @@ int main(){
         Output :
         <div className="p-4">
           {isLoading ? (
-            <div class="">
-              <div class="animate-pulse flex space-x-4">
-                <div class="flex-1 space-y-6 py-1">
-                  <div class="h-2 bg-slate-700 rounded"></div>
-                  <div class="space-y-3">
-                    <div class="grid grid-cols-3 gap-4">
-                      <div class="h-2 bg-slate-700 rounded col-span-2"></div>
-                      <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+            <div>
+              <div className="animate-pulse flex space-x-4">
+                <div className="flex-1 space-y-6 py-1">
+                  <div className="h-2 bg-slate-700 rounded"></div>
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="h-2 bg-slate-700 rounded col-span-2"></div>
+                      <div className="h-2 bg-slate-700 rounded col-span-1"></div>
                     </div>
-                    <div class="h-2 bg-slate-700 rounded"></div>
+                    <div className="h-2 bg-slate-700 rounded"></div>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { connect } from "react-redux";
-import { login, logout } from "../store/actions";
+import { login, logout } from "../../store/actions";
 import { Link, useParams } from "react-router-dom";
 
 const Navbar = (props) => {
@@ -73,7 +73,7 @@ const { contestId } = useParams();
               </li>
               <li className="nav-item">
                 <Link
-                  to={`${contestId}/leaderboard`} 
+                  to={`/${contestId}/leaderboard`} 
                   onClick={() => setNavbarOpen()}
                   className={
                     (props.transparent

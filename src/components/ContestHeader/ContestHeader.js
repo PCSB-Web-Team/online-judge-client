@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useParams } from "react-router-dom";
-import Countdown from "./countdown";
+import Countdown from "./Countdown";
 
 const ContestHeader = (props) => {
   const { contestId } = useParams();
