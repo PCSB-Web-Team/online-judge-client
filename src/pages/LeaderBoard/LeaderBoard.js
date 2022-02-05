@@ -12,7 +12,7 @@ function LeaderBoard() {
   const columns = [
     {
       name: "Title",
-      selector: (row) => row._id,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
@@ -26,11 +26,32 @@ function LeaderBoard() {
       sortable: true,
     },
   ];
-  // const customStyles = ;
+  const customStyles = {
+    rows: {
+      style: {
+        minHeight: "72px",
+      },
+    },
+    headCells: {
+      style: {
+        fontSize: "1.2rem",
+        backgroundColor: "lightgray",
+        paddingLeft: "8px",
+        paddingRight: "8px",
+      },
+    },
+    cells: {
+      style: {
+        backgroundColor: "&:hoverlightgray",
+        fontSize: "1rem",
+        paddingLeft: "8px",
+        paddingRight: "8px",
+      },
+    },
+  };
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(contestId);
     if (contestId) {
       Requests.contestRanking(contestId)
         .then((res) => {
@@ -64,28 +85,7 @@ function LeaderBoard() {
                     <DataTable
                       columns={columns}
                       data={data}
-                      customStyles={{
-                        rows: {
-                          style: {
-                            minHeight: "72px",
-                          },
-                        },
-                        headCells: {
-                          style: {
-                            fontSize:"1.2rem",
-                            backgroundColor: "lightgray",
-                            paddingLeft: "8px",
-                            paddingRight: "8px",
-                          },
-                        },
-                        cells: {
-                          style: {
-                            fontSize:"1rem",
-                            paddingLeft: "8px",
-                            paddingRight: "8px",
-                          },
-                        },
-                      }}
+                      customStyles={customStyles}
                       pagination
                     />
                   </div>

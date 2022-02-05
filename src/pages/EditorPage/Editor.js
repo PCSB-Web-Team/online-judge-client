@@ -78,7 +78,7 @@ int main(){
     Requests.runCode(runData)
       .then((res) => {
         console.log(res.data);
-        setCustomOutput(res.data);
+        setCustomOutput(res.data.stdout);
       })
       .catch((error) => {});
   }
@@ -177,8 +177,13 @@ int main(){
         </div>
       ) : null}
       <div className="p-4">
-        Output : 
-        <div className="p-4"> <p><pre>{customOutput}</pre></p> </div>
+        Output :
+        <div className="p-4">
+          {" "}
+          <p>
+            <pre>{customOutput}</pre>
+          </p>{" "}
+        </div>
       </div>
     </div>
   );

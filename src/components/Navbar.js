@@ -1,14 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../store/actions";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Navbar = (props) => {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+const { contestId } = useParams();
+
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   function logout() {
     props.logout();
     localStorage.removeItem("pcsb-oj-token");
+    console.log(contestId);
   }
   return (
     <nav
@@ -66,6 +69,20 @@ const Navbar = (props) => {
                   }
                 >
                   <span className="hide-sm">DashBoard</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to={`${contestId}/leaderboard`} 
+                  onClick={() => setNavbarOpen()}
+                  className={
+                    (props.transparent
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
+                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  }
+                >
+                  <span className="hide-sm">Leader Board</span>
                 </Link>
               </li>
               <li className="nav-item">
