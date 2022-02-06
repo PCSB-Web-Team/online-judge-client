@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { login } from "../../store/actions";
 import { connect } from "react-redux";
 import Countdown from "../ContestHeader/Countdown";
+import { Requests } from "../../utils/Index";
 
 const Card = ({ status, ...props }) => {
+  const [registered, setRegistered] = useState(false);
+
+  useEffect(() => {
+    if (props.userId) {
+      Requests.checkIfUserRegistered(props.userId, props._id).then((res) => {
+        if (res.data) setRegistered(true);
+      });
+    }
+  }, []);
+
   return (
     <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full">
       <img
@@ -44,7 +55,7 @@ const Card = ({ status, ...props }) => {
         </div>
         {status.time > 0 && (
           <div className=" text-center">
-            {true ? (
+            {registered ? (
               <Link
                 to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
               >
@@ -58,7 +69,7 @@ const Card = ({ status, ...props }) => {
             ) : (
               <Link
                 // remove conditional redirecting & add the dynamic link to the xeniaverse event details page
-                to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
+                to={"/login"}
               >
                 <button
                   className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -78,6 +89,7 @@ const Card = ({ status, ...props }) => {
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.isAuthenticated,
+    userId: state.userData._id,
   };
 }
 function mapActionToProps(dispatch) {

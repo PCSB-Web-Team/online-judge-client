@@ -57,3 +57,7 @@ export const getUserByToken = (token) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const checkIfUserRegistered = (userId, contestId) => {
+  return backend.post(`/participant/${userId}/${contestId}`);
+};
