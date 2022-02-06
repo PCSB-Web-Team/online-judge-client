@@ -22,7 +22,6 @@ function ContestDashBoard() {
       Requests.getQuestions(contestId)
         .then((res) => {
           setQuestion(res.data);
-          setIsLoading(false);
         })
         .catch((error) => {});
       Requests.getContestById(contestId).then((res) => {
@@ -30,7 +29,6 @@ function ContestDashBoard() {
         setIsLoading(false);
       });
     }
-    setIsLoading(false);
   }, []);
 
   const columns = [
@@ -96,7 +94,7 @@ function ContestDashBoard() {
         <Route
           path="/"
           element={
-            <div className="min-h-screen max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+            <div className="min-h-screen pt-4">
               <div className="">
                 <h1 className="text-xl font-semibold text-cyan-500">
                   Problem Solving

@@ -74,37 +74,32 @@ function AllSubmission() {
 
   return (
     <div>
-      {isLoading ? (
-        <div>
-          <Loader />
-        </div>
-      ) : (
-        <div>
-          {!data ? (
-            "No Submission at present !!"
-          ) : (
-            <div className="contest_dashboard text-gray-900">
-              <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-                <div className="mb-4">
-                  <h1 className="text-xl text-cyan-500 font-semibold">
-                    Submission
-                  </h1>
+      <div>
+        {!data ? (
+          "No Submission at present !!"
+        ) : (
+          <div className="contest_dashboard text-gray-900">
+            <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+              <div className="mb-4">
+                <h1 className="text-xl text-cyan-500 font-semibold">
+                  Submission
+                </h1>
+              </div>
+              <div className="mt-4 flex flex-col">
+                <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                  <DataTable
+                    columns={columns}
+                    data={data}
+                    customStyles={customStyles}
+                    progressPending={isLoading}
+                    pagination
+                  />
                 </div>
-                <div className="mt-4 flex flex-col">
-                  <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <DataTable
-                      columns={columns}
-                      data={data}
-                      customStyles={customStyles}
-                      pagination
-                    />
-                  </div>
-                </div>
-              </main>
-            </div>
-          )}
-        </div>
-      )}
+              </div>
+            </main>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

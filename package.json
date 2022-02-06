@@ -10,7 +10,6 @@
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
 		"ace-builds": "^1.4.13",
-		"autoprefixer": "^10.4.0",
 		"axios": "^0.21.1",
 		"brace": "^0.11.1",
 		"eslint-plugin-react-hooks": "^4.2.1-rc.0-next-c09596cc6-20220112",
@@ -30,7 +29,7 @@
 		"redux": "^4.1.0",
 		"redux-devtools-extension": "^2.13.9",
 		"redux-thunk": "^2.3.0",
-		"tailwindcss": "^3.0.7",
+		"styled-components": "^5.3.3",
 		"uuid": "^3.4.0",
 		"web-vitals": "^1.0.1",
 		"yup": "^0.32.11"
@@ -58,5 +57,10 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.2",
+		"postcss": "^8.4.6",
+		"tailwindcss": "^3.0.18"
 	}
 }

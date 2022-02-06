@@ -46,7 +46,7 @@ function App(props) {
       ) : (
         <div>
           <Navbar />
-          <div>
+          <div className="min-h-screen h-fit">
             <Routes>
               {props.isAuthenticated ? (
                 <>

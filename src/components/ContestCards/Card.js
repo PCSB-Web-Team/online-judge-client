@@ -44,14 +44,30 @@ const Card = ({ status, ...props }) => {
         </div>
         {status.time > 0 && (
           <div className=" text-center">
-            <Link to={props.isAuthenticated ? `/${props.contestId}` : "/login"}>
-              <button
-                className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                disabled={!status.time}
+            {true ? (
+              <Link
+                to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
               >
-                Enter Contest
-              </button>
-            </Link>
+                <button
+                  className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  disabled={!status.time}
+                >
+                  Enter Contest
+                </button>
+              </Link>
+            ) : (
+              <Link
+                // remove conditional redirecting & add the dynamic link to the xeniaverse event details page
+                to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
+              >
+                <button
+                  className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  disabled={!status.time}
+                >
+                  Register
+                </button>
+              </Link>
+            )}
           </div>
         )}
       </div>
