@@ -7,11 +7,14 @@ import { Requests } from "../../utils/Index";
 
 const Card = ({ status, ...props }) => {
   const [registered, setRegistered] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     if (props.userId) {
       Requests.checkIfUserRegistered(props.userId, props._id).then((res) => {
         if (res.data) setRegistered(true);
+        setLoading(false);
       });
     }
   }, []);
@@ -69,7 +72,7 @@ const Card = ({ status, ...props }) => {
             ) : (
               <Link
                 // remove conditional redirecting & add the dynamic link to the xeniaverse event details page
-                to={"/login"}
+                to={props.isAuthenticated ? "/home" : "/login"}
               >
                 <button
                   className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
