@@ -116,8 +116,5 @@ function mapStateToProps(state) {
     isAuthenticated: state.isAuthenticated,
   };
 }
-function mapActionToProps(dispatch) {
-  return {};
-}
 
-export default connect(mapStateToProps, mapActionToProps)(Problem);
+export default connect(mapStateToProps)(Problem);

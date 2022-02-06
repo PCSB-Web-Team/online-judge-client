@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
-import { Link, useParams, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, useParams, Route, Routes } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ContestHeader from "../../components/ContestHeader/ContestHeader";
 import Problem from "../EditorPage/Problem";
@@ -21,7 +21,6 @@ function ContestDashBoard() {
     if (contestId) {
       Requests.getQuestions(contestId)
         .then((res) => {
-          console.log(res.data);
           setQuestion(res.data);
           setIsLoading(false);
         })
@@ -117,7 +116,7 @@ function ContestDashBoard() {
         />
         <Route path=":questionId" element={<Problem />} />
         <Route path="submission" element={<AllSubmission />} />
-        <Route path="submission/questionId" element={<ViewSubmission />} />
+        <Route path="submission/:submissionId" element={<ViewSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -50,18 +50,18 @@ function App(props) {
             <Routes>
               {props.isAuthenticated ? (
                 <>
-                  <Route path="/" element={<Dashboard />} />
                   <Route path="/:contestId/*" element={<ContestDashBoard />} />
                   <Route path="/ourteam" element={<OurTeam />} />
+                  <Route path="/" element={<Dashboard />} />
                   <Route path="*" element={<NotFound />} />
                 </>
               ) : (
                 <>
                   <Route path="login" element={<Login />} />
                   <Route path="register" element={<Register />} />
-                  <Route path="/" element={<LandingPage />} />
                   <Route path="/contest" element={<Dashboard />} />
                   <Route path="/ourteam" element={<OurTeam />} />
+                  <Route path="/" element={<LandingPage />} />
                   <Route path="*" element={<NotFound />} />
                 </>
               )}

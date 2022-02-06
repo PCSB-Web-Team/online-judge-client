@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const backend = axios.create({
-  baseURL: "https://online-judge-csi.herokuapp.com/api",
+  baseURL: "http://pcsb-oj.canadacentral.cloudapp.azure.com/api",
 });
 
 export const login = (data, config) => {
@@ -17,7 +17,7 @@ export const submitCode = (code) => {
 };
 
 export const runCode = (code) => {
-  return backend.post("/submission/run", code);
+  return backend.post("/run", code);
 };
 
 export const getContests = () => {
@@ -40,12 +40,8 @@ export const allSubmission = () => {
   return backend.get(`/submission/`);
 };
 
-export const userSubmission = (userId) => {
-  return backend.get(`/submission/user/${userId}`);
-};
-
-export const questionSubmission = (userId, questionId) => {
-  return backend.get(`/submission/${userId}/${questionId}`);
+export const submissionById = (submissionId) => {
+  return backend.get(`/submission/${submissionId}`);
 };
 
 export const allParticipant = (contestId) => {

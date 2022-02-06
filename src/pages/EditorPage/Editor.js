@@ -12,8 +12,12 @@ import "brace/ext/language_tools";
 import { connect } from "react-redux";
 import { contest } from "../../store/actions";
 import { Requests } from "../../utils/Index";
+import { useParams } from "react-router-dom";
 
 const Editor = () => {
+  const userId = localStorage.getItem("userId");
+  const {contestId} = useParams();
+  const {questionId} = useParams();
   const vals = {
     C: `#include <stdio.h>
 int main(){
@@ -68,7 +72,17 @@ int main(){
     localStorage.setItem("pcsb-code", JSON.stringify(newvals));
   }
 
-  function handleSubmit(props) {}
+  function handleSubmit(props) {
+    const runData = {
+      languageId: languageIds[lang],
+      code: values[lang],
+      userId:userId,
+      questionId:questionId,
+      contestId: contestId
+    };
+    Requests.submitCode(runData).then((res) => {
+    })
+  }
 
   function handleRun(props) {
     const runData = {
@@ -79,7 +93,6 @@ int main(){
     setIsLoading(true);
     Requests.runCode(runData)
       .then((res) => {
-        console.log(res.data);
         setCustomOutput(res.data.stdout);
         setIsLoading(false);
       })

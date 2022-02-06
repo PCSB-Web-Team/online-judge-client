@@ -39,10 +39,7 @@ const Login = (props) => {
     >
       {(formik) => (
         <div className="register-form">
-          <h1 className="text-4xl p-4 ">Sign Up</h1>
-          <p className="text-xl p-2 ">
-            <i className="fas fa-user "></i> Create Your Account
-          </p>
+          <h1 className="text-4xl p-4 ">Sign In</h1>
           <Form className="form" onSubmit={formik.handleSubmit}>
             <div className="form-group">
               <TextField placeholder="Email" name="email" type="email" />
