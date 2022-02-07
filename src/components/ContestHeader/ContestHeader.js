@@ -10,7 +10,7 @@ const ContestHeader = (props) => {
       link: `/${contestId}`,
     },
     {
-      name: "Submissions",
+      name: "My Submissions",
       link: `/${contestId}/submission`,
     },
     {
