@@ -58,7 +58,7 @@ const Card = ({ status, ...props }) => {
         </div>
         {status.time > 0 && (
           <div className=" text-center">
-            {registered ? (
+            {true ? (
               <Link
                 to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
               >

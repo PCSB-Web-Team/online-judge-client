@@ -1,10 +1,10 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../../store/actions";
 import { Link, useParams } from "react-router-dom";
 
 const Navbar = (props) => {
-const { contestId } = useParams();
+  const { contestId } = useParams();
 
   const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -24,17 +24,11 @@ const { contestId } = useParams();
     >
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-          <h1>
-            <Link
-              to="/"
-              className={
-                (props.transparent ? "text-white" : "text-gray-50") +
-                " text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-              }
-            >
-              HOME
-            </Link>
-          </h1>
+          {props.isAuthenticated && (
+            <div className=" font-bold text-2xl text-gray-300">
+              {props.userData.name}
+            </div>
+          )}
           <button
             className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
             type="button"
@@ -73,7 +67,7 @@ const { contestId } = useParams();
               </li>
               <li className="nav-item">
                 <Link
-                  to={`/${contestId}/leaderboard`} 
+                  to={`/${contestId}/leaderboard`}
                   onClick={() => setNavbarOpen()}
                   className={
                     (props.transparent
@@ -141,6 +135,7 @@ const { contestId } = useParams();
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.isAuthenticated,
+    userData: state.userData,
   };
 }
 function mapActionToProps(dispatch) {
