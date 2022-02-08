@@ -33,7 +33,7 @@ function AllSubmission() {
             type="button"
             class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
           >
-            <Link to={`/${row.submissionId}/submission/questionId`}>View</Link>
+            <Link to={`${row._id}`}>View</Link>
           </button>
         </div>
       ),
@@ -74,12 +74,11 @@ function AllSubmission() {
 
   return (
     <div>
-      <div>
         {!data ? (
           "No Submission at present !!"
         ) : (
           <div className="contest_dashboard text-gray-900">
-            <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+            <main>
               <div className="mb-4">
                 <h1 className="text-xl text-cyan-500 font-semibold">
                   Submission
@@ -99,7 +98,6 @@ function AllSubmission() {
             </main>
           </div>
         )}
-      </div>
     </div>
   );
 }

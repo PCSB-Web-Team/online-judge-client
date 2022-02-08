@@ -81,8 +81,11 @@ int main(){
       questionId: questionId,
       contestId: contestId,
     };
+    setIsLoading(true);
     Requests.submitCode(runData).then((res) => {});
-    navigate(`/${contestId}/submission`)
+    setIsLoading(true);
+    navigate(`/${contestId}/submission`);
+    setIsLoading(false);
   }
 
   function handleRun(props) {

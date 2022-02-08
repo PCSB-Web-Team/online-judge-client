@@ -44,7 +44,7 @@ const Navbar = (props) => {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center bg-gray-800 lg:bg-transparent lg:shadow-none" +
+            "lg:flex flex-grow items-center bg-gray-500 lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded " : " hidden")
           }
           id="example-navbar-warning"
@@ -54,7 +54,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <Link
                   to={`/`}
-                  onClick={() => setNavbarOpen()}
+                  onClick={() => setNavbarOpen(!navbarOpen)}
                   className={
                     (props.transparent
                       ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
@@ -68,7 +68,7 @@ const Navbar = (props) => {
               <li className="nav-item">
                 <Link
                   to={`${contestId}/leaderboard`}
-                  onClick={() => setNavbarOpen()}
+                  onClick={() => setNavbarOpen(!navbarOpen)}
                   className={
                     (props.transparent
                       ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
