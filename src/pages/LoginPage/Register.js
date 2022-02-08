@@ -18,6 +18,7 @@ const Register = (props) => {
     phoneNumber: Validators.phoneNumber,
     confirmPassword: Validators.confirmPassword,
   });
+  
   return (
     <div>
       <Formik
@@ -106,6 +107,7 @@ function mapStateToProps(state) {
     isAuthenticated: state.isAuthenticated,
   };
 }
+
 function mapActionToProps(dispatch) {
   return {
     login: (userData) => dispatch(login(userData)),

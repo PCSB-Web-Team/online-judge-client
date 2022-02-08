@@ -53,7 +53,7 @@ function App(props) {
                   <Route path="/:contestId/*" element={<ContestDashBoard />} />
                   <Route path="/ourteam" element={<OurTeam />} />
                   <Route path="/" element={<Dashboard />} />
-                  <Route path="/*" element={<NotFound />} />
+                  <Route path="*" element={<NotFound />} />
                 </>
               ) : (
                 <>
@@ -62,7 +62,7 @@ function App(props) {
                   <Route path="/contest" element={<Dashboard />} />
                   <Route path="/ourteam" element={<OurTeam />} />
                   <Route path="/" element={<LandingPage />} />
-                  <Route path="/*" element={<NotFound />} />
+                  <Route path="*" element={<NotFound />} />
                 </>
               )}
             </Routes>
