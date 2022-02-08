@@ -67,7 +67,7 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link
-                  to={`/${contestId}/leaderboard`}
+                  to={`${contestId}/leaderboard`}
                   onClick={() => setNavbarOpen()}
                   className={
                     (props.transparent
