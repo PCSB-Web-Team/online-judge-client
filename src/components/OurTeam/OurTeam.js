@@ -30,7 +30,7 @@ const OurTeam = () => {
                 </a>
               </div>
             </div>
-            <div className=" mb-24">
+            <div className="mb-24">
               <a href="https://www.linkedin.com/in/mansi-gundre-a6a722207/">
                 <img
                   src={user}
