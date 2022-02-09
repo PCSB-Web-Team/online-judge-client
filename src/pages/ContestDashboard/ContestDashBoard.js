@@ -113,6 +113,7 @@ function ContestDashBoard() {
           }
         />
         <Route path=":questionId" element={<Problem />} />
+        <Route path=":contestId/leaderboard" element={<LeaderBoard />} />
         <Route path="submission" element={<AllSubmission />} />
         <Route path="submission/:submissionId" element={<ViewSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />

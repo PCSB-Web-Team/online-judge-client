@@ -11,7 +11,6 @@ const Navbar = (props) => {
   function logout() {
     props.logout();
     localStorage.removeItem("pcsb-oj-token");
-    console.log(contestId);
   }
   return (
     <nav
@@ -67,7 +66,7 @@ const Navbar = (props) => {
               </li>
               <li className="nav-item">
                 <Link
-                  to={`${contestId}/leaderboard`}
+                  to={`/${contestId}/leaderboard`}
                   onClick={() => setNavbarOpen(!navbarOpen)}
                   className={
                     (props.transparent

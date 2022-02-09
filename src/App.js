@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./components/OurTeam/OurTeam";
 import Footer from "./components/Footer/Footer";
+import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
