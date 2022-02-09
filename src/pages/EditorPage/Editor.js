@@ -49,6 +49,7 @@ int main(){
   const [isCustom, setIsCustom] = useState(false);
   const [customInput, setCustomInput] = useState("");
   const [customOutput, setCustomOutput] = useState("");
+  const [customOutputError, setCustomOutputError] = useState("");
   const [runToken, setrunToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ int main(){
     Java: "java",
     Python: "python",
   };
-  
+
   useEffect(() => {
     const savedCode = JSON.parse(localStorage.getItem("pcsb-code"));
     if (savedCode) {
@@ -98,9 +99,17 @@ int main(){
     setIsLoading(true);
     Requests.runCode(runData)
       .then((res) => {
-        console.log(res.data.stdout);
         console.log(res.data);
+        setrunToken(res.data);
         setIsLoading(false);
+      })
+      .catch((error) => {});
+    Requests.getRunDetails(runToken)
+      .then((res) => {
+        setCustomOutput(res.data.stdout);
+        setCustomOutputError(res.data.compile_output)
+        console.log(res.data.status.description);
+        console.log(res.data.stdout);
       })
       .catch((error) => {});
   }

@@ -42,7 +42,7 @@ function App(props) {
     <div>
       {isloading ? (
         <div>
-          <Loader></Loader>
+          <Loader />
         </div>
       ) : (
         <div>

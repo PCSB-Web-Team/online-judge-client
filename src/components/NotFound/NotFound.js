@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div class="p-24 text-2xl">
+    <div class="p-16 text-2xl">
       <div className="mb-4">// 404 page not found.</div>
       <div className="flex">
         <div>if</div>(<div>!</div>
@@ -11,10 +11,7 @@ function NotFound() {
       </div>
       <div>
         <div>
-          <i></i>throw
-        </div>
-        <div>
-          (<span>"(╯°□°)╯︵ ┻━┻"</span>);
+          throw(<span>"(╯°□°)╯︵ ┻━┻"</span>);
         </div>
         <div className="block mb-4"></div>
         <div>

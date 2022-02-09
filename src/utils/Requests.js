@@ -20,6 +20,10 @@ export const runCode = (code) => {
   return backend.post("/run", code);
 };
 
+export const getRunDetails = (runToken) => {
+  return backend.get(`/run/${runToken}`);
+};
+
 export const getContests = () => {
   return backend.get("/contest");
 };

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../../store/actions";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-  const { contestId } = useParams();
-
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   function logout() {
@@ -64,7 +62,7 @@ const Navbar = (props) => {
                   <span className="hide-sm">DashBoard</span>
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   to={`/${contestId}/leaderboard`}
                   onClick={() => setNavbarOpen(!navbarOpen)}
@@ -77,7 +75,7 @@ const Navbar = (props) => {
                 >
                   <span className="hide-sm">Leader Board</span>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link
                   onClick={logout}

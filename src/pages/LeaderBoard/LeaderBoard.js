@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
 import DataTable from "react-data-table-component";
 
 function LeaderBoard() {
