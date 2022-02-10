@@ -95,7 +95,7 @@ function ContestDashBoard() {
           path="/"
           element={
             <div className="min-h-screen pt-4">
-              <div className="">
+              <div>
                 <h1 className="text-xl font-semibold text-cyan-500">
                   Problem Solving
                 </h1>

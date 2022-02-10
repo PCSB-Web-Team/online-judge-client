@@ -19,8 +19,8 @@ const ContestHeader = (props) => {
     },
   ];
   return (
-    <div class="space-y-4 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
-      <div class=" flex justify-around space-x-4">
+    <div className="space-y-4 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
+      <div className=" flex justify-around space-x-4">
         {tabs.map((tab, index) => (
           <NavLink
             to={tab.link}
@@ -35,8 +35,8 @@ const ContestHeader = (props) => {
           </NavLink>
         ))}
       </div>
-      <div class="">
-        <div class="transform transition text-center rounded-lg p-2 px-8 font-light bg-green-200">
+      <div>
+        <div className="transform transition text-center rounded-lg p-2 px-8 font-light bg-green-200">
           <Countdown seconds={props.data.status.time} />
         </div>
       </div>

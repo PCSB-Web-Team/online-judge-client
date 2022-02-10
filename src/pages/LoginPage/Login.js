@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
@@ -23,17 +23,21 @@ const Login = (props) => {
       }}
       validationSchema={validate}
       onSubmit={async (values) => {
-        console.log(values);
         Requests.login(values)
           .then((res) => {
             localStorage.setItem("pcsb-oj-token", res.data.token);
-            localStorage.setItem("userId", res.data._id);
-            console.log(res.data);
             props.log(res.data);
+            console.log(values);
             navigate("/");
           })
-          .catch((error) => {
-            alert("Invalid Data");
+          .catch((err) => {
+            if (err.response.data = "Invalid Password") {
+              alert(err.response.data);
+            }
+            if (err.response.data = "User not found") {
+              // alert(err.response.data);
+              navigate("/register");
+            }
           });
       }}
     >

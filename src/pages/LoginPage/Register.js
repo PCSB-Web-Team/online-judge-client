@@ -18,7 +18,7 @@ const Register = (props) => {
     phoneNumber: Validators.phoneNumber,
     confirmPassword: Validators.confirmPassword,
   });
-  
+
   return (
     <div>
       <Formik
@@ -40,9 +40,7 @@ const Register = (props) => {
               alert("Register successful");
               navigate("/");
             })
-            .catch((error) => {
-              alert("Enter Valid Data !");
-            });
+            .catch((error) => {});
         }}
       >
         {(formik) => (
@@ -58,7 +56,7 @@ const Register = (props) => {
               <div className="form-group">
                 <TextField placeholder="Email" name="email" type="email" />
               </div>
-              <div Name="form-group">
+              <div className="form-group">
                 <TextField
                   placeholder="Phone Number"
                   name="phoneNumber"

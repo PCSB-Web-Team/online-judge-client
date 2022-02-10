@@ -99,7 +99,6 @@ int main(){
     setIsLoading(true);
     Requests.runCode(runData)
       .then((res) => {
-        console.log(res.data);
         setrunToken(res.data);
         setIsLoading(false);
       })
@@ -107,9 +106,7 @@ int main(){
     Requests.getRunDetails(runToken)
       .then((res) => {
         setCustomOutput(res.data.stdout);
-        setCustomOutputError(res.data.compile_output)
-        console.log(res.data.status.description);
-        console.log(res.data.stdout);
+        setCustomOutputError(res.data.compile_output);
       })
       .catch((error) => {});
   }
@@ -228,7 +225,7 @@ int main(){
             </div>
           ) : (
             <p>
-              <pre>{customOutput ? (customOutput) : (customOutputError) }</pre>
+              <pre>{customOutput ? customOutput : customOutputError}</pre>
             </p>
           )}
         </div>
