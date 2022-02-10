@@ -106,6 +106,7 @@ function ContestDashBoard() {
                     columns={columns}
                     data={question}
                     customStyles={customStyles}
+                    highlightOnHover
                   />
                 </div>
               </div>

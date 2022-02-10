@@ -92,6 +92,7 @@ function AllSubmission() {
                   customStyles={customStyles}
                   progressPending={isLoading}
                   pagination
+                  highlightOnHover
                   fixedHeader
                   fixedHeaderScrollHeight="800px"
                 />

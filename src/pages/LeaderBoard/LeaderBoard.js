@@ -3,6 +3,7 @@ import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
+import DataTableExtensions from "react-data-table-component-extensions";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -75,15 +76,21 @@ function LeaderBoard() {
             </div>
             <div className="mt-4 flex flex-col">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <DataTable
+                <DataTableExtensions
                   columns={columns}
                   data={data}
-                  customStyles={customStyles}
-                  progressPending={isLoading}
-                  pagination
-                  fixedHeader
-                  fixedHeaderScrollHeight="800px"
-                />
+                  print={false}
+                  export={false}
+                >
+                  <DataTable
+                    customStyles={customStyles}
+                    progressPending={isLoading}
+                    pagination
+                    highlightOnHover
+                    fixedHeader
+                    fixedHeaderScrollHeight="800px"
+                  />
+                </DataTableExtensions>
               </div>
             </div>
           </main>
