@@ -228,7 +228,7 @@ int main(){
             </div>
           ) : (
             <p>
-              <pre>{customOutput}</pre>
+              <pre>{customOutput ? (customOutput) : (customOutputError) }</pre>
             </p>
           )}
         </div>

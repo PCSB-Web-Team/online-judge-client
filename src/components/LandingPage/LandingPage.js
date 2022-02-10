@@ -5,7 +5,7 @@ import programmer from "../../assets/programmer.png";
 const LandingPage = () => {
   return (
     <div className="bg-gradient-to-r from-gray-700 to-gray-800 md:-mt-16 min-h-screen">
-      <div class="container p-8 pt-18 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+      <div class="container p-8 pt-20 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
           <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
             PCSB
@@ -22,7 +22,8 @@ const LandingPage = () => {
         <div class="w-full xl:w-3/5 p-12 overflow-hidden">
           <img
             class="mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-            src={programmer} alt="coding platform"
+            src={programmer}
+            alt="coding platform"
           />
         </div>
       </div>
