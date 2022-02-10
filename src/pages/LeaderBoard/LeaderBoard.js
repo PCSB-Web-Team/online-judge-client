@@ -81,6 +81,8 @@ function LeaderBoard() {
                   customStyles={customStyles}
                   progressPending={isLoading}
                   pagination
+                  fixedHeader
+                  fixedHeaderScrollHeight="800px"
                 />
               </div>
             </div>

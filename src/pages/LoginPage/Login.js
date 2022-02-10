@@ -31,10 +31,10 @@ const Login = (props) => {
             navigate("/");
           })
           .catch((err) => {
-            if (err.response.data = "Invalid Password") {
+            if ((err.response.data = "Invalid Password")) {
               alert(err.response.data);
             }
-            if (err.response.data = "User not found") {
+            if ((err.response.data = "User not found")) {
               // alert(err.response.data);
               navigate("/register");
             }
