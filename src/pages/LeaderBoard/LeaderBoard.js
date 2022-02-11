@@ -81,6 +81,7 @@ function LeaderBoard() {
                   data={data}
                   print={false}
                   export={false}
+                  progressPending={isLoading}
                 >
                   <DataTable
                     customStyles={customStyles}

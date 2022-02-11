@@ -106,7 +106,9 @@ int main(){
     Requests.getRunDetails(runToken)
       .then((res) => {
         setCustomOutput(res.data.stdout);
+        console.log(res.data.stdout);
         setCustomOutputError(res.data.compile_output);
+        console.log(res.data.compile_output);
       })
       .catch((error) => {});
   }

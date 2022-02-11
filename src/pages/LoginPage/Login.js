@@ -34,10 +34,10 @@ const Login = (props) => {
             if ((err.response.data = "Invalid Password")) {
               alert(err.response.data);
             }
-            if ((err.response.data = "User not found")) {
-              // alert(err.response.data);
-              navigate("/register");
-            }
+            // if ((err.response.data = "User not found")) {
+            //   // alert(err.response.data);
+            //   navigate("/register");
+            // }
           });
       }}
     >
