@@ -28,6 +28,7 @@ function ContestDashBoard() {
         setData(res.data);
         setIsLoading(false);
       });
+      setIsLoading(false)
     }
   }, []);
 
@@ -38,7 +39,12 @@ function ContestDashBoard() {
       sortable: true,
     },
     {
-      name: "Max Score",
+      name: "Test Cases",
+      selector: (row) => row.example.length,
+      sortable: true
+    },
+    {
+      name: "Points",
       selector: (row) => row.score,
       sortable: true,
     },

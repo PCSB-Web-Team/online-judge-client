@@ -20,11 +20,6 @@ function LeaderBoard() {
       selector: (row) => row.score,
       sortable: true,
     },
-    {
-      name: "Max Score",
-      selector: (row) => row.score,
-      sortable: true,
-    },
   ];
   const customStyles = {
     rows: {

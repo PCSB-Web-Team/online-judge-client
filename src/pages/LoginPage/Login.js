@@ -26,18 +26,12 @@ const Login = (props) => {
         Requests.login(values)
           .then((res) => {
             localStorage.setItem("pcsb-oj-token", res.data.token);
-            props.log(res.data);
+            props.login(res.data);
             console.log(values);
             navigate("/");
           })
           .catch((err) => {
-            if ((err.response.data = "Invalid Password")) {
               alert(err.response.data);
-            }
-            // if ((err.response.data = "User not found")) {
-            //   // alert(err.response.data);
-            //   navigate("/register");
-            // }
           });
       }}
     >
@@ -85,7 +79,7 @@ function mapStateToProps(state) {
 }
 function mapActionToProps(dispatch) {
   return {
-    log: (userData) => dispatch(login(userData)),
+    login: (userData) => dispatch(login(userData)),
   };
 }
 
