@@ -9,7 +9,7 @@ import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
 import Loader from "./components/Loader/Loader";
 import Dashboard from "./pages/DashBoard/DashBoard";
-import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
+import ContestDashBoard from "./pages/ContestDashBoard/ContestDashBoard";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./components/OurTeam/OurTeam";

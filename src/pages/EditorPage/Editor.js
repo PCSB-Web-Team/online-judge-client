@@ -97,23 +97,29 @@ int main(){
       stdin: customInput,
     };
     setIsLoading(true);
-      Requests.runCode(runData)
-        .then((res) => {
-          setrunToken(res.data);
-          setIsLoading(false);
-        })
-        .catch((error) => {});
-    const interval = setInterval(() => {
-      Requests.getRunDetails(runToken)
-        .then((res) => {
-          setCustomOutput(res.data.stdout);
-          setCustomOutputError(res.data.compile_output);
-          console.log(res.data.stdout);
-          console.log(res.data.compile_output);
-        })
-        .catch((error) => {});
-      clearInterval(interval)
-    }, 5000);
+    Requests.runCode(runData)
+      .then((res1) => {
+        // setrunToken(res.data);
+        const interval1 = setInterval(() => {
+          Requests.getRunDetails(res1.data)
+            .then((res) => {
+              setCustomOutput(res.data.stdout);
+              setCustomOutputError(res.data.compile_output);
+              console.log(res.data.stdout);
+              console.log(res.data.compile_output);
+              if (
+                res.data.stdout ||
+                res.data.compile_output ||
+                res.data.stdout === ""
+              ) {
+                clearInterval(interval1);
+                setIsLoading(false);
+              }
+            })
+            .catch((error) => {});
+        }, 5000);
+      })
+      .catch((error) => {});
   }
 
   function reset() {
