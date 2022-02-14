@@ -49,7 +49,7 @@ int main(){
   const [isCustom, setIsCustom] = useState(false);
   const [customInput, setCustomInput] = useState("");
   const [customOutput, setCustomOutput] = useState("");
-  const [customOutputError, setCustomOutputError] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -91,23 +91,21 @@ int main(){
     setIsLoading(true);
     Requests.runCode(runData)
       .then((restoken) => {
-        const interval = setInterval(() => {
+        const interval1 = setInterval(() => {
           Requests.getRunDetails(restoken.data)
             .then((res) => {
               setCustomOutput(res.data.stdout);
-              setCustomOutputError(res.data.compile_output);
+              setError(res.data.compile_output);
               console.log(res.data.stdout);
               if (
-                res.data.stdout ||
-                res.data.compile_output ||
-                res.data.stdout === ""
+                res.data.status.id>2
               ) {
-                clearInterval(interval);
+                clearInterval(interval1);
                 setIsLoading(false);
               }
             })
             .catch((error) => {});
-        }, 100);
+        }, 3000);
       })
       .catch((error) => {});
   }
@@ -232,7 +230,7 @@ int main(){
             </div>
           ) : (
             <p>
-              <pre>{customOutput ? customOutput : customOutputError}</pre>
+              <pre>{customOutput ? customOutput : error}</pre>
             </p>
           )}
         </div>

@@ -21,7 +21,7 @@ const ContestHeader = (props) => {
   return (
     <div className="space-y-4 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
       <div className=" flex justify-around space-x-4">
-        {tabs.map((tab, index) => (
+        {tabs.map((tab) => (
           <NavLink
             to={tab.link}
             end

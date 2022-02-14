@@ -40,12 +40,24 @@ const Problem = () => {
         <div className="problem">
           <>
             <div key={data} className="problem-main p-1">
-              <h1 className="text-2xl text-cyan-500 py-3">{data.title}</h1>
+              <h1 className="text-3xl text-cyan-500 py-3">{data.title}</h1>
               <div className="problem-head-info py-2 mb-4">
-                <span>Time Limit : 1000ms per test </span>
+                <span>Maximum Score : {data.score} || </span>
+                <span>Time Limit : {data.time.$numberDecimal} sec || </span>
                 <span> Memory Limit : {data.memory}MB</span>
+                <p>Difficulty Level: {data.difficultyLevel} </p>
               </div>
-              <p className="py-2">{data.description}</p>
+              <p>
+                <h2 className="text-cyan-500 text-xl">
+                  Problem Statement :
+                </h2>
+                {data.problemStatement}
+              </p>
+              <p className="py-2">
+                <h2 className="text-cyan-500 text-xl">Description :</h2>
+                {data.description}
+              </p>
+              <h2 className="text-cyan-500 text-xl">Example</h2>
               {data.example.map((example) => {
                 return (
                   <div>
@@ -54,6 +66,19 @@ const Problem = () => {
                   </div>
                 );
               })}
+              <p>
+                <h2 className="text-cyan-500 text-xl">Input Format :</h2>
+                {data.inputFormat}
+              </p>
+              <p>
+                <h2 className="text-cyan-500 text-xl">Output Format :</h2>
+                {data.outputFormat}
+              </p>
+              <p>
+                <h2 className="text-cyan-500 text-xl">Constraints :</h2>
+                {data.constraints}
+              </p>
+
               <h2 className="py-3">Example</h2>
               <p className="py-3">
                 <strong>Input</strong>
@@ -67,8 +92,8 @@ const Problem = () => {
                   onClick={() => copytoclipboard(0)}
                 />
                 <code>
-                  {data.example.map((example) => {
-                    return <div>{example.input}</div>;
+                  {data.samples.map((samples) => {
+                    return <div>{samples.sampleInput}</div>;
                   })}
                 </code>
               </p>
@@ -84,8 +109,8 @@ const Problem = () => {
                   onClick={() => copytoclipboard(1)}
                 />
                 <code>
-                  {data.example.map((example) => {
-                    return <div>{example.output}</div>;
+                  {data.samples.map((samples) => {
+                    return <div>{samples.sampleOutput}</div>;
                   })}
                 </code>
               </p>
@@ -93,14 +118,9 @@ const Problem = () => {
                 <strong>Explanation</strong>
               </p>
               <p className="py-2">
-                In the first test case, you can choose, for example, a1=a2=a3=5.
-                <br /> In the second test case, there is no array a, since,
-                according to s1, a1 is equal to a2, but, according to s2, a2 is
-                not equal to a1.
-                <br /> In the third test case, you can, for example, choose
-                array a=[20,20,4,50,50,50,20].
-                <br /> In the fourth test case, you can, for example, choose
-                a=[1,3,3,7].
+                {data.explanations.map((explain) => {
+                  return <div className="py-3"> {explain.testcaseExplain} </div>
+                })}
               </p>
             </div>
             <Editor />
