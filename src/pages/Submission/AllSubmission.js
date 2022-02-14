@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import DataTable from "react-data-table-component";
+import moment from "moment"
 
 function AllSubmission() {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ function AllSubmission() {
     },
     {
       name: "When Submitted",
-      selector: (row) => row.timestamp,
+      selector: (row) => moment(row.timestamp).format("h:mm:ss a ,ddd , MMM Do"),
       sortable: true,
     },
     {

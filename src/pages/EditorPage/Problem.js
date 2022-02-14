@@ -78,9 +78,7 @@ const Problem = () => {
                 <h2 className="text-cyan-500 text-xl">Constraints :</h2>
                 {data.constraints}
               </p>
-
-              <h2 className="py-3">Example</h2>
-              <p className="py-3">
+              <p className="text-cyan-500 text-xl py-3">
                 <strong>Input</strong>
               </p>
               <p className="sample-tests">
@@ -97,7 +95,7 @@ const Problem = () => {
                   })}
                 </code>
               </p>
-              <p className="py-3">
+              <p className="text-cyan-500 text-xl py-3">
                 <strong>Output</strong>
               </p>
               <p className="sample-tests">
@@ -114,7 +112,7 @@ const Problem = () => {
                   })}
                 </code>
               </p>
-              <p className="py-3">
+              <p className="text-cyan-500 text-xl py-3">
                 <strong>Explanation</strong>
               </p>
               <p className="py-2">
