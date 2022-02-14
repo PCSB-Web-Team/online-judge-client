@@ -8,6 +8,8 @@ import DataTable from "react-data-table-component";
 function AllSubmission() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [timeStamp, setTimeStamp] = useState("");
+  // timeStamp = JSON.split("T")
   const columns = [
     {
       name: "Title",
@@ -15,13 +17,18 @@ function AllSubmission() {
       sortable: true,
     },
     {
-      name: "Max Score",
+      name: "Score",
       selector: (row) => row.score,
       sortable: true,
     },
     {
       name: "Status",
       selector: (row) => row.status,
+      sortable: true,
+    },
+    {
+      name: "When Submitted",
+      selector: (row) => row.timestamp,
       sortable: true,
     },
     {
@@ -66,7 +73,8 @@ function AllSubmission() {
     Requests.allSubmission()
       .then((res) => {
         setData(res.data);
-        console.log(data);
+        setTimeStamp(res.data.timestamp)
+        console.log(res.data.timestamp);
         setIsLoading(false);
       })
       .catch((error) => {});

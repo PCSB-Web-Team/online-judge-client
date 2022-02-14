@@ -42,8 +42,8 @@ const Problem = () => {
             <div key={data} className="problem-main p-1">
               <h1 className="text-2xl text-cyan-500 py-3">{data.title}</h1>
               <div className="problem-head-info py-2 mb-4">
-                <span>Time Limit : 1000ms per test</span>
-                <span>Memory Limit : {data.memory}MB</span>
+                <span>Time Limit : 1000ms per test </span>
+                <span> Memory Limit : {data.memory}MB</span>
               </div>
               <p className="py-2">{data.description}</p>
               {data.example.map((example) => {

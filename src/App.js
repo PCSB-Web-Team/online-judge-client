@@ -9,12 +9,11 @@ import Login from "./pages/LoginPage/Login";
 import Register from "./pages/LoginPage/Register";
 import Loader from "./components/Loader/Loader";
 import Dashboard from "./pages/DashBoard/DashBoard";
-import ContestDashBoard from "./pages/ContestDashBoard/ContestDashBoard";
+import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
 import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./components/OurTeam/OurTeam";
 import Footer from "./components/Footer/Footer";
-import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -26,7 +25,7 @@ function App(props) {
       setIsLoading(true);
       Requests.getUserByToken(token)
         .then((res) => {
-          props.log(res.data);
+          props.login(res.data);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -54,7 +53,6 @@ function App(props) {
                   <Route path="/:contestId/*" element={<ContestDashBoard />} />
                   <Route path="/ourteam" element={<OurTeam />} />
                   <Route path="/" element={<Dashboard />} />
-                  <Route path="*" element={<NotFound />} />
                 </>
               ) : (
                 <>
@@ -82,7 +80,7 @@ function mapStateToProps(state) {
 }
 function mapActionToProps(dispatch) {
   return {
-    log: (userData) => dispatch(login(userData)),
+    login: (userData) => dispatch(login(userData)),
   };
 }
 

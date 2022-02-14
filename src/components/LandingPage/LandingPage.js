@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import programmer from "../../assets/programmer.png";
+import Typist from "react-typist";
 
 const LandingPage = () => {
   return (
@@ -8,10 +9,16 @@ const LandingPage = () => {
       <div className="container p-8 pt-20 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
           <h1 className="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
-            PCSB
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-              Coding Platform
-            </span>
+            <Typist>
+              PCSB
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                Welcomes You!
+              </span>
+              <Typist.Backspace count={13} delay={200} />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                Coding Platform
+              </span>
+            </Typist>
           </h1>
           <p className="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
             <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">

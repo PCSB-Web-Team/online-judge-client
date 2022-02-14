@@ -12,9 +12,9 @@ import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
 
 function ContestDashBoard() {
+  const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState([]);
   const [data, setData] = useState({ status: { description: "", time: 0 } });
-  const [isLoading, setIsLoading] = useState(true);
   const { contestId } = useParams();
   useEffect(() => {
     setIsLoading(true);
@@ -22,13 +22,16 @@ function ContestDashBoard() {
       Requests.getQuestions(contestId)
         .then((res) => {
           setQuestion(res.data);
+          setIsLoading(false);
         })
         .catch((error) => {});
-      Requests.getContestById(contestId).then((res) => {
-        setData(res.data);
-        setIsLoading(false);
-      });
-      setIsLoading(false)
+      Requests.getContestById(contestId)
+        .then((res) => {
+          setData(res.data);
+          setIsLoading(false);
+        })
+        .catch((error) => {});
+    } else {
     }
   }, []);
 
@@ -39,12 +42,7 @@ function ContestDashBoard() {
       sortable: true,
     },
     {
-      name: "Test Cases",
-      selector: (row) => row.example.length,
-      sortable: true
-    },
-    {
-      name: "Points",
+      name: "Max Score",
       selector: (row) => row.score,
       sortable: true,
     },
@@ -55,7 +53,7 @@ function ContestDashBoard() {
         <div>
           <button
             type="button"
-            class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+            className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
           >
             <Link to={`${row._id}`}>Solve</Link>
           </button>

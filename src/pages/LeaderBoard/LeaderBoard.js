@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
+import { Search } from "brace";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -72,6 +73,7 @@ function LeaderBoard() {
             <div className="mt-4 flex flex-col">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <DataTableExtensions
+                  placeHolder={"Search"}
                   columns={columns}
                   data={data}
                   print={false}

@@ -14,7 +14,7 @@ import { contest } from "../../store/actions";
 import { Requests } from "../../utils/Index";
 import { useParams, useNavigate } from "react-router-dom";
 
-const Editor = () => {
+const Editor = (props) => {
   const userId = localStorage.getItem("userId");
   const { contestId } = useParams();
   const { questionId } = useParams();
@@ -50,7 +50,6 @@ int main(){
   const [customInput, setCustomInput] = useState("");
   const [customOutput, setCustomOutput] = useState("");
   const [customOutputError, setCustomOutputError] = useState("");
-  const [runToken, setrunToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -60,13 +59,6 @@ int main(){
     Java: "java",
     Python: "python",
   };
-
-  useEffect(() => {
-    const savedCode = JSON.parse(localStorage.getItem("pcsb-code"));
-    if (savedCode) {
-      setValues(savedCode);
-    }
-  }, []);
 
   function onChange(newValue) {
     const newvals = { ...values };
@@ -98,26 +90,24 @@ int main(){
     };
     setIsLoading(true);
     Requests.runCode(runData)
-      .then((res1) => {
-        // setrunToken(res.data);
-        const interval1 = setInterval(() => {
-          Requests.getRunDetails(res1.data)
+      .then((restoken) => {
+        const interval = setInterval(() => {
+          Requests.getRunDetails(restoken.data)
             .then((res) => {
               setCustomOutput(res.data.stdout);
               setCustomOutputError(res.data.compile_output);
               console.log(res.data.stdout);
-              console.log(res.data.compile_output);
               if (
                 res.data.stdout ||
                 res.data.compile_output ||
                 res.data.stdout === ""
               ) {
-                clearInterval(interval1);
+                clearInterval(interval);
                 setIsLoading(false);
               }
             })
             .catch((error) => {});
-        }, 5000);
+        }, 100);
       })
       .catch((error) => {});
   }
@@ -126,6 +116,12 @@ int main(){
     localStorage.setItem("pcsb-code", JSON.stringify(vals));
     setValues(vals);
   }
+  useEffect(() => {
+    const savedCode = JSON.parse(localStorage.getItem("pcsb-code"));
+    if (savedCode) {
+      setValues(savedCode);
+    }
+  }, []);
 
   return (
     <div className="editor">

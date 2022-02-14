@@ -37,11 +37,11 @@ const Card = ({ status, ...props }) => {
           <div className=" font-light">Date: </div>
           <div className="">{props.date}</div>
         </div>
-        <div className="">
+        <div>
           {status.time ? (
             status.description == "RUNNING" ? (
               <div className="flex justify-between text-gray-500">
-                <div className=" font-light text-sky-400">Ends in</div>
+                <div className="font-light text-sky-400">Ends in</div>
                 <Countdown seconds={status.time}></Countdown>
               </div>
             ) : (
