@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import DataTable from "react-data-table-component";
-import DataTableExtensions from "react-data-table-component-extensions";
+import Table from "../../components/Table/Table";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { contestId } = useParams();
   const columns = [
     {
@@ -21,30 +20,6 @@ function LeaderBoard() {
       sortable: true,
     },
   ];
-  const customStyles = {
-    rows: {
-      style: {
-        minHeight: "72px",
-      },
-    },
-    headCells: {
-      style: {
-        fontSize: "1.2rem",
-        backgroundColor: "lightgray",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-    cells: {
-      style: {
-        backgroundColor: "&:hoverlightgray",
-        fontSize: "1rem",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-  };
-
   useEffect(() => {
     setIsLoading(true);
     if (contestId) {
@@ -71,22 +46,7 @@ function LeaderBoard() {
             </div>
             <div className="mt-4 flex flex-col">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <DataTableExtensions
-                  columns={columns}
-                  data={data}
-                  print={false}
-                  export={false}
-                  progressPending={isLoading}
-                >
-                  <DataTable
-                    customStyles={customStyles}
-                    progressPending={isLoading}
-                    pagination
-                    highlightOnHover
-                    fixedHeader
-                    fixedHeaderScrollHeight="800px"
-                  />
-                </DataTableExtensions>
+                <Table data={data} />
               </div>
             </div>
           </main>

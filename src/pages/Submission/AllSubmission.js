@@ -4,13 +4,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import DataTable from "react-data-table-component";
-import moment from "moment"
+import moment from "moment";
 
 function AllSubmission() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [timeStamp, setTimeStamp] = useState("");
-  // timeStamp = JSON.split("T")
   const columns = [
     {
       name: "Title",
@@ -29,7 +27,8 @@ function AllSubmission() {
     },
     {
       name: "When Submitted",
-      selector: (row) => moment(row.timestamp).format("h:mm:ss a ,ddd , MMM Do"),
+      selector: (row) =>
+        moment(row.timestamp).format("h:mm:ss a ,ddd , MMM Do"),
       sortable: true,
     },
     {
@@ -74,7 +73,6 @@ function AllSubmission() {
     Requests.allSubmission()
       .then((res) => {
         setData(res.data);
-        setTimeStamp(res.data.timestamp)
         console.log(res.data.timestamp);
         setIsLoading(false);
       })
