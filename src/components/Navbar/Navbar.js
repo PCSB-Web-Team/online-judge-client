@@ -59,12 +59,12 @@ const Navbar = (props) => {
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
-                  <span className="hide-sm">DashBoard</span>
+                  <span className="hide-sm">Home</span>
                 </Link>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <Link
-                  to={`/${contestId}/leaderboard`}
+                  to={`/contest`}
                   onClick={() => setNavbarOpen(!navbarOpen)}
                   className={
                     (props.transparent
@@ -73,9 +73,10 @@ const Navbar = (props) => {
                     " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   }
                 >
-                  <span className="hide-sm">Leader Board</span>
+                  <span className="hide-sm">DashBoard</span>
                 </Link>
-              </li> */}
+              </li>
+
               <li className="nav-item">
                 <Link
                   onClick={logout}

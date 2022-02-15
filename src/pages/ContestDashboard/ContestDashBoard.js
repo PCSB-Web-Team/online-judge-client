@@ -10,10 +10,13 @@ import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import DataTable from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
+import moment from "moment";
+import { ContestEnded } from "./ContestEnded";
 
 function ContestDashBoard() {
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState([]);
+  const [timeOut, setTimeOut] = useState("");
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
   const navigate = useNavigate();
@@ -23,7 +26,6 @@ function ContestDashBoard() {
       Requests.getQuestions(contestId)
         .then((res) => {
           setQuestion(res.data);
-          // setIsLoading(false);
         })
         .catch((error) => {
           navigate("/");
@@ -31,6 +33,7 @@ function ContestDashBoard() {
       Requests.getContestById(contestId)
         .then((res) => {
           setData(res.data);
+          setTimeOut(res.data.endsOn);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -100,29 +103,37 @@ function ContestDashBoard() {
         <ContestHeader data={data} />
       </div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="min-h-screen pt-4">
-              <div>
-                <h1 className="text-xl font-semibold text-cyan-500">
-                  Problem Solving
-                </h1>
-              </div>
-              <div className="mt-4 flex flex-col">
-                <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                  <DataTable
-                    columns={columns}
-                    data={question}
-                    customStyles={customStyles}
-                    highlightOnHover
-                  />
+        {timeOut ? (
+          <>
+            <Route
+              path="/"
+              element={
+                <div className="min-h-screen pt-4">
+                  <div>
+                    <h1 className="text-xl font-semibold text-cyan-500">
+                      Problem Solving
+                    </h1>
+                  </div>
+                  <div className="mt-4 flex flex-col">
+                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                      <DataTable
+                        columns={columns}
+                        data={question}
+                        customStyles={customStyles}
+                        highlightOnHover
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          }
-        />
-        <Route path=":questionId" element={<Problem />} />
+              }
+            />
+            <Route path=":questionId" element={<Problem />} />
+          </>
+        ) : (
+          <div>
+            {/* <Route path="/" element={<ContestEnded/> } /> */}
+          </div>
+        )}
         <Route path="submission" element={<AllSubmission />} />
         <Route path="submission/:submissionId" element={<ViewSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />

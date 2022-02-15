@@ -46,7 +46,7 @@ function LeaderBoard() {
             </div>
             <div className="mt-4 flex flex-col">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <Table data={data} />
+                <Table columns={columns} data={data} />
               </div>
             </div>
           </main>

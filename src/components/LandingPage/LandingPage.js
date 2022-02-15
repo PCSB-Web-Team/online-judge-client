@@ -18,6 +18,14 @@ const LandingPage = () => {
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
                 Coding Platform
               </span>
+              <Typist.Backspace count={15} delay={200} />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                Welcomes You!
+              </span>
+              <Typist.Backspace count={13} delay={200} />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                Coding Platform
+              </span>
             </Typist>
           </h1>
           <p className="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
