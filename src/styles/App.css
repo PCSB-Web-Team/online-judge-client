@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
-html {
-  height: 100%;
-}
-
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -14,29 +10,13 @@ html {
 
 /* Home Page */
 
-.register-form,
-.login-form {
-  width: 65%;
-  text-align: center;
-  margin: 2rem auto;
-  justify-content: center;
-}
-
 .form input {
   width: 50%;
   padding: 10px;
   margin: 10px;
 }
 
-.link a {
-  color: #3b9ed8;
-}
-
 /* editor */
-
-.editor {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
 
 .editor-main * {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas",
@@ -193,6 +173,7 @@ html {
   display: flex;
   align-items: center;
 }
-/* .contest_dashboard {
-  height: 130vh;
-} */
+
+.gzECfY {
+  justify-content: flex-start;
+}

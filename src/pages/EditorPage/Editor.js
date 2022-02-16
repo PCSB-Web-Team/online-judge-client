@@ -122,7 +122,7 @@ int main(){
   }, []);
 
   return (
-    <div className="editor">
+    <div className="shadow-2xl">
       <div className="editor-header">
         <select
           name="languages"

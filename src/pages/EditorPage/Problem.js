@@ -41,14 +41,14 @@ const Problem = () => {
           <>
             <div key={data} className="problem-main p-1">
               <h1 className="text-3xl text-cyan-500 py-3">{data.title}</h1>
-              <div className="problem-head-info py-2 mb-4">
+              <div className="problem-head-info py-1 mb-4">
                 <span>Maximum Score : {data.score} || </span>
                 <span>Time Limit : {data.time.$numberDecimal} sec || </span>
                 <span> Memory Limit : {data.memory}MB</span>
                 <p>Difficulty Level: {data.difficultyLevel} </p>
               </div>
               <p>
-                <h2 className="text-cyan-500 text-xl">
+                <h2 className="text-cyan-500 text-xl py-2">
                   Problem Statement :
                 </h2>
                 {data.problemStatement}
@@ -57,25 +57,25 @@ const Problem = () => {
                 <h2 className="text-cyan-500 text-xl">Description :</h2>
                 {data.description}
               </p>
-              <h2 className="text-cyan-500 text-xl">Example</h2>
+              <h2 className="text-cyan-500 text-xl py-2">Example</h2>
               {data.example.map((example) => {
                 return (
-                  <div>
+                  <div className="py-1">
                     <h2>Input : {example.input}</h2>
                     <h2>Output : {example.output}</h2>
                   </div>
                 );
               })}
               <p>
-                <h2 className="text-cyan-500 text-xl">Input Format :</h2>
+                <h2 className="text-cyan-500 text-xl py-2">Input Format :</h2>
                 {data.inputFormat}
               </p>
               <p>
-                <h2 className="text-cyan-500 text-xl">Output Format :</h2>
+                <h2 className="text-cyan-500 text-xl py-2">Output Format :</h2>
                 {data.outputFormat}
               </p>
               <p>
-                <h2 className="text-cyan-500 text-xl">Constraints :</h2>
+                <h2 className="text-cyan-500 text-xl py-2">Constraints :</h2>
                 {data.constraints}
               </p>
               <p className="text-cyan-500 text-xl py-3">
@@ -115,9 +115,11 @@ const Problem = () => {
               <p className="text-cyan-500 text-xl py-3">
                 <strong>Explanation</strong>
               </p>
-              <p className="py-2">
+              <p className="py-1">
                 {data.explanations.map((explain) => {
-                  return <div className="py-3"> {explain.testcaseExplain} </div>
+                  return (
+                    <div className="py-3"> {explain.testcaseExplain} </div>
+                  );
                 })}
               </p>
             </div>

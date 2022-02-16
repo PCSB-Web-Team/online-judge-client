@@ -31,12 +31,12 @@ const Login = (props) => {
             navigate("/");
           })
           .catch((err) => {
-              alert(err.response.data);
+            alert(err.response.data);
           });
       }}
     >
       {(formik) => (
-        <div className="register-form">
+        <div className="register-form w-3/5 text-center m-auto py-14 justify-center">
           <h1 className="text-4xl p-4 ">Sign In</h1>
           <Form className="form" onSubmit={formik.handleSubmit}>
             <div className="form-group">
@@ -63,7 +63,7 @@ const Login = (props) => {
             </button>
           </Form>
           <p className="link p-3 ">
-            Don"t have an account? <Link to="/register">Sign Up</Link>
+            Don"t have an account? <Link to="/register" className="text-cyan-500">Sign Up</Link>
           </p>
           <div className="p-24"></div>
         </div>

@@ -6,7 +6,6 @@ const Input = styled.input.attrs((props) => ({
   size: props.small ? 5 : undefined,
 }))`
   height: 40px;
-  width: 200px;
   border-radius: 3px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
