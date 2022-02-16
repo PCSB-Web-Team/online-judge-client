@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const ContestEnded = () => {
+const ContestEnded = () => {
   return (
-    <div>ContestEnded</div>
+    <div>Oops, Contest Ended !</div>
   )
 }
+
+export default ContestEnded;

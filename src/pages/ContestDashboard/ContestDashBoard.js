@@ -10,8 +10,7 @@ import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import DataTable from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
-import moment from "moment";
-import { ContestEnded } from "./ContestEnded";
+import ContestEnded from "./ContestEnded";
 
 function ContestDashBoard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -103,37 +102,30 @@ function ContestDashBoard() {
         <ContestHeader data={data} />
       </div>
       <Routes>
-        {timeOut ? (
-          <>
-            <Route
-              path="/"
-              element={
-                <div className="min-h-screen pt-4">
-                  <div>
-                    <h1 className="text-xl font-semibold text-cyan-500">
-                      Problem Solving
-                    </h1>
-                  </div>
-                  <div className="mt-4 flex flex-col">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                      <DataTable
-                        columns={columns}
-                        data={question}
-                        customStyles={customStyles}
-                        highlightOnHover
-                      />
-                    </div>
-                  </div>
+        <Route
+          path="/"
+          element={
+            <div className="min-h-screen pt-4">
+              <div>
+                <h1 className="text-xl font-semibold text-cyan-500">
+                  Problem Solving
+                </h1>
+              </div>
+              <div className="mt-4 flex flex-col">
+                <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                  <DataTable
+                    columns={columns}
+                    data={question}
+                    customStyles={customStyles}
+                    highlightOnHover
+                  />
                 </div>
-              }
-            />
-            <Route path=":questionId" element={<Problem />} />
-          </>
-        ) : (
-          <div>
-            {/* <Route path="/" element={<ContestEnded/> } /> */}
-          </div>
-        )}
+              </div>
+            </div>
+          }
+        />
+        <Route path=":questionId" element={<Problem />} />
+        <Route path="/" element={<ContestEnded />} />
         <Route path="submission" element={<AllSubmission />} />
         <Route path="submission/:submissionId" element={<ViewSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />

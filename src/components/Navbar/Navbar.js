@@ -76,7 +76,20 @@ const Navbar = (props) => {
                   <span className="hide-sm">DashBoard</span>
                 </Link>
               </li>
-
+              {/* <li className="nav-item">
+                <Link
+                  to={`/leaderboard`}
+                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  className={
+                    (props.transparent
+                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
+                      : "text-gray-50 hover:text-gray-100") +
+                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  }
+                >
+                  <span className="hide-sm">LeaderBoard</span>
+                </Link>
+              </li> */}
               <li className="nav-item">
                 <Link
                   onClick={logout}

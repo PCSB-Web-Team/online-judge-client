@@ -63,5 +63,5 @@ export const getUserByToken = (token) => {
 };
 
 export const checkIfUserRegistered = (userId, contestId) => {
-  return backend.post(`/participant/${userId}/${contestId}`);
+  return backend.get(`/participant/${userId}/${contestId}`);
 };

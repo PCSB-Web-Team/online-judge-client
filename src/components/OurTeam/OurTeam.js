@@ -1,5 +1,8 @@
 import React from "react";
 import user from "../../assets/user.png";
+import aryan from "../../assets/aryan.jpg";
+import vedant from "../../assets/vedant.jpg";
+import mansi from "../../assets/mansi.jpg";
 
 const OurTeam = () => {
   return (
@@ -14,7 +17,7 @@ const OurTeam = () => {
               <div className="mb-24 p-12">
                 <a href="https://www.linkedin.com/in/-aryanagrawal/">
                   <img
-                    src={user}
+                    src={aryan}
                     className="w-80 rounded-full transform transition duration-500 hover:scale-125"
                     alt=""
                   />
@@ -23,7 +26,7 @@ const OurTeam = () => {
               <div className="mb-24 p-12">
                 <a href="https://www.linkedin.com/in/vedant-daigavane-25785315a/">
                   <img
-                    src={user}
+                    src={vedant}
                     className="w-80 rounded-full transform transition duration-500 hover:scale-125"
                     alt=""
                   />
@@ -32,7 +35,7 @@ const OurTeam = () => {
               <div className="mb-24 p-12">
                 <a href="https://www.linkedin.com/in/mansi-gundre-a6a722207/">
                   <img
-                    src={user}
+                    src={mansi}
                     className="w-80 rounded-full transform transition duration-500 hover:scale-125"
                     alt=""
                   />

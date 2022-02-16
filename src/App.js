@@ -6,7 +6,7 @@ import { login } from "./store/actions";
 import { connect } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/LoginPage/Login";
-import Register from "./pages/LoginPage/Register";
+// import Register from "./pages/LoginPage/Register";
 import Loader from "./components/Loader/Loader";
 import Dashboard from "./pages/DashBoard/DashBoard";
 import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./components/OurTeam/OurTeam";
 import Footer from "./components/Footer/Footer";
+import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -55,9 +56,10 @@ function App(props) {
               ) : (
                 <>
                   <Route path="login" element={<Login />} />
-                  <Route path="register" element={<Register />} />
+                  {/* <Route path="register" element={<Register />} /> */}
                 </>
               )}
+              <Route path="/leaderboard" element={<LeaderBoard/>}/>
               <Route path="/contest" element={<Dashboard />} />
               <Route path="/ourteam" element={<OurTeam />} />
               <Route path="/" element={<LandingPage />} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../store/actions";
 import { connect } from "react-redux";
 import Countdown from "../ContestHeader/Countdown";
@@ -8,8 +8,9 @@ import { Requests } from "../../utils/Index";
 const Card = ({ status, ...props }) => {
   const [registered, setRegistered] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
+    console.log(props.userId);
     setLoading(true);
     if (props.userId) {
       Requests.checkIfUserRegistered(props.userId, props._id).then((res) => {
@@ -17,7 +18,7 @@ const Card = ({ status, ...props }) => {
         setLoading(false);
       });
     }
-  }, []);
+  }, [props.isAuthenticated]);
 
   return (
     <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full">
@@ -58,21 +59,26 @@ const Card = ({ status, ...props }) => {
         </div>
         {status.time > 0 && (
           <div className=" text-center">
-            {true ? (
-              <Link
-                to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
-              >
-                <button
-                  className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                  disabled={!status.time}
+            {registered ? (
+              status.description === "RUNNING" ? (
+                <Link
+                  to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
                 >
-                  Enter Contest
-                </button>
-              </Link>
+                  <button
+                    className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    disabled={!status.time}
+                  >
+                    Enter Contest
+                  </button>
+                </Link>
+              ) : (
+                <div className="text-xl text-green-500">Registered Successfully</div>
+              )
             ) : (
-              <Link
-                // remove conditional redirecting & add the dynamic link to the xeniaverse event details page
-                to={props.isAuthenticated ? "/home" : "/login"}
+              <a
+                href="https://www.xeniaverse.co.in/events/6202dab5907a152eb8fb7a8d"
+                rel="noreferrer"
+                target="_blank"
               >
                 <button
                   className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -80,7 +86,7 @@ const Card = ({ status, ...props }) => {
                 >
                   Register
                 </button>
-              </Link>
+              </a>
             )}
           </div>
         )}
