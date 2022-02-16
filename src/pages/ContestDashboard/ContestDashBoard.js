@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
-import { connect } from "react-redux";
 import { Link, useParams, Route, Routes, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ContestHeader from "../../components/ContestHeader/ContestHeader";
@@ -11,11 +10,11 @@ import DataTable from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
 import ContestEnded from "./ContestEnded";
+import { customStyles } from "../../components/Table/CustomStyles";
 
 function ContestDashBoard() {
   const [isLoading, setIsLoading] = useState(true);
   const [question, setQuestion] = useState([]);
-  const [timeOut, setTimeOut] = useState("");
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
   const navigate = useNavigate();
@@ -32,7 +31,6 @@ function ContestDashBoard() {
       Requests.getContestById(contestId)
         .then((res) => {
           setData(res.data);
-          setTimeOut(res.data.endsOn);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -68,29 +66,6 @@ function ContestDashBoard() {
       ),
     },
   ];
-  const customStyles = {
-    rows: {
-      style: {
-        minHeight: "72px",
-      },
-    },
-    headCells: {
-      style: {
-        fontSize: "1.2rem",
-        backgroundColor: "lightgray",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-    cells: {
-      style: {
-        backgroundColor: "&:hoverlightgray",
-        fontSize: "1rem",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-  };
 
   return isLoading ? (
     <div>
@@ -135,10 +110,4 @@ function ContestDashBoard() {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.isAuthenticated,
-  };
-}
-
-export default connect(mapStateToProps)(ContestDashBoard);
+export default ContestDashBoard;

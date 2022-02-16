@@ -59,7 +59,7 @@ function App(props) {
                   {/* <Route path="register" element={<Register />} /> */}
                 </>
               )}
-              <Route path="/leaderboard" element={<LeaderBoard/>}/>
+              <Route path="/leaderboard" element={<LeaderBoard />} />
               <Route path="/contest" element={<Dashboard />} />
               <Route path="/ourteam" element={<OurTeam />} />
               <Route path="/" element={<LandingPage />} />

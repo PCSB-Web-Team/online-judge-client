@@ -1,9 +1,9 @@
 import React, { useMemo, useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
-import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import FilterComponent from "../../components/Table/FilterComponent";
 import DataTable from "react-data-table-component";
+import { customStyles } from "../../components/Table/CustomStyles";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -23,30 +23,6 @@ function LeaderBoard() {
     },
   ];
 
-  const customStyles = {
-    rows: {
-      style: {
-        minHeight: "72px",
-      },
-    },
-    headCells: {
-      style: {
-        fontSize: "1.2rem",
-        backgroundColor: "lightgray",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-    cells: {
-      style: {
-        backgroundColor: "&:hoverlightgray",
-        fontSize: "1rem",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-  };
-  
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
 
@@ -104,6 +80,7 @@ function LeaderBoard() {
                   customStyles={customStyles}
                   data={filteredItems}
                   defaultSortField="name"
+                  progressPending={isLoading}
                   highlightOnHover
                   pagination
                   subHeader
@@ -119,10 +96,4 @@ function LeaderBoard() {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.isAuthenticated,
-  };
-}
-
-export default connect(mapStateToProps)(LeaderBoard);
+export default LeaderBoard;

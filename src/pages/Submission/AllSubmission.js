@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../utils/Index";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
 import DataTable from "react-data-table-component";
 import moment from "moment";
+import { customStyles } from "../../components/Table/CustomStyles";
 
 function AllSubmission() {
   const [data, setData] = useState([]);
@@ -46,28 +45,7 @@ function AllSubmission() {
       ),
     },
   ];
-  const customStyles = {
-    rows: {
-      style: {
-        minHeight: "72px",
-      },
-    },
-    headCells: {
-      style: {
-        fontSize: "1.2rem",
-        backgroundColor: "lightgray",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-    cells: {
-      style: {
-        fontSize: "1rem",
-        paddingLeft: "8px",
-        paddingRight: "8px",
-      },
-    },
-  };
+
   useEffect(() => {
     setIsLoading(true);
     Requests.allSubmission()
@@ -112,10 +90,4 @@ function AllSubmission() {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.isAuthenticated,
-  };
-}
-
-export default connect(mapStateToProps)(AllSubmission);
+export default AllSubmission;
