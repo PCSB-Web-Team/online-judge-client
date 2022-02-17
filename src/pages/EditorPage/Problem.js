@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Editor from "./Editor";
-import { Requests } from "../../utils/Index";
-import copy from "../../../src/assets/copy.png";
+import { Requests } from "../../api/Index";
+import copy from "../../../src/static/Assets/copy.png";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";

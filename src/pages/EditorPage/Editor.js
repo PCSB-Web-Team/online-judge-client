@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AceEditor from "react-ace";
-import caret from "../../assets/caret.png";
+import caret from "../../static/Assets/caret.png";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python";
@@ -11,7 +11,7 @@ import "brace/snippets/c_cpp";
 import "brace/ext/language_tools";
 import { connect } from "react-redux";
 import { contest } from "../../store/actions";
-import { Requests } from "../../utils/Index";
+import { Requests } from "../../api/Index";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Editor = (props) => {
@@ -68,6 +68,7 @@ int main(){
   }
 
   function handleSubmit(props) {
+    alert('Are you sure')
     const runData = {
       languageId: languageIds[lang],
       code: values[lang],

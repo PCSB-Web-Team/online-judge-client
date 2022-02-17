@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const backend = axios.create({
-  baseURL: "http://pcsb-oj.eastus.cloudapp.azure.com/api",
+  baseURL: `${process.env.REACT_APP_BASE_URL}`,
 });
 
 export const login = (data, config) => {

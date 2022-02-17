@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../store/actions";
 import { connect } from "react-redux";
 import Countdown from "../ContestHeader/Countdown";
-import { Requests } from "../../utils/Index";
+import { Requests } from "../../api/Index";
 
 const Card = ({ status, ...props }) => {
   const [registered, setRegistered] = useState(false);
@@ -42,7 +42,7 @@ const Card = ({ status, ...props }) => {
           {status.time ? (
             status.description == "RUNNING" ? (
               <div className="flex justify-between text-gray-500">
-                <div className="font-light text-sky-400">Ends in</div>
+                <div className="font-light text-red-400">Ends in</div>
                 <Countdown seconds={status.time}></Countdown>
               </div>
             ) : (
@@ -72,21 +72,26 @@ const Card = ({ status, ...props }) => {
                   </button>
                 </Link>
               ) : (
-                <div className="text-xl text-green-500">Registered Successfully</div>
+                <div className="text-xl text-green-500">
+                  Registered Successfully
+                </div>
               )
             ) : (
-              <a
-                href="https://www.xeniaverse.co.in/events/6202dab5907a152eb8fb7a8d"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <button
-                  className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                  disabled={!status.time}
+              <>
+                <p className="text-red-800 py-2">Opps! Seems like you are not registered for Event, Please register first.</p>
+                <a
+                  href="https://www.xeniaverse.co.in/events/6202dab5907a152eb8fb7a8d"
+                  rel="noreferrer"
+                  target="_blank"
                 >
-                  Register
-                </button>
-              </a>
+                  <button
+                    className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    disabled={!status.time}
+                  >
+                    Register
+                  </button>
+                </a>
+              </>
             )}
           </div>
         )}

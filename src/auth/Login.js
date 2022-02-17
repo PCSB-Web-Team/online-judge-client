@@ -3,10 +3,10 @@ import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import { Requests, Validators } from "../../utils/Index";
+import { Requests, Validators } from "../api/Index";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../../store/actions";
+import { login } from "../store/actions";
 
 const Login = (props) => {
   let navigate = useNavigate();

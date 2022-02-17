@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Card from "../../components/ContestCards/Card";
-import { Requests } from "../../utils/Index";
+import { Requests } from "../../api/Index";
 import Loader from "../../components/Loader/Loader";
 
 const Dashboard = (props) => {

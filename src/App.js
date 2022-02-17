@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "../src/styles/App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { Requests } from "./utils/Index";
+import { Requests } from "./api/Index";
 import { login } from "./store/actions";
 import { connect } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
-import Login from "./pages/LoginPage/Login";
+import Login from "./auth/Login";
 // import Register from "./pages/LoginPage/Register";
 import Loader from "./components/Loader/Loader";
 import Dashboard from "./pages/DashBoard/DashBoard";
 import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
-import LandingPage from "./components/LandingPage/LandingPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
-import OurTeam from "./components/OurTeam/OurTeam";
+import OurTeam from "./pages/OurTeam/OurTeam";
 import Footer from "./components/Footer/Footer";
 import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
 

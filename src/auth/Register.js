@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Requests, Validators } from "../../utils/Index";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../../store/actions";
+import { login } from "../store/actions";
 import { getContests } from "../../utils/Requests";
 
 const Register = (props) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Requests } from "../../utils/Index";
+import { Requests } from "../../api/Index";
 import { Link, useParams, Route, Routes, useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ContestHeader from "../../components/ContestHeader/ContestHeader";
@@ -9,7 +9,6 @@ import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import DataTable from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
-import ContestEnded from "./ContestEnded";
 import { customStyles } from "../../components/Table/CustomStyles";
 
 function ContestDashBoard() {
@@ -44,6 +43,11 @@ function ContestDashBoard() {
     {
       name: "Title",
       selector: (row) => row.title,
+      sortable: true,
+    },
+    {
+      name: "",
+      selector: (row) => row.difficultyLevel,
       sortable: true,
     },
     {
@@ -100,7 +104,6 @@ function ContestDashBoard() {
           }
         />
         <Route path=":questionId" element={<Problem />} />
-        <Route path="/" element={<ContestEnded />} />
         <Route path="submission" element={<AllSubmission />} />
         <Route path="submission/:submissionId" element={<ViewSubmission />} />
         <Route path="leaderboard" element={<LeaderBoard />} />

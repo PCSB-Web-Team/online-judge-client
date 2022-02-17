@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Requests } from "../../utils/Index";
+import { Requests } from "../../api/Index";
 import { Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import moment from "moment";

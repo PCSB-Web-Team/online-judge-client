@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import programmer from "../../assets/programmer.png";
+import programmer from "../../static/Assets/programmer.png";
 import Typist from "react-typist";
 
 const LandingPage = () => {
