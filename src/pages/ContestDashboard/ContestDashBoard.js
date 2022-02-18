@@ -96,6 +96,7 @@ function ContestDashBoard() {
                     columns={columns}
                     data={question}
                     customStyles={customStyles}
+                    progressPending={isLoading}
                     highlightOnHover
                   />
                 </div>

@@ -48,7 +48,7 @@ export const submissionById = (submissionId) => {
   return backend.get(`/submission/${submissionId}`);
 };
 
-export const allParticipant = (contestId) => {
+export const allParticipant = () => {
   return backend.get(`/participant/`);
 };
 

@@ -14,7 +14,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./pages/OurTeam/OurTeam";
 import Footer from "./components/Footer/Footer";
-import LeaderBoard from "./pages/LeaderBoard/LeaderBoard";
+import MainLeaderBoard from "./pages/LeaderBoard/MainLeaderBoard";
 
 function App(props) {
   const [isloading, setIsLoading] = useState(true);
@@ -59,7 +59,7 @@ function App(props) {
                   {/* <Route path="register" element={<Register />} /> */}
                 </>
               )}
-              <Route path="/leaderboard" element={<LeaderBoard />} />
+              <Route path="/leaderboard" element={<MainLeaderBoard />} />
               <Route path="/contest" element={<Dashboard />} />
               <Route path="/ourteam" element={<OurTeam />} />
               <Route path="/" element={<LandingPage />} />

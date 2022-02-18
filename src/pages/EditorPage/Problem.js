@@ -45,43 +45,43 @@ const Problem = () => {
                 <span>Maximum Score : {data.score} || </span>
                 <span>Time Limit : {data.time.$numberDecimal} sec || </span>
                 <span> Memory Limit : {data.memory}MB</span>
-                <p>Difficulty Level: {data.difficultyLevel} </p>
+                <div>Difficulty Level: {data.difficultyLevel} </div>
               </div>
-              <p>
+              <>
                 <h2 className="text-cyan-500 text-xl py-2">
                   Problem Statement :
                 </h2>
                 {data.problemStatement}
-              </p>
+              </>
               <p className="py-2">
                 <h2 className="text-cyan-500 text-xl">Description :</h2>
                 {data.description}
               </p>
               <h2 className="text-cyan-500 text-xl py-2">Example</h2>
-              {data.example.map((example) => {
+              {data.example.map((example, i) => {
                 return (
-                  <div className="py-1">
+                  <div className="py-1" key={i}>
                     <h2>Input : {example.input}</h2>
                     <h2>Output : {example.output}</h2>
                   </div>
                 );
               })}
-              <p>
+              <>
                 <h2 className="text-cyan-500 text-xl py-2">Input Format :</h2>
                 {data.inputFormat}
-              </p>
-              <p>
+              </>
+              <>
                 <h2 className="text-cyan-500 text-xl py-2">Output Format :</h2>
                 {data.outputFormat}
-              </p>
-              <p>
+              </>
+              <>
                 <h2 className="text-cyan-500 text-xl py-2">Constraints :</h2>
                 {data.constraints}
-              </p>
-              <p className="text-cyan-500 text-xl py-3">
+              </>
+              <div className="text-cyan-500 text-xl py-3">
                 <strong>Input</strong>
-              </p>
-              <p className="sample-tests">
+              </div>
+              <div className="sample-tests">
                 <div className="copied">Copied!</div>
                 <img
                   src={copy}
@@ -90,11 +90,11 @@ const Problem = () => {
                   onClick={() => copytoclipboard(0)}
                 />
                 <code>
-                  {data.samples.map((samples) => {
-                    return <div>{samples.sampleInput}</div>;
+                  {data.samples.map((samples, i) => {
+                    return <div key={i}>{samples.sampleInput}</div>;
                   })}
                 </code>
-              </p>
+              </div>
               <p className="text-cyan-500 text-xl py-3">
                 <strong>Output</strong>
               </p>
@@ -107,8 +107,8 @@ const Problem = () => {
                   onClick={() => copytoclipboard(1)}
                 />
                 <code>
-                  {data.samples.map((samples) => {
-                    return <div>{samples.sampleOutput}</div>;
+                  {data.samples.map((samples, i) => {
+                    return <div key={i}>{samples.sampleOutput}</div>;
                   })}
                 </code>
               </p>
@@ -116,9 +116,9 @@ const Problem = () => {
                 <strong>Explanation</strong>
               </p>
               <p className="py-1">
-                {data.explanations.map((explain) => {
+                {data.explanations.map((explain, i) => {
                   return (
-                    <div className="py-3"> {explain.testcaseExplain} </div>
+                    <div className="py-3" key={i}> {explain.testcaseExplain} </div>
                   );
                 })}
               </p>

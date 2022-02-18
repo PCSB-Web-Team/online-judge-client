@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <div className="background text-white p-2 bg-gray-800">
       <center>
-        <p>
+        <h1>
           Made with 🤍 <Link to="/ourteam"> <u>by PCSB Web Team</u> </Link>
-        </p>
+        </h1>
       </center>
     </div>
   );
