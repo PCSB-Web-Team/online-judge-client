@@ -79,7 +79,7 @@ function AllSubmission() {
                   pagination
                   highlightOnHover
                   fixedHeader
-                  fixedHeaderScrollHeight="800px"
+                  fixedHeaderScrollHeight="700px"
                 />
               </div>
             </div>

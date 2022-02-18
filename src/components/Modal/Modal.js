@@ -1,7 +1,6 @@
 import React from "react";
-import CustomModal from "./CustomModal";
 
-const Modal = ({ open, children, onClose }) => {
+const Modal = ({ open, children }) => {
   if (!open) return null;
 
   return (

@@ -85,7 +85,8 @@ function LeaderBoard() {
                   pagination
                   subHeader
                   subHeaderComponent={subHeaderComponent}
-                  fixedHeaderScrollHeight="800px"
+                  fixedHeader
+                  fixedHeaderScrollHeight="700px"
                 />
               </div>
             </div>
