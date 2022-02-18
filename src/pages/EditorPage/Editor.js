@@ -13,6 +13,8 @@ import { connect } from "react-redux";
 import { contest } from "../../store/actions";
 import { Requests } from "../../api/Index";
 import { useParams, useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+import CustomModal from "../../components/Modal/CustomModal";
 
 const Editor = (props) => {
   const userId = localStorage.getItem("userId");
@@ -51,6 +53,7 @@ int main(){
   const [customOutput, setCustomOutput] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const modes = {
@@ -68,7 +71,7 @@ int main(){
   }
 
   function handleSubmit(props) {
-    alert('Are you sure')
+    setIsOpen(true);
     const runData = {
       languageId: languageIds[lang],
       code: values[lang],
@@ -98,9 +101,7 @@ int main(){
               setCustomOutput(res.data.stdout);
               setError(res.data.compile_output);
               console.log(res.data.stdout);
-              if (
-                res.data.status.id>2
-              ) {
+              if (res.data.status.id > 2) {
                 clearInterval(interval1);
                 setIsLoading(false);
               }
@@ -124,6 +125,13 @@ int main(){
 
   return (
     <div className="shadow-2xl">
+      <Modal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        onSubmit={handleSubmit}
+      >
+        <CustomModal onClose={() => setIsOpen(false)} onSubmit={handleSubmit} />
+      </Modal>
       <div className="editor-header">
         <select
           name="languages"
@@ -194,7 +202,7 @@ int main(){
           <button
             className="submit-btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             type="submit"
-            onClick={handleSubmit}
+            onClick={() => setIsOpen(true)}
           >
             <p>Submit</p>
           </button>

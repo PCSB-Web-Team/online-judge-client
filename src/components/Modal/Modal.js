@@ -1,58 +1,14 @@
-import React from 'react'
+import React from "react";
+import CustomModal from "./CustomModal";
 
-import Alert from 'react-popup-alert'
-
-const Modal = () => {
-  const [alert, setAlert] = React.useState({
-    type: 'error',
-    text: 'This is a alert message',
-    show: false
-  })
-
-  function onCloseAlert() {
-    setAlert({
-      type: '',
-      text: '',
-      show: false
-    })
-  }
-
-  function onShowAlert(type) {
-    setAlert({
-      type: type,
-      text: 'Demo alert',
-      show: true
-    })
-  }
+const Modal = ({ open, children, onClose }) => {
+  if (!open) return null;
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
-        <button onClick={() => onCloseAlert()}>Hide alert</button>
-        <button onClick={() => onShowAlert('success')}>
-          Show success alert
-        </button>
-        <button onClick={() => onShowAlert('error')}>Show error alert</button>
-        <button onClick={() => onShowAlert('warning')}>
-          Show warning alert
-        </button>
-      </div>
-      <Alert
-        header={'Header'}
-        btnText={'Close'}
-        text={alert.text}
-        type={alert.type}
-        show={alert.show}
-        onClosePress={onCloseAlert}
-        pressCloseOnOutsideClick={true}
-        showBorderBottom={true}
-        alertStyles={{}}
-        headerStyles={{}}
-        textStyles={{}}
-        buttonStyles={{}}
-      />
+    <div className="bg-black bg-opacity-50 overlay justify-center">
+      {children}
     </div>
-  )
-}
+  );
+};
 
 export default Modal;

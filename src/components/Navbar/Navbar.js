@@ -4,7 +4,6 @@ import { login, logout } from "../../store/actions";
 import { Link, useParams } from "react-router-dom";
 
 const Navbar = (props) => {
-  const {contestId} = useParams();
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   function logout() {
