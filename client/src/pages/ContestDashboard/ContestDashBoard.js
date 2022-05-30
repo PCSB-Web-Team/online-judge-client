@@ -25,7 +25,7 @@ function ContestDashBoard() {
           setQuestion(res.data);
         })
         .catch((error) => {
-          navigate("/");
+          // navigate("/");
         });
       Requests.getContestById(contestId)
         .then((res) => {

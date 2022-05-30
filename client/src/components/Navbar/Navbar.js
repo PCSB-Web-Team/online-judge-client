@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../../store/actions";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -15,7 +15,7 @@ const Navbar = (props) => {
       className={
         (props.transparent
           ? "top-0 absolute z-50 w-full"
-          : "relative shadow-lg bg-gray-500") +
+          : "relative shadow-lg bg-gray-700") +
         " flex flex-wrap items-center justify-between px-2 py-3 "
       }
     >
@@ -41,7 +41,7 @@ const Navbar = (props) => {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center bg-gray-500 lg:bg-transparent lg:shadow-none" +
+            "lg:flex flex-grow items-center bg-gray-700 lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded " : " hidden")
           }
           id="example-navbar-warning"
@@ -109,19 +109,6 @@ const Navbar = (props) => {
             </ul>
           ) : (
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <Link
-                  to="/register"
-                  className={
-                    (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
-                      : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                  }
-                >
-                  Register
-                </Link>
-              </li>
               <li className="nav-item">
                 <Link
                   to="/login"
