@@ -15,7 +15,7 @@ export const phoneNumber = Yup.number()
   .required("Required");
 
 export const password = Yup.string()
-  .min(6, "Password must be at least 6 charaters")
+  .min(3, "Password must be at least 6 charaters")
   .required("Password is required");
 
 export const confirmPassword = Yup.string()

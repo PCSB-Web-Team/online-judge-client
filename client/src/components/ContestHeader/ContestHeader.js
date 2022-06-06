@@ -4,6 +4,7 @@ import Countdown from "./Countdown";
 
 const ContestHeader = (props) => {
   const { contestId } = useParams();
+  const userId = localStorage.getItem("userId")
   const tabs = [
     {
       name: "Question",
@@ -11,7 +12,7 @@ const ContestHeader = (props) => {
     },
     {
       name: "My Submissions",
-      link: `/${contestId}/submission`,
+      link: `/${contestId}/submission/${userId}`,
     },
     {
       name: "Leaderboard",

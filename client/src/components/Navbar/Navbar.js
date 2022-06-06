@@ -9,6 +9,7 @@ const Navbar = (props) => {
   function logout() {
     props.logout();
     localStorage.removeItem("pcsb-oj-token");
+    localStorage.removeItem("userId");
   }
   return (
     <nav

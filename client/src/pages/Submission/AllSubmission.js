@@ -39,16 +39,16 @@ function AllSubmission() {
             type="button"
             className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
           >
-            <Link to={`${row._id}`}>View</Link>
+            <Link to={`${row.questionId}`}>View</Link>
           </button>
         </div>
       ),
     },
   ];
-
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
     setIsLoading(true);
-    Requests.allSubmission()
+    Requests.submissionByUserId(userId)
       .then((res) => {
         setData(res.data);
         console.log(res.data.timestamp);

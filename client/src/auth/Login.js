@@ -26,6 +26,7 @@ const Login = (props) => {
         Requests.login(values)
           .then((res) => {
             localStorage.setItem("pcsb-oj-token", res.data.token);
+            localStorage.setItem("userId", res.data._id)
             props.login(res.data);
             console.log(values);
             navigate("/");
@@ -63,7 +64,7 @@ const Login = (props) => {
             </button>
           </Form>
           <p className="link p-3 ">
-            Don"t have an account? <Link to="/register" className="text-cyan-500">Sign Up</Link>
+            Register for the event? <Link to="/register" className="text-cyan-500">Register</Link>
           </p>
           <div className="p-24"></div>
         </div>

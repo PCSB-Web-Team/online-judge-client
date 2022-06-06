@@ -82,7 +82,7 @@ int main(){
     setIsLoading(true);
     Requests.submitCode(runData).then((res) => {});
     setIsLoading(true);
-    navigate(`/${contestId}/submission`);
+    navigate(`/${contestId}/submission/${userId}`);
     setIsLoading(false);
   }
 

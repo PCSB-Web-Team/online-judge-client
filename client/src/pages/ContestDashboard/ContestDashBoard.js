@@ -16,9 +16,11 @@ function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
+  const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
   useEffect(() => {
     setIsLoading(true);
+    console.log(userId);
     if (contestId) {
       Requests.getQuestions(contestId)
         .then((res) => {
@@ -105,8 +107,11 @@ function ContestDashBoard() {
           }
         />
         <Route path=":questionId" element={<Problem />} />
-        <Route path="submission" element={<AllSubmission />} />
-        <Route path="submission/:submissionId" element={<ViewSubmission />} />
+        <Route path="submission/:userId" element={<AllSubmission />} />
+        <Route
+          path="submission/:userId/:questionId"
+          element={<ViewSubmission />}
+        />
         <Route path="leaderboard" element={<LeaderBoard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
