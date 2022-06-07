@@ -32,9 +32,7 @@ function ContestDashBoard() {
           setData(res.data);
           setIsLoading(false);
         })
-        .catch((error) => {
-          navigate("/");
-        });
+        .catch((error) => {});
     } else {
     }
   }, []);
@@ -73,7 +71,7 @@ function ContestDashBoard() {
 
   return isLoading ? (
     <div>
-      <Loader></Loader>
+      <Loader />
     </div>
   ) : (
     <div className=" max-w-6xl mx-auto p-4">
@@ -107,11 +105,10 @@ function ContestDashBoard() {
         <Route path=":questionId" element={<Problem />} />
         <Route path="submission/:userId" element={<AllSubmission />} />
         <Route
-          path="submission/:userId/:questionId"
+          path="submission/:userId/:submissionId"
           element={<ViewSubmission />}
         />
         <Route path="leaderboard" element={<LeaderBoard />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

@@ -17,58 +17,46 @@ import Footer from "./components/Footer/Footer";
 import MainLeaderBoard from "./pages/LeaderBoard/MainLeaderBoard";
 
 function App(props) {
-  const [isloading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    setIsLoading(true);
     const token = localStorage.getItem("pcsb-oj-token");
     if (token) {
-      setIsLoading(true);
       Requests.getUserByToken(token)
         .then((res) => {
           props.login(res.data);
-          setIsLoading(false);
         })
         .catch((error) => {
           navigate("/");
-          setIsLoading(false);
         });
     } else {
     }
-    setIsLoading(false);
   }, []);
 
   return (
     <div>
-      {isloading ? (
-        <div>
-          <Loader />
+      <div>
+        <Navbar />
+        <div className="min-h-screen h-fit">
+          <Routes>
+            {props.isAuthenticated ? (
+              <>
+                <Route path="/:contestId/*" element={<ContestDashBoard />} />
+              </>
+            ) : (
+              <>
+                <Route path="login" element={<Login />} />
+                {/* <Route path="register" element={<Register />} /> */}
+              </>
+            )}
+            <Route path="/leaderboard" element={<MainLeaderBoard />} />
+            <Route path="/contest" element={<Dashboard />} />
+            <Route path="/ourteam" element={<OurTeam />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
-      ) : (
-        <div>
-          <Navbar />
-          <div className="min-h-screen h-fit">
-            <Routes>
-              {props.isAuthenticated ? (
-                <>
-                  <Route path="/:contestId/*" element={<ContestDashBoard />} />
-                </>
-              ) : (
-                <>
-                  <Route path="login" element={<Login />} />
-                  {/* <Route path="register" element={<Register />} /> */}
-                </>
-              )}
-              <Route path="/leaderboard" element={<MainLeaderBoard />} />
-              <Route path="/contest" element={<Dashboard />} />
-              <Route path="/ourteam" element={<OurTeam />} />
-              <Route path="/" element={<LandingPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
-      )}
+        <Footer />
+      </div>
     </div>
   );
 }

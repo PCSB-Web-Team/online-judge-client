@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div className="p-16 text-2xl bg-gradient-to-r from-gray-700 to-gray-800 md:-mt-16 min-h-screen">
+    <div className="p-16 text-2xl md:-mt-16 min-h-screen">
       <div className="mb-4 text-white flex text-5xl py-8">
         //<div className="text-red-500 px-2">404</div> page not found.
       </div>

@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { login } from "../../store/actions";
 import { connect } from "react-redux";
 import Countdown from "../ContestHeader/Countdown";
 import { Requests } from "../../api/Index";
 const Card = ({ status, ...props }) => {
   const [registered, setRegistered] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   useEffect(() => {
-    console.log(props.userId);
-    setLoading(true);
     if (props.userId) {
       Requests.checkIfUserRegistered(props.userId, props._id).then((res) => {
         if (res.data) setRegistered(true);
-        setLoading(false);
       });
     }
   }, [props.isAuthenticated]);
+
   return (
     <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full">
       <img
