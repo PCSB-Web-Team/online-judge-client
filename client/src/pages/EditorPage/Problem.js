@@ -91,7 +91,11 @@ const Problem = () => {
                 />
                 <code>
                   {data.samples.map((samples, i) => {
-                    return <div key={i}>{samples.sampleInput}</div>;
+                    return (
+                      <div key={i}>
+                        <pre>{samples.sampleInput}</pre>{" "}
+                      </div>
+                    );
                   })}
                 </code>
               </div>
@@ -108,7 +112,11 @@ const Problem = () => {
                 />
                 <code>
                   {data.samples.map((samples, i) => {
-                    return <div key={i}>{samples.sampleOutput}</div>;
+                    return (
+                      <div key={i}>
+                        <pre>{samples.sampleOutput}</pre>{" "}
+                      </div>
+                    );
                   })}
                 </code>
               </p>
@@ -118,7 +126,10 @@ const Problem = () => {
               <p className="py-1">
                 {data.explanations.map((explain, i) => {
                   return (
-                    <div className="py-3" key={i}> {explain.testcaseExplain} </div>
+                    <div className="py-3" key={i}>
+                      {" "}
+                      {explain.testcaseExplain}{" "}
+                    </div>
                   );
                 })}
               </p>

@@ -52,7 +52,7 @@ export const submissionByUserId = (userId) => {
   return backend.get(`/submission/user/${userId}`);
 };
 
-export const submissionByUserIdquestionId = (userId,questionId) => {
+export const submissionByUserIdquestionId = (userId, questionId) => {
   return backend.get(`/submission/${userId}/${questionId}`);
 };
 

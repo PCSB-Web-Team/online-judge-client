@@ -4,10 +4,10 @@ import { login } from "../../store/actions";
 import { connect } from "react-redux";
 import Countdown from "../ContestHeader/Countdown";
 import { Requests } from "../../api/Index";
-
 const Card = ({ status, ...props }) => {
   const [registered, setRegistered] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     console.log(props.userId);
     setLoading(true);
@@ -18,7 +18,6 @@ const Card = ({ status, ...props }) => {
       });
     }
   }, [props.isAuthenticated]);
-
   return (
     <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full">
       <img
@@ -58,44 +57,49 @@ const Card = ({ status, ...props }) => {
         </div>
         {status.time > 0 && (
           <div className=" text-center">
-            {/* {registered ? ( */}
-            {/* status.description === "RUNNING" ? ( */}
-            <Link to={props.isAuthenticated ? `/${props.contestId}` : "/login"}>
-              <button
-                className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                disabled={!status.time}
-              >
-                Enter Contest
-              </button>
-            </Link>
-            {/* ) : ( */}
-            <div className="text-xl text-green-500">
-              Registered Successfully
-            </div>
-            {/*) // ) : ( */}
-            {/* // <>
-                 <p className="text-red-800 py-2">Opps! Seems like you are not registered for Event, Please register first.</p>
-                 <a
-                   href="https://www.xeniaverse.co.in/events/6202dab5907a152eb8fb7a8d"
-                   rel="noreferrer"
-                   target="_blank"
-                 >
-                   <button
-                     className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                     disabled={!status.time}
-                   >
-                     Register
-                   </button>
-                 </a>
-               </>
-            // )} */}
+            {registered ? (
+              status.description === "RUNNING" ? (
+                <Link
+                  to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
+                >
+                  <button
+                    className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    disabled={!status.time}
+                  >
+                    Enter Contest
+                  </button>
+                </Link>
+              ) : (
+                <div className="text-xl text-green-500">
+                  Registered Successfully
+                </div>
+              )
+            ) : (
+              <>
+                <p className="text-red-800 py-2">
+                  Opps! Seems like you are not registered for Event, Please
+                  register first.
+                </p>
+                <a
+                  href="https://www.xenia.co.in/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <button
+                    className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    disabled={!status.time}
+                  >
+                    Register
+                  </button>
+                </a>
+              </>
+            )}
           </div>
         )}
       </div>
     </div>
   );
 };
-
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.isAuthenticated,
@@ -107,5 +111,4 @@ function mapActionToProps(dispatch) {
     login: () => dispatch(login()),
   };
 }
-
 export default connect(mapStateToProps, mapActionToProps)(Card);

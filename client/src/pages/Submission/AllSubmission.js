@@ -51,7 +51,6 @@ function AllSubmission() {
     Requests.submissionByUserId(userId)
       .then((res) => {
         setData(res.data);
-        console.log(res.data.timestamp);
         setIsLoading(false);
       })
       .catch((error) => {});

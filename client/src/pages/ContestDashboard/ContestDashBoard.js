@@ -16,11 +16,9 @@ function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
-  const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
   useEffect(() => {
     setIsLoading(true);
-    console.log(userId);
     if (contestId) {
       Requests.getQuestions(contestId)
         .then((res) => {

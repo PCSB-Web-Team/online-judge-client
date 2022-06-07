@@ -4,7 +4,7 @@ import Countdown from "./Countdown";
 
 const ContestHeader = (props) => {
   const { contestId } = useParams();
-  const userId = localStorage.getItem("userId")
+  const userId = localStorage.getItem("userId");
   const tabs = [
     {
       name: "Question",
@@ -22,7 +22,7 @@ const ContestHeader = (props) => {
   return (
     <div className="space-y-4 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
       <div className=" flex justify-around space-x-4">
-        {tabs.map((tab,i) => (
+        {tabs.map((tab, i) => (
           <NavLink
             key={`navlink${i}`}
             to={tab.link}
