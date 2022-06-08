@@ -67,7 +67,7 @@ function LeaderBoard() {
         "No User in LeaderBoard"
       ) : (
         <div className="contest_dashboard text-gray-900 ">
-          <main>
+          <div className="max-w-7xl mx-auto">
             <div className="DashBoard mb-4">
               <h1 className="text-xl text-cyan-500 font-semibold">
                 Leader Board
@@ -90,7 +90,7 @@ function LeaderBoard() {
                 />
               </div>
             </div>
-          </main>
+          </div>
         </div>
       )}
     </div>

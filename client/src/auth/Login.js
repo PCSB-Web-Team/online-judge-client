@@ -28,7 +28,6 @@ const Login = (props) => {
             localStorage.setItem("pcsb-oj-token", res.data.token);
             localStorage.setItem("userId", res.data._id);
             props.login(res.data);
-            console.log(values);
             navigate("/");
           })
           .catch((err) => {

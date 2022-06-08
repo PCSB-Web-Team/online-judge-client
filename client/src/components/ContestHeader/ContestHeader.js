@@ -20,7 +20,7 @@ const ContestHeader = (props) => {
     },
   ];
   return (
-    <div className="space-y-4 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
+    <div className="space-y-4 w-11/12 mx-auto pt-5 md:space-y-0 md:flex md:justify-between tracking-wider text-sm mb-8">
       <div className=" flex justify-around space-x-4">
         {tabs.map((tab, i) => (
           <NavLink
@@ -28,8 +28,8 @@ const ContestHeader = (props) => {
             to={tab.link}
             end
             className={({ isActive }) =>
-              `hover:border-b-2  border-sky-300 transform transition rounded-lg p-2 px-4 md:px-8 font-light ${
-                isActive ? " border-b-2 bg-sky-100" : "text-black border-b"
+              `hover:border-b-2  border-sky-500 transform transition rounded-lg p-2 px-4 md:px-8 font-light ${
+                isActive ? " border-b-2 bg-sky-300" : "text-black border-b"
               }`
             }
           >

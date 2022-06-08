@@ -34,7 +34,6 @@ const Register = (props) => {
           Requests.getContests(values).then((res) => {});
           Requests.signup(values)
             .then((res) => {
-              console.log(res);
               localStorage.setItem("pcsb-oj-token", res.data.token);
               props.login(res.data);
               alert("Register successful");

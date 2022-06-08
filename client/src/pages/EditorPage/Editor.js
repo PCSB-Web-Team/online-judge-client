@@ -100,7 +100,6 @@ int main(){
             .then((res) => {
               setCustomOutput(res.data.stdout);
               setError(res.data.compile_output);
-              console.log(res.data.stdout);
               if (res.data.status.id > 2) {
                 clearInterval(interval1);
                 setIsLoading(false);
@@ -124,7 +123,7 @@ int main(){
   }, []);
 
   return (
-    <div className="shadow-2xl">
+    <div>
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
@@ -132,7 +131,7 @@ int main(){
       >
         <CustomModal onClose={() => setIsOpen(false)} onSubmit={handleSubmit} />
       </Modal>
-      <div className="editor-header">
+      <div className="editor-header mb-4">
         <select
           name="languages"
           onChange={(e) => {

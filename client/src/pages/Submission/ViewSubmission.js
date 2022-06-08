@@ -14,7 +14,6 @@ const ViewSubmission = () => {
     setIsLoading(true);
     Requests.submissionById(submissionId)
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
         setIsLoading(false);
       })
@@ -28,7 +27,7 @@ const ViewSubmission = () => {
           <Loader />
         </div>
       ) : (
-        <div className="problem">
+        <div className="problem max-w-7xl mx-auto">
           <div className="flex-inline">
             <h2 className="text-2xl text-cyan-500">
               {data.submission.questionName}

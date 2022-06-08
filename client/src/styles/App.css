@@ -26,13 +26,6 @@
   letter-spacing: 0 !important;
 }
 
-.editor-header {
-  width: 100%;
-  background: white;
-  padding: 20px;
-  position: relative;
-}
-
 .editor-header select {
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
@@ -46,10 +39,6 @@
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
-}
-
-.editor-header select::after {
-  display: none;
 }
 
 .editor-header select:focus-visible {
@@ -68,8 +57,8 @@
   stroke: currentcolor;
   stroke-width: 0;
   position: absolute;
-  color: #576871;
-  left: 190px;
+  color: rgb(255, 255, 255);
+  left: 10px;
   top: 39%;
 }
 
