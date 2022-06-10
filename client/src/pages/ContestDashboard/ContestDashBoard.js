@@ -109,6 +109,7 @@ function ContestDashBoard() {
           element={<ViewSubmission />}
         />
         <Route path="leaderboard" element={<LeaderBoard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

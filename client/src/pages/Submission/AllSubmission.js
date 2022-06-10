@@ -48,12 +48,15 @@ function AllSubmission() {
   const userId = localStorage.getItem("userId");
   useEffect(() => {
     setIsLoading(true);
-    Requests.submissionByUserId(userId)
-      .then((res) => {
-        setData(res.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {});
+    const performRequest = () =>
+      Requests.submissionByUserId(userId)
+        .then((res) => {
+          setData(res.data);
+          setIsLoading(false);
+        })
+        .catch((error) => {});
+    setInterval(performRequest, 5000);
+    setIsLoading(false);
   }, []);
 
   return (
@@ -63,7 +66,7 @@ function AllSubmission() {
       ) : (
         <div className="contest_dashboard text-gray-900">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-4">
+            <div className="mb- flex">
               <h1 className="text-xl text-cyan-500 font-semibold">
                 Submission
               </h1>

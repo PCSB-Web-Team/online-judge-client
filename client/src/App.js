@@ -25,9 +25,7 @@ function App(props) {
         .then((res) => {
           props.login(res.data);
         })
-        .catch((error) => {
-          navigate("/");
-        });
+        .catch((error) => {});
     } else {
     }
   }, []);
@@ -52,7 +50,7 @@ function App(props) {
             <Route path="/contest" element={<Dashboard />} />
             <Route path="/ourteam" element={<OurTeam />} />
             <Route path="/" element={<LandingPage />} />
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </div>
         <Footer />
