@@ -70,7 +70,7 @@ int main(){
     localStorage.setItem("pcsb-code", JSON.stringify(newvals));
   }
 
-  function handleSubmit(props) {
+  async function handleSubmit(props) {
     setIsOpen(true);
     const runData = {
       languageId: languageIds[lang],
@@ -138,8 +138,8 @@ int main(){
             setLang(e.target.value);
           }}
         >
-          <option value="C">C</option>
           <option value="C++">C++</option>
+          <option value="C">C</option>
           <option value="Java">Java</option>
           <option value="Python">Python</option>
         </select>
