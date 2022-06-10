@@ -48,15 +48,12 @@ function AllSubmission() {
   const userId = localStorage.getItem("userId");
   useEffect(() => {
     setIsLoading(true);
-    const performRequest = () =>
-      Requests.submissionByUserId(userId)
-        .then((res) => {
-          setData(res.data);
-          setIsLoading(false);
-        })
-        .catch((error) => {});
-    setInterval(performRequest, 5000);
-    setIsLoading(false);
+    Requests.submissionByUserId(userId)
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {});
   }, []);
 
   return (

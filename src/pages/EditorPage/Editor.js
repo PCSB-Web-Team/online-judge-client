@@ -57,8 +57,8 @@ int main(){
   const navigate = useNavigate();
 
   const modes = {
-    C: "c_cpp",
     "C++": "c_cpp",
+    C: "c_cpp",
     Java: "java",
     Python: "python",
   };
@@ -80,7 +80,7 @@ int main(){
       contestId: contestId,
     };
     setIsLoading(true);
-    Requests.submitCode(runData).then((res) => {});
+    const res = await Requests.submitCode(runData);
     setIsLoading(true);
     navigate(`/${contestId}/submission/${userId}`);
     setIsLoading(false);
