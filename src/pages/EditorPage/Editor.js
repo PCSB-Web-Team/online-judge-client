@@ -47,7 +47,7 @@ int main(){
     Java: 62,
   };
   const [values, setValues] = useState(vals);
-  const [lang, setLang] = useState("C");
+  const [lang, setLang] = useState("C++");
   const [isCustom, setIsCustom] = useState(false);
   const [customInput, setCustomInput] = useState("");
   const [customOutput, setCustomOutput] = useState("");
@@ -80,7 +80,7 @@ int main(){
       contestId: contestId,
     };
     setIsLoading(true);
-    const res = await Requests.submitCode(runData);
+    Requests.submitCode(runData);
     setIsLoading(true);
     navigate(`/${contestId}/submission/${userId}`);
     setIsLoading(false);
