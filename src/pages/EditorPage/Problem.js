@@ -37,9 +37,9 @@ const Problem = () => {
           <Loader />
         </div>
       ) : (
-        <div className="overflow-auto sm:overflow-hidden">
-          <div className="flex flex-wrap block">
-            <div className="bg-blue w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 h-full sm:h-screen overflow-auto">
+        <div className="">
+          <div className="flex flex-wrap block overflow-auto sm:overflow-hidden">
+            <div className="bg-blue w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2  sm:h-[118vh] overflow-auto">
               <div className="p-4 pb-4 sm:pb-16">
                 <div>
                   <div key={data} className=" p-1">
@@ -149,7 +149,7 @@ const Problem = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-pink w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 h-full sm:h-screen overflow-auto">
+            <div className="bg-pink w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 h-full ">
               <div className="p-4 pb-4 sm:pb-16">
                 <Editor />
               </div>
