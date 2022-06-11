@@ -3,7 +3,7 @@ import { Requests } from "../../api/Index";
 import { Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import moment from "moment";
-import { customStyles } from "../../components/Table/CustomStyles";
+import { customStyles,conditionalCellStyles } from "../../components/Table/CustomStyles";
 
 function AllSubmission() {
   const [data, setData] = useState([]);
@@ -13,22 +13,26 @@ function AllSubmission() {
       name: "Title",
       selector: (row) => row.questionName,
       sortable: true,
+      conditionalCellStyles
     },
     {
       name: "Score",
       selector: (row) => row.score,
       sortable: true,
+      conditionalCellStyles
     },
     {
       name: "Status",
       selector: (row) => row.status,
       sortable: true,
+      conditionalCellStyles
     },
     {
       name: "When Submitted",
       selector: (row) =>
         moment(row.timestamp).format("h:mm:ss a ,ddd , MMM Do"),
       sortable: true,
+      conditionalCellStyles
     },
     {
       name: "View",
@@ -45,6 +49,7 @@ function AllSubmission() {
           </Link>
         </div>
       ),
+      conditionalCellStyles
     },
   ];
   const userId = localStorage.getItem("userId");

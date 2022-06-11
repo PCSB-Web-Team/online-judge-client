@@ -21,3 +21,24 @@ export const customStyles = {
     },
   },
 };
+
+export const conditionalCellStyles = [
+  {
+    when: (row) => row.status == "Accepted",
+    style: {
+      color: "green",
+    },
+  },
+  {
+    when: (row) => row.status == "Rejected",
+    style: {
+      color: "red",
+    },
+  },
+  {
+    when: (row) => row.status == "Partially Accepted",
+    style: {
+      color: "#21B6A8",
+    },
+  },
+];
