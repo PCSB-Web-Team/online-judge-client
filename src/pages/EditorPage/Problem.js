@@ -10,7 +10,6 @@ const Problem = () => {
   const [data, setData] = useState({ example: [] });
   const [isLoading, setIsLoading] = useState(true);
   const { questionId } = useParams();
-
   useEffect(() => {
     setIsLoading(true);
     Requests.getQuestionById(questionId)
