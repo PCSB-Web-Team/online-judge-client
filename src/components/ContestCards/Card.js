@@ -15,7 +15,7 @@ const Card = ({ status, ...props }) => {
   }, [props.isAuthenticated]);
 
   return (
-    <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full">
+    <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full shadow-cyan-700">
       <img
         src={
           props.logo ||
@@ -24,7 +24,7 @@ const Card = ({ status, ...props }) => {
         alt="contest"
         className="h-32 sm:h-48 w-full object-cover opacity-80"
       />
-      <div className="p-4 space-y-2 bg-slate-50">
+      <div className="p-4 space-y-2 bg-slate-50 dark:bg-black ">
         <div className="text-2xl text-gray-darker text-cyan-500 py-2 border-b mb-4">
           {props.title}
         </div>
@@ -59,7 +59,7 @@ const Card = ({ status, ...props }) => {
                   to={props.isAuthenticated ? `/${props.contestId}` : "/login"}
                 >
                   <button
-                    className="text-white bg-cyan-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    className="text-white bg-cyan-500 dark:hover:bg-cyan-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                     disabled={!status.time}
                   >
                     Enter Contest
@@ -72,7 +72,7 @@ const Card = ({ status, ...props }) => {
               )
             ) : (
               <>
-                <p className="text-red-800 py-2">
+                <p className="text-red-800 dark:text-red-400 py-2">
                   Opps! Seems like you are not registered for Event, Please
                   register first.
                 </p>
@@ -82,7 +82,7 @@ const Card = ({ status, ...props }) => {
                   target="_blank"
                 >
                   <button
-                    className="text-white bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                    className="text-white bg-gray-400 dark:bg-gray-500 dark:hover:bg-gray-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                     disabled={!status.time}
                   >
                     Register

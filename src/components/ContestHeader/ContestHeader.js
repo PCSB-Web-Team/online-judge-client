@@ -29,7 +29,9 @@ const ContestHeader = (props) => {
             end
             className={({ isActive }) =>
               `hover:border-b-2  border-sky-500 transform transition rounded-lg p-2 px-4 md:px-8 font-light ${
-                isActive ? " border-b-2 bg-sky-300" : "text-black border-b"
+                isActive
+                  ? " border-b-2 bg-sky-300"
+                  : "text-black dark:text-cyan-300 border-b"
               }`
             }
           >
@@ -38,7 +40,7 @@ const ContestHeader = (props) => {
         ))}
       </div>
       <div>
-        <div className="transform transition text-center rounded-lg p-2 px-8 font-light bg-green-200">
+        <div className="transform transition text-center rounded-lg p-2 px-8 font-light bg-green-200 dark:text-green-800">
           <Countdown seconds={props.data.status.time} />
         </div>
       </div>

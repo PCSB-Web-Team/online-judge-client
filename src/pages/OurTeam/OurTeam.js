@@ -7,7 +7,7 @@ import { BsGithub } from "react-icons/bs";
 
 const OurTeam = () => {
   return (
-    <div className="bg-gradient-to-r from-gray-800 to-gray-700 min-h-screen">
+    <div className="bg-gray-700 dark:bg-black min-h-screen">
       <div className="text-white">
         <div className="box p-8">
           <center>

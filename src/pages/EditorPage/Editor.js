@@ -50,6 +50,7 @@ int main(){
   const [lang, setLang] = useState("C++");
   const [isCustom, setIsCustom] = useState(false);
   const [customInput, setCustomInput] = useState("");
+  const [defaultInput, setDefaultInput] = useState("");
   const [customOutput, setCustomOutput] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -65,6 +66,7 @@ int main(){
 
   function onChange(newValue) {
     const newvals = { ...values };
+    newvals[questionId] = newValue;
     newvals[lang] = newValue;
     setValues(newvals);
     localStorage.setItem("pcsb-code", JSON.stringify(newvals));
@@ -90,7 +92,7 @@ int main(){
     const runData = {
       languageId: languageIds[lang],
       code: values[lang],
-      stdin: customInput,
+      stdin: customInput || defaultInput,
     };
     setIsLoading(true);
     Requests.runCode(runData)
@@ -100,6 +102,7 @@ int main(){
             .then((res) => {
               setCustomOutput(res.data.stdout);
               setError(res.data.compile_output);
+              setDefaultInput(res.data.stdin);
               if (res.data.status.id > 2) {
                 clearInterval(interval1);
                 setIsLoading(false);
@@ -131,7 +134,7 @@ int main(){
       >
         <CustomModal onClose={() => setIsOpen(false)} onSubmit={handleSubmit} />
       </Modal>
-      <div className="editor-header mb-4">
+      <div className="editor-header mb-4 ">
         <select
           name="languages"
           onChange={(e) => {
@@ -149,9 +152,9 @@ int main(){
           viewBox="0 0 20 20"
           aria-hidden="true"
           focusable="false"
-          className="select-caret"
+          className="select-caret dark:bg-black"
         >
-          <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+          <path className="dark:bg-black" d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
         </svg>
         <button
           className="submit-btn text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -210,7 +213,7 @@ int main(){
       {isCustom ? (
         <div className="p-4">
           <textarea
-            className="w-full border-0 shadow p-4"
+            className="w-full border-0 shadow p-4 dark:text-black dark:bg-gray-300"
             value={customInput}
             onChange={(e) => {
               setCustomInput(e.target.value);

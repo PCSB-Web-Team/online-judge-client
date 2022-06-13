@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../api/Index";
-import { Link, useParams, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, useParams, Route, Routes } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ContestHeader from "../../components/ContestHeader/ContestHeader";
 import Problem from "../EditorPage/Problem";
@@ -16,7 +16,7 @@ function ContestDashBoard() {
   const [question, setQuestion] = useState([]);
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
-  const navigate = useNavigate();
+  const theme = localStorage.getItem("theme");
   useEffect(() => {
     setIsLoading(true);
     if (contestId) {
@@ -61,7 +61,7 @@ function ContestDashBoard() {
           <Link to={`${row._id}`}>
             <button
               type="button"
-              className="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+              className="text-white bg-gray-800 hover:bg-gray-900 dark:bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
               Solve
             </button>
@@ -84,7 +84,7 @@ function ContestDashBoard() {
         <Route
           path="/"
           element={
-            <div className="min-h-screen max-w-7xl mx-auto pt-4">
+            <div className="min-h-screen max-w-6xl mx-auto pt-4">
               <div>
                 <h1 className="text-xl font-semibold text-cyan-500">
                   Problem Solving
@@ -97,6 +97,7 @@ function ContestDashBoard() {
                     data={question}
                     customStyles={customStyles}
                     progressPending={isLoading}
+                    theme={theme == "dark" ? "dark" : "light"}
                     highlightOnHover
                   />
                 </div>

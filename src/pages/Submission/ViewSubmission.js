@@ -27,9 +27,9 @@ const ViewSubmission = () => {
           <Loader />
         </div>
       ) : (
-        <div className="problem max-w-7xl mx-auto">
+        <div className="problem max-w-6xl mx-auto">
           <div className="flex-inline">
-            <h2 className="text-2xl text-gray-700">
+            <h2 className="text-3xl text-gray-700 dark:text-gray-300">
               {data.submission.questionName}
             </h2>
             <div className="text-2xl text-cyan-500 mb-4">
@@ -49,7 +49,7 @@ const ViewSubmission = () => {
           <div className="flex flex-wrap justify-center ">
             {data.executions.map((example, i) => {
               return (
-                <div className="p-8 px-10" key={i}>
+                <div className="p-8 px-8" key={i}>
                   <div class="bg-white rounded-md overflow-hidden relative shadow-md">
                     <div class="p-4">
                       <h2 class="text-2xl text-gray-600">Test Case:{i + 1}</h2>
@@ -100,7 +100,7 @@ const ViewSubmission = () => {
                           )}
                         </div>
                       </div>
-                      <div class="mb-4 text-gray-500 px-10">
+                      <div class="mb-4 text-gray-500 px-8">
                         Correct Output: number is 1 
                         <div> {example.compile_output} </div>
                       </div>

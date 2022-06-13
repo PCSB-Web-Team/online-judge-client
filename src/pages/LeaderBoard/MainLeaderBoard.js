@@ -2,7 +2,7 @@ import React, { useMemo, useEffect, useState } from "react";
 import { Requests } from "../../api/Index";
 import FilterComponent from "../../components/Table/FilterComponent";
 import DataTable from "react-data-table-component";
-import { customStyles } from "../../components/Table/CustomStyles";
+import { customStyles,createTheme } from "../../components/Table/CustomStyles";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -20,7 +20,7 @@ function LeaderBoard() {
       sortable: true,
     },
   ];
-
+  const theme = localStorage.getItem("theme");
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
 
@@ -63,7 +63,7 @@ function LeaderBoard() {
         "No User in LeaderBoard"
       ) : (
         <div className="contest_dashboard text-gray-900 p-12">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="DashBoard mb-4">
               <h1 className="text-xl text-cyan-500 font-semibold">
                 Leader Board
@@ -77,6 +77,7 @@ function LeaderBoard() {
                   data={filteredItems}
                   defaultSortField="name"
                   progressPending={isLoading}
+                  theme={theme == "dark" ? "dark" : "light"}
                   highlightOnHover
                   pagination
                   subHeader

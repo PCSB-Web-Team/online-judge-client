@@ -7,14 +7,14 @@ export const customStyles = {
   headCells: {
     style: {
       fontSize: "1.2rem",
-      backgroundColor: "lightgray",
+      backgroundColor: "#696969",
+      color: "white",
       paddingLeft: "8px",
       paddingRight: "8px",
     },
   },
   cells: {
     style: {
-      backgroundColor: "&:hoverlightgray",
       fontSize: "1rem",
       paddingLeft: "8px",
       paddingRight: "8px",
@@ -42,3 +42,4 @@ export const conditionalCellStyles = [
     },
   },
 ];
+

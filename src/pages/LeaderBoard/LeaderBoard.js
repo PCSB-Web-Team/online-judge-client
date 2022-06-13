@@ -25,7 +25,7 @@ function LeaderBoard() {
 
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-
+  const theme = localStorage.getItem("theme");
   const filteredItems = data.filter(
     (item) =>
       JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
@@ -67,7 +67,7 @@ function LeaderBoard() {
         "No User in LeaderBoard"
       ) : (
         <div className="contest_dashboard text-gray-900 ">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="DashBoard mb-4">
               <h1 className="text-xl text-cyan-500 font-semibold">
                 Leader Board
@@ -81,6 +81,7 @@ function LeaderBoard() {
                   data={filteredItems}
                   defaultSortField="name"
                   progressPending={isLoading}
+                  theme={theme == "dark" ? "dark" : "light"}
                   highlightOnHover
                   pagination
                   subHeader

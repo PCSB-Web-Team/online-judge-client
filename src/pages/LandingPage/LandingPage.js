@@ -5,7 +5,7 @@ import Typist from "react-typist";
 
 const LandingPage = () => {
   return (
-    <div className="bg-gradient-to-r from-gray-700 to-gray-800 md:-mt-16 min-h-screen">
+    <div className="bg-gray-800 dark:bg-black md:-mt-16 min-h-screen">
       <div className="container p-8 pt-20 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <div className="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
           <h1 className="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">

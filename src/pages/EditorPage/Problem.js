@@ -94,7 +94,7 @@ const Problem = () => {
                     <div className="text-cyan-500 text-xl py-3">
                       <strong>Input</strong>
                     </div>
-                    <div className="sample-tests">
+                    <div className="sample-tests dark:bg-black">
                       <div className="copied">Copied!</div>
                       <img
                         src={copy}
@@ -115,7 +115,7 @@ const Problem = () => {
                     <p className="text-cyan-500 text-xl py-3">
                       <strong>Output</strong>
                     </p>
-                    <p className="sample-tests">
+                    <p className="sample-tests dark:bg-black">
                       <div className="copied">Copied!</div>
                       <img
                         src={copy}
