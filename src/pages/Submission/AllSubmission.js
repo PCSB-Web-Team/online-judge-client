@@ -12,6 +12,21 @@ function AllSubmission() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const theme = localStorage.getItem("theme");
+  createTheme(
+    "solarized",
+    {
+      background: {
+        default: "#000",
+      },
+      divider: {
+        default: "#000",
+      },
+      action: {
+        hover: "rgba(0,0,0,.08)",
+      },
+    },
+    "dark"
+  );
   const columns = [
     {
       name: "Title",
@@ -22,7 +37,6 @@ function AllSubmission() {
       name: "Score",
       selector: (row) => row.score,
       sortable: true,
-      conditionalCellStyles,
     },
     {
       name: "Status",
@@ -85,7 +99,7 @@ function AllSubmission() {
                   data={data}
                   customStyles={customStyles}
                   progressPending={isLoading}
-                  theme={theme == "dark" ? "dark" : "light"}
+                  theme={theme == "dark" ? "solarized" : "light"}
                   pagination
                   highlightOnHover
                   fixedHeader

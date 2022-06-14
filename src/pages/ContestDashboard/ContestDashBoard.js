@@ -97,7 +97,7 @@ function ContestDashBoard() {
                     data={question}
                     customStyles={customStyles}
                     progressPending={isLoading}
-                    theme={theme == "dark" ? "dark" : "light"}
+                    theme={theme == "dark" ? "solarized" : "light"}
                     highlightOnHover
                   />
                 </div>

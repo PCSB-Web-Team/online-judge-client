@@ -5,7 +5,7 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 export default function Swithcer() {
   const [colorTheme, setTheme] = useDarkSide();
   const [darkSide, setDarkSide] = useState(
-    colorTheme === "light" ? true : false
+    colorTheme === "dark" ? true : false
   );
 
   const toggleDarkMode = (checked) => {
@@ -15,10 +15,11 @@ export default function Swithcer() {
 
   return (
     <>
-      <div className="px-2">
+      <div className="px-2 ">
         <DarkModeSwitch
           checked={darkSide}
           onChange={toggleDarkMode}
+          sunColor="white"
           size={28}
         />
       </div>

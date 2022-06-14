@@ -31,7 +31,7 @@ function LeaderBoard() {
       JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
       -1
   );
-
+  
   const subHeaderComponent = useMemo(() => {
     const handleClear = () => {
       if (filterText) {
@@ -81,7 +81,7 @@ function LeaderBoard() {
                   data={filteredItems}
                   defaultSortField="name"
                   progressPending={isLoading}
-                  theme={theme == "dark" ? "dark" : "light"}
+                  theme={theme == "dark" ? "solarized" : "light"}
                   highlightOnHover
                   pagination
                   subHeader

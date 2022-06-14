@@ -77,7 +77,7 @@ function LeaderBoard() {
                   data={filteredItems}
                   defaultSortField="name"
                   progressPending={isLoading}
-                  theme={theme == "dark" ? "dark" : "light"}
+                  theme={theme == "dark" ? "solarized" : "light"}
                   highlightOnHover
                   pagination
                   subHeader

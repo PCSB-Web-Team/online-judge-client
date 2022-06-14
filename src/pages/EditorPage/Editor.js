@@ -69,6 +69,7 @@ int main(){
     newvals[questionId] = newValue;
     newvals[lang] = newValue;
     setValues(newvals);
+    localStorage.setItem(questionId, JSON.stringify(newvals));
     localStorage.setItem("pcsb-code", JSON.stringify(newvals));
   }
 
@@ -92,9 +93,15 @@ int main(){
     const runData = {
       languageId: languageIds[lang],
       code: values[lang],
-      stdin: customInput || defaultInput,
+      stdin: customInput || defaultInput || "1",
     };
     setIsLoading(true);
+    // Requests.getQuestionById(questionId)
+    //   .then((res) => {
+    //     setDefaultInput(res.data.samples.sampleInput);
+    //     setIsLoading(false);
+    //   })
+    //   .catch((error) => {});
     Requests.runCode(runData)
       .then((restoken) => {
         const interval1 = setInterval(() => {
@@ -124,7 +131,7 @@ int main(){
     setValues(vals);
   }
   useEffect(() => {
-    const savedCode = JSON.parse(localStorage.getItem("pcsb-code"));
+    const savedCode = JSON.parse(localStorage.getItem(questionId));
     if (savedCode) {
       setValues(savedCode);
     }
