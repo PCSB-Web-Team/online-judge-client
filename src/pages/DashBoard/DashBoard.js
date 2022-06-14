@@ -7,7 +7,7 @@ import Loader from "../../components/Loader/Loader";
 const Dashboard = (props) => {
   const [data, setData] = useState([]);
   const [isloading, setIsLoading] = useState(true);
-
+  
   useEffect(() => {
     setIsLoading(true);
     Requests.getContests()

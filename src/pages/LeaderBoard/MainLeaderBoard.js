@@ -65,7 +65,7 @@ function LeaderBoard() {
         <div className="contest_dashboard text-gray-900 p-12">
           <div className="max-w-6xl mx-auto">
             <div className="DashBoard mb-4">
-              <h1 className="text-xl text-cyan-500 font-semibold">
+              <h1 className="text-2xl text-cyan-500 font-semibold">
                 Leader Board
               </h1>
             </div>

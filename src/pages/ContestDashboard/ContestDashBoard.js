@@ -17,6 +17,7 @@ function ContestDashBoard() {
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
   const theme = localStorage.getItem("theme");
+ 
   useEffect(() => {
     setIsLoading(true);
     if (contestId) {
@@ -36,7 +37,7 @@ function ContestDashBoard() {
     } else {
     }
   }, []);
-
+   
   const columns = [
     {
       name: "Title",
@@ -86,7 +87,7 @@ function ContestDashBoard() {
           element={
             <div className="min-h-screen max-w-6xl mx-auto pt-4">
               <div>
-                <h1 className="text-xl font-semibold text-cyan-500">
+                <h1 className="text-2xl font-semibold text-cyan-500">
                   Problem Solving
                 </h1>
               </div>

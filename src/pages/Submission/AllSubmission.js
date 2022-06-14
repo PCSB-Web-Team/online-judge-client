@@ -15,6 +15,10 @@ function AllSubmission() {
   createTheme(
     "solarized",
     {
+      text: {
+        primary: "cyan",
+        secondary: "cyan",
+      },
       background: {
         default: "#000",
       },
@@ -93,7 +97,7 @@ function AllSubmission() {
               </h1>
             </div>
             <div className="mt-4 flex flex-col">
-              <div className="shadow overflow-hidden border-b border-gray-200 dark:border-gray-900 sm:rounded-lg">
+              <div className="shadow overflow-hidden border-b border-gray-200  sm:rounded-lg">
                 <DataTable
                   columns={columns}
                   data={data}
