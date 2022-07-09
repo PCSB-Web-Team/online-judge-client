@@ -1,8 +1,8 @@
 import React, { useMemo, useEffect, useState } from "react";
 import { Requests } from "../../api/Index";
 import FilterComponent from "../../components/Table/FilterComponent";
-import DataTable from "react-data-table-component";
-import { customStyles,createTheme } from "../../components/Table/CustomStyles";
+import DataTable, {createTheme} from "react-data-table-component";
+import { customStyles } from "../../components/Table/CustomStyles";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -23,7 +23,25 @@ function LeaderBoard() {
   const theme = localStorage.getItem("theme");
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-
+  createTheme  (
+    "solarized",
+    {
+      text: {
+        primary: "cyan",
+        secondary: "cyan",
+      },
+      background: {
+        default: "#000",
+      },
+      divider: {
+        default: "#000",
+      },
+      action: {
+        hover: "rgba(0,0,0,.08)",
+      },
+    },
+    "dark"
+  );
   const filteredItems = data.filter(
     (item) =>
       JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
@@ -49,12 +67,12 @@ function LeaderBoard() {
 
   useEffect(() => {
     setIsLoading(true);
-      Requests.allParticipant()
-        .then((res) => {
-          setData(res.data);
-          setIsLoading(false);
-        })
-        .catch((error) => {});
+    Requests.allParticipant()
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {});
   }, []);
 
   return (

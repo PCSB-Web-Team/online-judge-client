@@ -18,6 +18,7 @@ export const customStyles = {
       fontSize: "1rem",
       paddingLeft: "8px",
       paddingRight: "8px",
+      backgroundColor: "transparent",
     },
   },
 };
@@ -43,4 +44,22 @@ export const conditionalCellStyles = [
   },
 ];
 
-
+export const createtheme = [
+  ("solarized",
+  {
+    text: {
+      primary: "cyan",
+      secondary: "cyan",
+    },
+    background: {
+      default: "#000",
+    },
+    divider: {
+      default: "#000",
+    },
+    action: {
+      hover: "rgba(0,0,0,.08)",
+    },
+  },
+  "dark"),
+];

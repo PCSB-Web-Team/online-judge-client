@@ -4,8 +4,8 @@ import { ErrorMessage, useField } from "formik";
 export const TextField = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
-    <div className="mb-2">
-      <label htmlFor={field.name}>{label}</label>
+    <div className="mb-2 ">
+      <label className="dark:text-white" htmlFor={field.name}>{label}</label>
       <input
         className={`form-control shadow-none ${
           meta.touched && meta.error && "is-invalid"
@@ -14,7 +14,7 @@ export const TextField = ({ label, ...props }) => {
         {...props}
         autoComplete="off"
       />
-      <ErrorMessage component="div" name={field.name} className="error" />
+      <ErrorMessage component="div" name={field.name} className="error dark:text-white" />
     </div>
   );
 };

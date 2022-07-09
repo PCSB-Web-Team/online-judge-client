@@ -50,14 +50,14 @@ const ViewSubmission = () => {
             {data.executions.map((example, i) => {
               return (
                 <div className="p-8 px-8" key={i}>
-                  <div class="bg-white dark:bg-black dark:shadow-cyan-500 rounded-md overflow-hidden relative shadow-md">
-                    <div class="p-4">
-                      <h2 class="text-2xl text-gray-600">Test Case:{i + 1}</h2>
-                      <div class="flex justify-between mt-4 mb-4 text-gray-500">
-                        <div class="flex items-center">
+                  <div className="bg-white dark:bg-black dark:shadow-cyan-500 rounded-md overflow-hidden relative shadow-md">
+                    <div className="p-4">
+                      <h2 className="text-2xl text-gray-600 dark:text-gray-300">Test Case:{i + 1}</h2>
+                      <div className="flex justify-between mt-4 mb-4 text-gray-500">
+                        <div className="flex items-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6"
+                            className="h-6 w-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -70,17 +70,17 @@ const ViewSubmission = () => {
                             />
                           </svg>
                           {example.time ? (
-                            <div class="ml-1 lg:text-xl">
+                            <div className="ml-1 lg:text-xl">
                               {example.time.$numberDecimal} sec
                             </div>
                           ) : (
-                            <div class="ml-1 lg:text-xl">0 sec</div>
+                            <div className="ml-1 lg:text-xl">0 sec</div>
                           )}
                         </div>
-                        <div class="flex items-center">
+                        <div className="flex items-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5"
+                            className="h-5 w-5"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                           >
@@ -92,25 +92,26 @@ const ViewSubmission = () => {
                             />
                           </svg>
                           {example.time ? (
-                            <div class="ml-1 lg:text-xl">
+                            <div className="ml-1 lg:text-xl">
                               {example.memory} kb
                             </div>
                           ) : (
-                            <div class="ml-1 lg:text-xl">0 kb</div>
+                            <div className="ml-1 lg:text-xl">0 kb</div>
                           )}
                         </div>
                       </div>
-                      <div class="mb-4 text-gray-500 px-8">
-                        Correct Output: number is 1 
-                        <div> {example.compile_output} </div>
+                      <div className="mb-4 text-gray-500 px-8">
+                        Expected Output:
+                        <span> {example.expected_output} </span>
+                        <div>{example.compile_output} </div>
                       </div>
                     </div>
                     {example.status.description == "Accepted" ? (
-                      <div class="absolute top-0 right-0 mt-4 mr-4 bg-green-600  text-white rounded-full pt-1 pb-1 pl-4 pr-5 text-xs uppercase">
+                      <div className="absolute top-0 right-0 mt-4 mr-4 bg-green-600  text-white rounded-full pt-1 pb-1 pl-4 pr-5 text-xs uppercase">
                         {example.status.description}
                       </div>
                     ) : (
-                      <div class="absolute top-0 right-0 mt-4 mr-4 bg-red-600  text-white rounded-full pt-1 pb-1 pl-4 pr-5 text-xs uppercase">
+                      <div className="absolute top-0 right-0 mt-4 mr-4 bg-red-600  text-white rounded-full pt-1 pb-1 pl-4 pr-5 text-xs uppercase">
                         {example.status.description}
                       </div>
                     )}

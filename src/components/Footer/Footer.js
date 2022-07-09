@@ -6,7 +6,12 @@ const Footer = () => {
     <div className="background text-white p-2 bg-gray-800 dark:bg-black">
       <center>
         <h1>
-          Made with 🤍<Link to="/ourteam"><span className="hover:dark:text-cyan-500 hover:underline"> by PCSB Web Team</span></Link>
+          Designed & Developed by <Link to="/ourteam">
+            <span className="hover:dark:text-cyan-500 hover:text-gray-500">
+               PCSB Web Team
+            </span>
+          </Link>
+          
         </h1>
       </center>
     </div>

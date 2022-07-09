@@ -34,7 +34,7 @@ function App(props) {
     <div>
       <div>
         <Navbar />
-        <div className="min-h-screen h-fit dark:bg-black dark:text-gray-50">
+        <div className="min-h-[92vh] h-fit dark:bg-black dark:text-gray-50">
           <Routes>
             {props.isAuthenticated ? (
               <>

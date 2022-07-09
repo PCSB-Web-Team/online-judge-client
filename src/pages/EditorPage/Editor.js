@@ -255,7 +255,7 @@ int main(){
               </div>
             </div>
           ) : (
-            <div>
+            <div className="sm:h-[15vh] overflow-auto">
               <pre>{customOutput ? customOutput : error}</pre>
             </div>
           )}

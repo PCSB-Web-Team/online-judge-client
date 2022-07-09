@@ -7,7 +7,7 @@ import { BsGithub } from "react-icons/bs";
 
 const OurTeam = () => {
   return (
-    <div className="bg-gray-700 dark:bg-black min-h-screen">
+    <div className="bg-gray-700 dark:bg-black ">
       <div className="text-white">
         <div className="box p-8">
           <center>
@@ -16,7 +16,7 @@ const OurTeam = () => {
               <h3 className="">Coding Platform Team</h3>
             </div>
             <div className="container flex flex-wrap flex-col md:flex-row items-center justify-center py-4">
-              <div className="mb-24 p-16">
+              <div className=" p-16">
                 <img src={aryan} className="w-80 rounded-full " alt="aryan" />
                 <label className="py-10 text-xl">Aryan Agrawal</label>
                 <div className="flex justify-center">
@@ -36,7 +36,7 @@ const OurTeam = () => {
                   </a>
                 </div>
               </div>
-              <div className="mb-24 p-16">
+              <div className=" p-16">
                 <img src={vedant} className="w-80 rounded-full " alt="vedant" />
                 <label className="py-10 text-xl">Vedant Daigavane</label>
                 <div className="flex justify-center">
@@ -56,7 +56,7 @@ const OurTeam = () => {
                   </a>
                 </div>
               </div>
-              <div className="mb-24 p-16">
+              <div className=" p-16">
                 <img src={mansi} className="w-80 rounded-full " alt="mansi" />
                 <label className="py-10 text-xl">Mansi Gundre</label>
                 <div className="flex justify-center">

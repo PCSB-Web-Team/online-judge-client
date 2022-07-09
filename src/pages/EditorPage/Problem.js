@@ -36,9 +36,9 @@ const Problem = () => {
           <Loader />
         </div>
       ) : (
-        <div className="">
+        <div>
           <div className="flex flex-wrap block overflow-auto sm:overflow-hidden">
-            <div className="bg-blue w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2  sm:h-[118vh] overflow-auto">
+            <div className="bg-blue w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2  sm:h-[120vh] overflow-auto">
               <div className="p-4 pb-4 sm:pb-16">
                 <div>
                   <div key={data} className=" p-1">
@@ -53,16 +53,16 @@ const Problem = () => {
                       <span> Memory Limit : {data.memory}MB</span>
                       <div>Difficulty Level: {data.difficultyLevel} </div>
                     </div>
-                    <>
+                    <div>
                       <h2 className="text-cyan-500 text-xl py-2">
                         Problem Statement :
                       </h2>
                       {data.problemStatement}
-                    </>
-                    <p className="py-2">
+                    </div>
+                    <div className="py-2">
                       <h2 className="text-cyan-500 text-xl">Description :</h2>
                       {data.description}
-                    </p>
+                    </div>
                     <h2 className="text-cyan-500 text-xl py-2">Example</h2>
                     {data.example.map((example, i) => {
                       return (
@@ -114,7 +114,7 @@ const Problem = () => {
                     <p className="text-cyan-500 text-xl py-3">
                       <strong>Output</strong>
                     </p>
-                    <p className="sample-tests dark:bg-gray-900">
+                    <div className="sample-tests dark:bg-gray-900 dark:shadow-cyan-500">
                       <div className="copied">Copied!</div>
                       <img
                         src={copy}
@@ -131,11 +131,11 @@ const Problem = () => {
                           );
                         })}
                       </code>
-                    </p>
+                    </div>
                     <p className="text-cyan-500 text-xl py-3">
                       <strong>Explanation</strong>
                     </p>
-                    <p className="py-1">
+                    <div className="py-1">
                       {data.explanations.map((explain, i) => {
                         return (
                           <div className="py-3" key={i}>
@@ -143,7 +143,7 @@ const Problem = () => {
                           </div>
                         );
                       })}
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>

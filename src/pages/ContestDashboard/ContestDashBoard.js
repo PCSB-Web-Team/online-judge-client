@@ -6,7 +6,7 @@ import ContestHeader from "../../components/ContestHeader/ContestHeader";
 import Problem from "../EditorPage/Problem";
 import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
-import DataTable from "react-data-table-component";
+import DataTable, {createTheme} from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
 import { customStyles } from "../../components/Table/CustomStyles";
