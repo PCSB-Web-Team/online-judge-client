@@ -23,8 +23,14 @@ const Navbar = (props) => {
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           {props.isAuthenticated && (
-            <div className=" font-bold text-2xl text-gray-300">
-              {props.userData.name}
+            <div className=" font-bold text-2xl text-gray-300 flex items-center space-x-2">
+              <img
+                src={
+                  "https://icons.veryicon.com/png/o/business/multi-color-financial-and-business-icons/user-139.png"
+                }
+                className="h-10 md:h-12 w-auto"
+              ></img>
+              <span>{props.userData.name}</span>
             </div>
           )}
           <button
