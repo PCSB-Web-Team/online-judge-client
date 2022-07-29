@@ -78,7 +78,7 @@ const Navbar = (props) => {
                   <span className="hide-sm">DashBoard</span>
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   to={`/leaderboard`}
                   onClick={() => setNavbarOpen(!navbarOpen)}
@@ -91,7 +91,7 @@ const Navbar = (props) => {
                 >
                   <span className="hide-sm">LeaderBoard</span>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link
                   onClick={logout}
