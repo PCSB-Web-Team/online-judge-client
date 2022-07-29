@@ -1,0 +1,12 @@
+.landing-page {
+  background: url("https://images8.alphacoders.com/559/thumb-1920-559128.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: ease-in 500ms;
+}
+
+.landing-page .page {
+  background: radial-gradient(rgba(3, 43, 47, 0.472), black);
+  animation: gradient 10s linear infinite;
+  transition: ease-in-out 1s;
+}

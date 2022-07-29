@@ -15,7 +15,7 @@ const Card = ({ status, ...props }) => {
   }, [props.isAuthenticated]);
 
   return (
-    <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full shadow-cyan-700">
+    <div className="w-80 bg-slate-50 dark:bg-black rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full shadow-cyan-700">
       <img
         src={
           props.logo ||
@@ -24,7 +24,7 @@ const Card = ({ status, ...props }) => {
         alt="contest"
         className="h-32 sm:h-48 w-full object-cover opacity-80"
       />
-      <div className="p-4 space-y-2 bg-slate-50 dark:bg-black ">
+      <div className="p-4 space-y-2 ">
         <div className="text-2xl text-gray-darker text-cyan-500 py-2 border-b mb-4">
           {props.title}
         </div>

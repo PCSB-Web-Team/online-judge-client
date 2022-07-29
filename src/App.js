@@ -32,29 +32,26 @@ function App(props) {
 
   return (
     <div>
-      <div>
-        <Navbar />
-        <div className="min-h-[92vh] h-fit dark:bg-black dark:text-gray-50">
-          <Routes>
-            {props.isAuthenticated ? (
-              <>
-                <Route path="/:contestId/*" element={<ContestDashBoard />} />
-              </>
-            ) : (
-              <>
-                <Route path="login" element={<Login />} />
-                {/* <Route path="register" element={<Register />} /> */}
-              </>
-            )}
-            <Route path="/leaderboard" element={<MainLeaderBoard />} />
-            <Route path="/contest" element={<Dashboard />} />
-            <Route path="/ourteam" element={<OurTeam />} />
-            <Route path="/" element={<LandingPage />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
-          </Routes>
-        </div>
-        <Footer />
+      <Navbar />
+      <div className="min-h-[92vh] h-fit dark:bg-black dark:text-gray-50">
+        <Routes>
+          {props.isAuthenticated ? (
+            <>
+              <Route path="/:contestId/*" element={<ContestDashBoard />} />
+            </>
+          ) : (
+            <>
+              <Route path="login" element={<Login />} />
+              {/* <Route path="register" element={<Register />} /> */}
+            </>
+          )}
+          <Route path="/contest" element={<Dashboard />} />
+          <Route path="/ourteam" element={<OurTeam />} />
+          <Route path="/" element={<LandingPage />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

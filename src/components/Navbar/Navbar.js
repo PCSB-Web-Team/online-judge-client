@@ -16,7 +16,7 @@ const Navbar = (props) => {
       className={
         (props.transparent
           ? "top-0 absolute z-50 w-full"
-          : "relative shadow-lg bg-gray-700 dark:bg-black") +
+          : "relative shadow-lg bg- bg-gray-700 dark:bg-gray-900") +
         " flex flex-wrap items-center justify-between px-2 py-3 "
       }
     >
@@ -48,7 +48,7 @@ const Navbar = (props) => {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center bg-gray-700 dark:bg-black lg:bg-transparent lg:shadow-none" +
+            "lg:flex flex-grow items-center lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded " : " hidden")
           }
           id="example-navbar-warning"
