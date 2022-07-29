@@ -119,6 +119,15 @@ int main(){
               setCustomOutput("some error occured please try later");
             });
         }, 3000);
+
+        setTimeout(() => {
+          console.log("Clearing the Interval");
+          clearInterval(interval1);
+          setIsLoading(false);
+          alert(
+            "Your code is taking a bit longer to execute, please try again."
+          );
+        }, 20000);
       })
       .catch((error) => {
         setIsLoading(false);
