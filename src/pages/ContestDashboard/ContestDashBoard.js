@@ -17,7 +17,25 @@ function ContestDashBoard() {
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
   const theme = localStorage.getItem("theme");
- 
+  createTheme  (
+    "solarized",
+    {
+      text: {
+        primary: "cyan",
+        secondary: "cyan",
+      },
+      background: {
+        default: "#000",
+      },
+      divider: {
+        default: "#000",
+      },
+      action: {
+        hover: "rgba(0,0,0,.08)",
+      },
+    },
+    "dark"
+  );
   useEffect(() => {
     setIsLoading(true);
     if (contestId) {
@@ -85,7 +103,7 @@ function ContestDashBoard() {
         <Route
           path="/"
           element={
-            <div className="min-h-screen max-w-6xl mx-auto">
+            <div className="min-h-screen max-w-6xl mx-auto pt-4">
               <div>
                 <h1 className="text-2xl font-semibold text-cyan-500">
                   Problem Solving
@@ -98,7 +116,7 @@ function ContestDashBoard() {
                     data={question}
                     customStyles={customStyles}
                     progressPending={isLoading}
-                    theme={theme == "dark" ? "solarized" : "light"}
+                    theme="solarized"
                     highlightOnHover
                   />
                 </div>

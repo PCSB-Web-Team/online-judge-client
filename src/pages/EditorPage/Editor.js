@@ -96,12 +96,6 @@ int main(){
       stdin: customInput || defaultInput || "1",
     };
     setIsLoading(true);
-    // Requests.getQuestionById(questionId)
-    //   .then((res) => {
-    //     setDefaultInput(res.data.samples.sampleInput);
-    //     setIsLoading(false);
-    //   })
-    //   .catch((error) => {});
     Requests.runCode(runData)
       .then((restoken) => {
         const interval1 = setInterval(() => {
@@ -119,15 +113,6 @@ int main(){
               setCustomOutput("some error occured please try later");
             });
         }, 3000);
-
-        setTimeout(() => {
-          console.log("Clearing the Interval");
-          clearInterval(interval1);
-          setIsLoading(false);
-          alert(
-            "Your code is taking a bit longer to execute, please try again."
-          );
-        }, 20000);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -173,10 +158,10 @@ int main(){
           viewBox="0 0 20 20"
           aria-hidden="true"
           focusable="false"
-          className="select-caret dark:bg-black"
+          className="select-caret bg-black"
         >
           <path
-            className="dark:bg-black"
+            className="bg-black"
             d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
           ></path>
         </svg>
@@ -237,7 +222,7 @@ int main(){
       {isCustom ? (
         <div className="p-4">
           <textarea
-            className="w-full border-0 shadow p-4 dark:text-black dark:bg-gray-300"
+            className="w-full border-0 shadow p-4 text-black bg-gray-300"
             value={customInput}
             onChange={(e) => {
               setCustomInput(e.target.value);

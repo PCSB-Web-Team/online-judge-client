@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import programmer from "../../static/Assets/programmer.png";
 import Typist from "react-typist";
-import "./LandingPage.css"
+import "./LandingPage.css";
 
 const LandingPage = () => {
   return (

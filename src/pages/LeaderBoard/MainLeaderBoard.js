@@ -23,25 +23,6 @@ function LeaderBoard() {
   const theme = localStorage.getItem("theme");
   const [filterText, setFilterText] = useState("");
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-  createTheme  (
-    "solarized",
-    {
-      text: {
-        primary: "cyan",
-        secondary: "cyan",
-      },
-      background: {
-        default: "#000",
-      },
-      divider: {
-        default: "#000",
-      },
-      action: {
-        hover: "rgba(0,0,0,.08)",
-      },
-    },
-    "dark"
-  );
   const filteredItems = data.filter(
     (item) =>
       JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
@@ -95,7 +76,7 @@ function LeaderBoard() {
                   data={filteredItems}
                   defaultSortField="name"
                   progressPending={isLoading}
-                  theme={theme == "dark" ? "solarized" : "light"}
+                  theme="solarized"
                   highlightOnHover
                   pagination
                   subHeader

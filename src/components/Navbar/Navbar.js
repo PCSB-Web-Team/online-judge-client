@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { login, logout } from "../../store/actions";
 import { Link } from "react-router-dom";
-import Swithcer from "../Theme/Switcher";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   function logout() {
     props.logout();
+    toast.success("Logged Out Successfully");
     localStorage.clear();
   }
   return (
@@ -16,21 +17,21 @@ const Navbar = (props) => {
       className={
         (props.transparent
           ? "top-0 absolute z-50 w-full"
-          : "relative shadow-lg bg- bg-gray-700 dark:bg-gray-900") +
+          : "relative shadow-lg bg-black") +
         " flex flex-wrap items-center justify-between px-2 py-3 "
       }
     >
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           {props.isAuthenticated && (
-            <div className=" font-bold text-2xl text-gray-300 flex items-center space-x-2">
+            <div className=" font-bold text-2xl flex items-center text-gray-300">
               <img
                 src={
                   "https://icons.veryicon.com/png/o/business/multi-color-financial-and-business-icons/user-139.png"
                 }
-                className="h-10 md:h-12 w-auto"
+                className="h-8 md:h-10 w-auto"
               ></img>
-              <span>{props.userData.name}</span>
+              <div className=" px-2">{props.userData.name}</div>
             </div>
           )}
           <button
@@ -48,7 +49,7 @@ const Navbar = (props) => {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center lg:bg-transparent lg:shadow-none" +
+            "lg:flex flex-grow items-center  lg:bg-transparent lg:shadow-none" +
             (navbarOpen ? " block rounded " : " hidden")
           }
           id="example-navbar-warning"
@@ -63,7 +64,7 @@ const Navbar = (props) => {
                     (props.transparent
                       ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
                       : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-gray-300 dark:hover:text-cyan-300"
+                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-cyan-300"
                   }
                 >
                   <span className="hide-sm">Home</span>
@@ -78,26 +79,12 @@ const Navbar = (props) => {
                     (props.transparent
                       ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
                       : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-gray-300 dark:hover:text-cyan-300"
+                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-cyan-300"
                   }
                 >
                   <span className="hide-sm">DashBoard</span>
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link
-                  to={`/leaderboard`}
-                  onClick={() => setNavbarOpen(!navbarOpen)}
-                  className={
-                    (props.transparent
-                      ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
-                      : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-gray-300 dark:hover:text-cyan-300"
-                  }
-                >
-                  <span className="hide-sm">LeaderBoard</span>
-                </Link>
-              </li> */}
               <li className="nav-item">
                 <Link
                   onClick={logout}
@@ -107,7 +94,7 @@ const Navbar = (props) => {
                     (props.transparent
                       ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
                       : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-gray-300 dark:hover:text-cyan-300"
+                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-cyan-300"
                   }
                 >
                   <i className="fas fa-sign-out-alt"></i>
@@ -124,7 +111,7 @@ const Navbar = (props) => {
                     (props.transparent
                       ? "lg:text-white lg:hover:text-gray-100 text-gray-50"
                       : "text-gray-50 hover:text-gray-100") +
-                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-gray-300 dark:hover:text-cyan-300"
+                    " px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold hover:text-cyan-300"
                   }
                 >
                   Login
@@ -132,9 +119,6 @@ const Navbar = (props) => {
               </li>
             </ul>
           )}
-          <div className="nav-item">
-            <Swithcer />
-          </div>
         </div>
       </div>
     </nav>

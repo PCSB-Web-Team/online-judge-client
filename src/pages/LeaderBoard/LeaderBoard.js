@@ -81,7 +81,7 @@ function LeaderBoard() {
                   data={filteredItems}
                   defaultSortField="name"
                   progressPending={isLoading}
-                  theme={theme == "dark" ? "solarized" : "light"}
+                  theme="solarized"
                   highlightOnHover
                   pagination
                   subHeader

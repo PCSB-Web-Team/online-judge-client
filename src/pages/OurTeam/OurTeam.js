@@ -7,18 +7,20 @@ import { BsGithub } from "react-icons/bs";
 
 const OurTeam = () => {
   return (
-    <div className="bg-gray-700 dark:bg-black ">
+    <div>
       <div className="text-white">
-        <div className="box p-8">
+        <div className="box p-2">
           <center>
             <div className="text-4xl p-8">
-              <h2 className="font-bold">PCSB</h2>
+              <h2 className="font-bold text-cyan-300">PCSB</h2>
               <h3 className="">Coding Platform Team</h3>
             </div>
             <div className="container flex flex-wrap flex-col md:flex-row items-center justify-center py-4">
               <div className=" p-16">
                 <img src={aryan} className="w-80 rounded-full " alt="aryan" />
-                <label className="py-10 text-xl">Aryan Agrawal</label>
+                <label className="py-10 text-xl text-cyan-500 hover:text-cyan-300">
+                  Aryan Agrawal
+                </label>
                 <div className="flex justify-center">
                   <a
                     href="https://www.linkedin.com/in/-aryanagrawal/"
@@ -38,7 +40,9 @@ const OurTeam = () => {
               </div>
               <div className=" p-16">
                 <img src={vedant} className="w-80 rounded-full " alt="vedant" />
-                <label className="py-10 text-xl">Vedant Daigavane</label>
+                <label className="py-10 text-xl text-cyan-500 hover:text-cyan-300">
+                  Vedant Daigavane
+                </label>
                 <div className="flex justify-center">
                   <a
                     href="https://www.linkedin.com/in/vedant-daigavane-25785315a/"
@@ -58,7 +62,9 @@ const OurTeam = () => {
               </div>
               <div className=" p-16">
                 <img src={mansi} className="w-80 rounded-full " alt="mansi" />
-                <label className="py-10 text-xl">Mansi Gundre</label>
+                <label className="py-10 text-xl text-cyan-500 hover:text-cyan-300">
+                  Mansi Gundre
+                </label>
                 <div className="flex justify-center">
                   <a
                     href="https://www.linkedin.com/in/mansi-gundre-a6a722207/"

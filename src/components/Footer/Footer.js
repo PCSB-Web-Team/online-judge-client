@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="background text-white p-2 bg-gray-800 dark:bg-black">
+    <div className=" text-white p-2 bg-black">
       <center>
         <h1>
           Designed & Developed by <Link to="/ourteam">
-            <span className="hover:dark:text-cyan-500 hover:text-gray-500">
+            <span className="hover:text-cyan-500 ">
                PCSB Web Team
             </span>
           </Link>

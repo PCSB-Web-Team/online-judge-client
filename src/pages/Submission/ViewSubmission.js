@@ -29,7 +29,7 @@ const ViewSubmission = () => {
       ) : (
         <div className="problem max-w-6xl mx-auto">
           <div className="flex-inline">
-            <h2 className="text-3xl text-gray-700 dark:text-gray-400 font-bold">
+            <h2 className="text-3xl text-gray-400 font-bold">
               {data.submission.questionName}
             </h2>
             <div className="text-2xl text-cyan-500 mb-4">
@@ -50,9 +50,9 @@ const ViewSubmission = () => {
             {data.executions.map((example, i) => {
               return (
                 <div className="p-8 px-8" key={i}>
-                  <div className="bg-white dark:bg-black dark:shadow-cyan-500 rounded-md overflow-hidden relative shadow-md">
+                  <div className="bg-black shadow-cyan-500 rounded-md overflow-hidden relative shadow-md">
                     <div className="p-4">
-                      <h2 className="text-2xl text-gray-600 dark:text-gray-300">Test Case:{i + 1}</h2>
+                      <h2 className="text-2xl text-gray-300">Test Case:{i + 1}</h2>
                       <div className="flex justify-between mt-4 mb-4 text-gray-500">
                         <div className="flex items-center">
                           <svg

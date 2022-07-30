@@ -27,10 +27,10 @@ const Login = (props) => {
       onSubmit={async (values) => {
         Requests.login(values)
           .then((res) => {
-            toast.success("Successful Login");
             localStorage.setItem("pcsb-oj-token", res.data.token);
             localStorage.setItem("userId", res.data._id);
             props.login(res.data);
+            toast.success("Successful Login");
             navigate("/");
           })
           .catch((err) => {
@@ -42,10 +42,10 @@ const Login = (props) => {
         <div className="register-form w-3/5 text-center m-auto py-14 justify-center ">
           <h1 className="text-4xl p-4 ">Sign In</h1>
           <Form className="form" onSubmit={formik.handleSubmit}>
-            <div className="form-group dark:text-black">
+            <div className="form-group text-black">
               <TextField placeholder="Email" name="email" type="email" />
             </div>
-            <div className="form-group dark:text-black">
+            <div className="form-group text-black">
               <TextField
                 placeholder="password"
                 name="password"
@@ -71,11 +71,9 @@ const Login = (props) => {
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme={theme == "dark" ? "dark" : "light"}
+            theme={theme == "dark"}
           />
           <p className="link p-3 ">
             Register for the event?
