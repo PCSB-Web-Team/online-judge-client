@@ -82,7 +82,6 @@ function LeaderBoard() {
                   defaultSortField="name"
                   progressPending={isLoading}
                   theme="solarized"
-                  highlightOnHover
                   pagination
                   subHeader
                   subHeaderComponent={subHeaderComponent}

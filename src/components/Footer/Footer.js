@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className=" text-white p-2 bg-black">
+    <div className=" text-white p-2 bg-gradient-to-r from-slate-700 via-gray-800 to-gray-900">
       <center>
         <h1>
           Designed & Developed by <Link to="/ourteam">

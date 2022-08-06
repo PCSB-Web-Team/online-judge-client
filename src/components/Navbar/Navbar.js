@@ -17,7 +17,7 @@ const Navbar = (props) => {
       className={
         (props.transparent
           ? "top-0 absolute z-50 w-full"
-          : "relative shadow-lg bg-black") +
+          : "relative shadow-lg bg-gradient-to-r from-slate-800 via-gray-800 to-gray-900") +
         " flex flex-wrap items-center justify-between px-2 py-3 "
       }
     >

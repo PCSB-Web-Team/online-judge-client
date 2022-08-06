@@ -8,14 +8,12 @@ import { connect } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./auth/Login";
 // import Register from "./pages/LoginPage/Register";
-import Loader from "./components/Loader/Loader";
 import Dashboard from "./pages/DashBoard/DashBoard";
 import ContestDashBoard from "./pages/ContestDashboard/ContestDashBoard";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import NotFound from "./components/NotFound/NotFound";
 import OurTeam from "./pages/OurTeam/OurTeam";
 import Footer from "./components/Footer/Footer";
-import MainLeaderBoard from "./pages/LeaderBoard/MainLeaderBoard";
 
 function App(props) {
   const navigate = useNavigate();
@@ -35,7 +33,7 @@ function App(props) {
     <div>
       <div>
         <Navbar />
-        <div className="min-h-[92vh] h-fit bg-black text-gray-50">
+        <div className="min-h-[92vh] h-fit bg-gradient-to-r from-slate-700 via-gray-800 to-gray-900 text-gray-50">
           <Routes>
             {props.isAuthenticated ? (
               <>
@@ -47,11 +45,10 @@ function App(props) {
                 {/* <Route path="register" element={<Register />} /> */}
               </>
             )}
-            <Route path="/leaderboard" element={<MainLeaderBoard />} />
             <Route path="/contest" element={<Dashboard />} />
             <Route path="/ourteam" element={<OurTeam />} />
             <Route path="/" element={<LandingPage />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />

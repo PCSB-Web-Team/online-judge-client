@@ -6,7 +6,7 @@ import ContestHeader from "../../components/ContestHeader/ContestHeader";
 import Problem from "../EditorPage/Problem";
 import AllSubmission from "../Submission/AllSubmission";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
-import DataTable, {createTheme} from "react-data-table-component";
+import DataTable, { createTheme } from "react-data-table-component";
 import NotFound from "../../components/NotFound/NotFound";
 import ViewSubmission from "../Submission/ViewSubmission";
 import { customStyles } from "../../components/Table/CustomStyles";
@@ -17,15 +17,15 @@ function ContestDashBoard() {
   const [data, setData] = useState({ status: { description: "", time: 0 } });
   const { contestId } = useParams();
   const theme = localStorage.getItem("theme");
-  createTheme  (
+  createTheme(
     "solarized",
     {
       text: {
         primary: "cyan",
-        secondary: "cyan",
+        secondary: "white",
       },
       background: {
-        default: "#000",
+        default: "grey-900",
       },
       divider: {
         default: "#000",
@@ -55,7 +55,7 @@ function ContestDashBoard() {
     } else {
     }
   }, []);
-   
+
   const columns = [
     {
       name: "Title",
@@ -117,7 +117,6 @@ function ContestDashBoard() {
                     customStyles={customStyles}
                     progressPending={isLoading}
                     theme="solarized"
-                    highlightOnHover
                   />
                 </div>
               </div>

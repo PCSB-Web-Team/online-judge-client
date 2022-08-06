@@ -7,7 +7,7 @@ export const customStyles = {
   headCells: {
     style: {
       fontSize: "1.2rem",
-      backgroundColor: "#696969",
+      backgroundColor: "rgb(31 41 55)",
       color: "white",
       paddingLeft: "8px",
       paddingRight: "8px",
@@ -53,12 +53,6 @@ export const createtheme = [
     },
     background: {
       default: "#000",
-    },
-    divider: {
-      default: "#000",
-    },
-    action: {
-      hover: "rgba(0,0,0,.08)",
     },
   },
   "dark"),

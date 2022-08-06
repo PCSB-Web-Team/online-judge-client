@@ -7,7 +7,7 @@ import Loader from "../../components/Loader/Loader";
 const Dashboard = (props) => {
   const [data, setData] = useState([]);
   const [isloading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     setIsLoading(true);
     Requests.getContests()
@@ -19,7 +19,7 @@ const Dashboard = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-slate-700 via-gray-800 to-gray-900">
       {isloading ? (
         <div>
           <Loader></Loader>

@@ -87,7 +87,6 @@ function AllSubmission() {
                   progressPending={isLoading}
                   theme="solarized"
                   pagination
-                  highlightOnHover
                   fixedHeader
                   fixedHeaderScrollHeight="700px"
                 />
