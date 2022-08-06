@@ -1,6 +1,5 @@
 import React from "react";
-import { Formik, Form } from "formik";
-import { TextField } from "./TextField";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { Requests, Validators } from "../api/Index";
@@ -16,7 +15,7 @@ const Login = (props) => {
     password: Validators.password,
   });
   const theme = localStorage.getItem("theme");
-  
+
   return (
     <Formik
       initialValues={{
@@ -39,49 +38,57 @@ const Login = (props) => {
       }}
     >
       {(formik) => (
-        <div className="register-form w-3/5 text-center m-auto py-14 justify-center ">
-          <h1 className="text-4xl p-4 ">Sign In</h1>
-          <Form className="form" onSubmit={formik.handleSubmit}>
-            <div className="form-group text-black">
-              <TextField placeholder="Email" name="email" type="email" />
-            </div>
-            <div className="form-group text-black">
-              <TextField
+        <div className="w-full h-screen py-4">
+          <div className="register-form w-80 md:w-[400px] text-center m-auto py-14 justify-center bg-slate-700/60 h-min">
+            <h1 className="text-4xl p-4">Sign In</h1>
+            <Form
+              className="p-4 space-y-4 mx-auto "
+              onSubmit={formik.handleSubmit}
+            >
+              <Field
+                className=" bg-gray-500 p-2 w-full outline-none"
+                placeholder="Email"
+                name="email"
+                type="email"
+              />
+              <Field
+                className="bg-gray-500 p-2 w-full outline-none"
                 placeholder="password"
                 name="password"
                 type="password"
               />
-            </div>
-            <button
-              className=" bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
-              type="submit"
-            >
-              Login
-            </button>
-            <button
-              className=" bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-              type="reset"
-            >
-              Reset
-            </button>
-          </Form>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            draggable
-            pauseOnHover
-            theme={theme == "dark"}
-          />
-          <p className="link p-3 ">
-            Register for the event?
-            <Link to="/" className="text-cyan-500">
-              Register
-            </Link>
-          </p>
-          <div className="p-24"></div>
+              <div className="space-x-2">
+                <button
+                  className=" bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+                  type="submit"
+                >
+                  Login
+                </button>
+                <button
+                  className=" bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white  dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                  type="reset"
+                >
+                  Reset
+                </button>
+              </div>
+            </Form>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              draggable
+              pauseOnHover
+              theme={theme == "dark"}
+            />
+            <p className="link p-1 flex space-x-2 justify-center">
+              <div>Register for the event?</div>
+              <Link to="/" className="text-cyan-500">
+                Register
+              </Link>
+            </p>
+          </div>
         </div>
       )}
     </Formik>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../src/styles/App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "./app.css";
 import { Requests } from "./api/Index";
 import { login } from "./store/actions";
 import { connect } from "react-redux";
@@ -30,29 +31,27 @@ function App(props) {
   }, []);
 
   return (
-    <div>
-      <div>
-        <Navbar />
-        <div className="min-h-[92vh] h-fit bg-gradient-to-r from-slate-700 via-gray-800 to-gray-900 text-gray-50">
-          <Routes>
-            {props.isAuthenticated ? (
-              <>
-                <Route path="/:contestId/*" element={<ContestDashBoard />} />
-              </>
-            ) : (
-              <>
-                <Route path="login" element={<Login />} />
-                {/* <Route path="register" element={<Register />} /> */}
-              </>
-            )}
-            <Route path="/contest" element={<Dashboard />} />
-            <Route path="/ourteam" element={<OurTeam />} />
-            <Route path="/" element={<LandingPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-        <Footer />
+    <div className="font-nunito">
+      <Navbar />
+      <div className="min-h-[92vh] h-fit bg-gradient-to-r from-slate-700 via-gray-800 to-gray-900 text-gray-50">
+        <Routes>
+          {props.isAuthenticated ? (
+            <>
+              <Route path="/:contestId/*" element={<ContestDashBoard />} />
+            </>
+          ) : (
+            <>
+              <Route path="login" element={<Login />} />
+              {/* <Route path="register" element={<Register />} /> */}
+            </>
+          )}
+          <Route path="/contest" element={<Dashboard />} />
+          <Route path="/ourteam" element={<OurTeam />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
+      <Footer />
     </div>
   );
 }
