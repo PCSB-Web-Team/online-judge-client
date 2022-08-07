@@ -12,7 +12,7 @@ function AllSubmission() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const theme = localStorage.getItem("theme");
-    
+
   const columns = [
     {
       name: "Title",
@@ -31,7 +31,7 @@ function AllSubmission() {
       conditionalCellStyles,
     },
     {
-      name: "When Submitted",
+      name: "Submission Time",
       selector: (row) =>
         moment(row.timestamp).format("h:mm:ss a ,ddd , MMM Do"),
       sortable: true,

@@ -142,6 +142,7 @@ int main(){
       </Modal>
       <div className="editor-header mb-4 ">
         <select
+          className=" bg-none"
           name="languages"
           onChange={(e) => {
             setLang(e.target.value);
@@ -177,7 +178,7 @@ int main(){
         theme="monokai"
         width="100%"
         onChange={onChange}
-        className="editor-main"
+        className="editor-main bg-black/40 text-sm"
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
         value={values[lang]}

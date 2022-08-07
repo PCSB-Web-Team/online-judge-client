@@ -9,16 +9,17 @@ export const customStyles = {
       fontSize: "1.2rem",
       backgroundColor: "rgb(31 41 55)",
       color: "white",
-      paddingLeft: "8px",
-      paddingRight: "8px",
+      paddingLeft: "20px",
+      // paddingRight: "8px",
     },
   },
   cells: {
     style: {
+      color: "rgb(217, 217, 217)",
       fontSize: "1rem",
-      paddingLeft: "8px",
-      paddingRight: "8px",
-      backgroundColor: "transparent",
+      paddingLeft: "20px",
+      // paddingRight: "8px",
+      backgroundColor: "rgb(40, 40, 40, 0.2)",
     },
   },
 };
@@ -27,7 +28,7 @@ export const conditionalCellStyles = [
   {
     when: (row) => row.status == "Accepted",
     style: {
-      color: "green",
+      color: "rgb(69, 216, 69)",
     },
   },
   {

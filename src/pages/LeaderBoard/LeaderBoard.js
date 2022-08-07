@@ -12,7 +12,7 @@ function LeaderBoard() {
 
   const columns = [
     {
-      name: "Title",
+      name: "Name",
       selector: (row) => row.name,
       sortable: true,
     },
@@ -31,7 +31,7 @@ function LeaderBoard() {
       JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
       -1
   );
-  
+
   const subHeaderComponent = useMemo(() => {
     const handleClear = () => {
       if (filterText) {

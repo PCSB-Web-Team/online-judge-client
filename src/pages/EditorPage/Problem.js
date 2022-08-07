@@ -37,12 +37,12 @@ const Problem = () => {
         </div>
       ) : (
         <div>
-          <div className="flex flex-wrap block overflow-auto sm:overflow-hidden">
+          <div className="flex flex-wrap overflow-auto sm:overflow-hidden">
             <div className="bg-blue w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2  sm:h-[120vh] overflow-auto">
-              <div className="p-4 pb-4 sm:pb-16">
+              <div className="p-4 pb-4 sm:pb-16 bg-black/20">
                 <div>
                   <div key={data} className=" p-1">
-                    <h1 className="text-3xl text-cyan-500 py-3">
+                    <h1 className="text-3xl text-cyan-500 py-3 border-b mb-2 border-gray-400">
                       {data.title}
                     </h1>
                     <div className="problem-head-info py-1 mb-4">

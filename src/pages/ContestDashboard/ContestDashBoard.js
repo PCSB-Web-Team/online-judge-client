@@ -63,7 +63,7 @@ function ContestDashBoard() {
       sortable: true,
     },
     {
-      name: "",
+      name: "Difficulty",
       selector: (row) => row.difficultyLevel,
       sortable: true,
     },
