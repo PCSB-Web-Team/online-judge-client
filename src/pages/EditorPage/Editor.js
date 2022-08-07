@@ -15,6 +15,8 @@ import { Requests } from "../../api/Index";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import CustomModal from "../../components/Modal/CustomModal";
+import * as Scroll from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 
 const Editor = (props) => {
   const userId = localStorage.getItem("userId");
@@ -85,7 +87,10 @@ int main(){
     setIsLoading(true);
     Requests.submitCode(runData);
     setIsLoading(true);
-    navigate(`/${contestId}/submission/${userId}`);
+    setTimeout(() => {
+      navigate(`/${contestId}/submission/${userId}`);
+    }, "2000");
+
     setIsLoading(false);
   }
 
@@ -137,8 +142,13 @@ int main(){
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onSubmit={handleSubmit}
+        isLoading={isLoading}
       >
-        <CustomModal onClose={() => setIsOpen(false)} onSubmit={handleSubmit} />
+        <CustomModal
+          onClose={() => setIsOpen(false)}
+          onSubmit={handleSubmit}
+          isLoading={isLoading}
+        />
       </Modal>
       <div className="editor-header mb-4 ">
         <select
@@ -203,14 +213,20 @@ int main(){
           />
         </div>
         <div className="run-submit">
-          <button
-            className="run-btn text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-            onClick={handleRun}
-            disabled={isLoading}
-          >
-            <p>Run</p>
-            <img src={caret} alt="caret" />
-          </button>
+          <a onClick={() => scroll.scrollTo(500)}>
+            <button
+              className={
+                !isLoading
+                  ? "run-btn text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  : "animate-pulse run-btn text-white bg-gradient-to-r from-green-700 via-green-800 to-green-900 hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              }
+              onClick={handleRun}
+              disabled={isLoading}
+            >
+              {!isLoading ? <p>Run</p> : <p>Loading..</p>}
+              <img src={caret} alt="caret" />
+            </button>
+          </a>
           <button
             className="submit-btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             type="submit"
@@ -220,6 +236,7 @@ int main(){
           </button>
         </div>
       </div>
+
       {isCustom ? (
         <div className="p-4">
           <textarea
@@ -231,6 +248,7 @@ int main(){
           />
         </div>
       ) : null}
+
       <div className="p-4">
         Output :
         <div className="p-4">
@@ -251,7 +269,7 @@ int main(){
             </div>
           ) : (
             <div className="sm:h-[15vh] overflow-auto">
-              <pre>{customOutput ? customOutput : error}</pre>
+              <pre id="output">{customOutput ? customOutput : error}</pre>
             </div>
           )}
         </div>

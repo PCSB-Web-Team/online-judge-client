@@ -103,7 +103,7 @@ function ContestDashBoard() {
         <Route
           path="/"
           element={
-            <div className="min-h-screen max-w-6xl mx-auto pt-4">
+            <div className="min-h-screen max-w-6xl mx-auto">
               <div>
                 <h1 className="text-2xl font-semibold text-cyan-500">
                   Problem Solving
