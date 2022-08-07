@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Requests } from "../../api/Index";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DataTable, { createTheme } from "react-data-table-component";
 import moment from "moment";
 import {
@@ -11,8 +11,7 @@ import {
 function AllSubmission() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const theme = localStorage.getItem("theme");
-    
+  const navigate = useNavigate();
   const columns = [
     {
       name: "Title",
@@ -44,7 +43,7 @@ function AllSubmission() {
           <Link to={`${row._id}`}>
             <button
               type="button"
-              className="text-white bg-gray-800 hover:bg-gray-900 dark:bg-gray-500 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
+              className="text-white bg-gray-800 hover:bg-gray-900  focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700"
             >
               View
             </button>
@@ -63,7 +62,9 @@ function AllSubmission() {
         setData(res.data);
         setIsLoading(false);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        navigate("*");
+      });
   }, []);
 
   return (
