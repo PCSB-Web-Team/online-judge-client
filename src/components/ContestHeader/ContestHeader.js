@@ -29,9 +29,7 @@ const ContestHeader = (props) => {
             end
             className={({ isActive }) =>
               `hover:border-b-2  border-sky-500 transform transition rounded-lg p-2 px-4 md:px-8 font-light ${
-                isActive
-                  ? " border-b-2 bg-sky-300"
-                  : "text-cyan-300 border-b"
+                isActive ? " border-b-2 bg-sky-300" : "text-cyan-300 border-b"
               }`
             }
           >

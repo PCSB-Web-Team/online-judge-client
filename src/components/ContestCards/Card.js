@@ -77,7 +77,7 @@ const Card = ({ status, ...props }) => {
                   register first.
                 </p>
                 <a
-                  href="https://www.xenia.co.in/"
+                  href="https://www.pcsbxenia.com/"
                   rel="noreferrer"
                   target="_blank"
                 >
