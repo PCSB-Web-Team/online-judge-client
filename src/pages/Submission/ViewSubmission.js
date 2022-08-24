@@ -46,13 +46,15 @@ const ViewSubmission = () => {
               Max Test Cases: {data.submission.maxCases}
             </div>
           </div>
-          <div className="flex flex-wrap justify-center ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 py-4">
             {data.executions.map((example, i) => {
               return (
-                <div className="p-8 px-8" key={i}>
+                <div className="max-w-[400px] min-w-[300px]" key={i}>
                   <div className="bg-black shadow-cyan-500 rounded-md overflow-hidden relative shadow-md">
                     <div className="p-4 bg-gradient-to-r from-slate-800 via-gray-800 to-gray-900">
-                      <h2 className="text-2xl text-gray-300">Test Case:{i + 1}</h2>
+                      <h2 className="text-2xl text-gray-300">
+                        Test Case:{i + 1}
+                      </h2>
                       <div className="flex justify-between mt-4 mb-4 text-gray-500">
                         <div className="flex items-center">
                           <svg
@@ -100,10 +102,21 @@ const ViewSubmission = () => {
                           )}
                         </div>
                       </div>
-                      <div className="mb-4 text-gray-500 px-8">
-                        Expected Output:
-                        <span> {example.expected_output} </span>
-                        <div>{example.compile_output} </div>
+                      <div className="mb-4 text-gray-500">
+                        <div>Expected Output:</div>
+                        <div className="p-1 bg-slate-800">
+                          {example.expected_output}
+                        </div>
+                        <div>Your Output:</div>
+                        <div className="p-1 bg-slate-800">{example.stdout}</div>
+                        {example?.compile_output && (
+                          <>
+                            <div>Compiled Output:</div>
+                            <div className="p-1 bg-slate-700">
+                              {example.compile_output}
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                     {example.status.description == "Accepted" ? (

@@ -57,18 +57,32 @@ const Problem = () => {
                       <h2 className="text-cyan-500 text-xl py-2">
                         Problem Statement :
                       </h2>
-                      {data.problemStatement}
+                      {data?.problemStatement?.map((statement) => {
+                        return <p>{statement}</p>;
+                      })}
                     </div>
-                    <div className="py-2">
-                      <h2 className="text-cyan-500 text-xl">Description :</h2>
-                      {data.description}
-                    </div>
+                    {data?.description && (
+                      <div className="py-2">
+                        <h2 className="text-cyan-500 text-xl">Description :</h2>
+                        {data?.description}
+                      </div>
+                    )}
                     <h2 className="text-cyan-500 text-xl py-2">Example</h2>
                     {data.example.map((example, i) => {
                       return (
                         <div className="py-1" key={i}>
-                          <h2>Input : {example.input}</h2>
-                          <h2>Output : {example.output}</h2>
+                          <h2 cla>Input : </h2>
+                          <div className="bg-blue-800/20 p-1">
+                            {example?.input?.split("\n")?.map((inp) => (
+                              <p>{inp}</p>
+                            ))}
+                          </div>
+                          <h2>Output : </h2>
+                          <div className="bg-green-800/20 p-1">
+                            {example?.output?.split("\n")?.map((out) => (
+                              <p>{out}</p>
+                            ))}
+                          </div>
                         </div>
                       );
                     })}
@@ -76,7 +90,8 @@ const Problem = () => {
                       <h2 className="text-cyan-500 text-xl py-2">
                         Input Format :
                       </h2>
-                      {data.inputFormat}
+                      {data?.inputFormat &&
+                        data?.inputFormat?.map((format) => <p>{format}</p>)}
                     </>
                     <>
                       <h2 className="text-cyan-500 text-xl py-2">
