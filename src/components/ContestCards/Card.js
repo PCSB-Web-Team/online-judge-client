@@ -16,14 +16,16 @@ const Card = ({ status, ...props }) => {
 
   return (
     <div className="w-80 rounded-lg hover:scale-105 transform transition overflow-hidden shadow-lg h-full shadow-black/40 bg-slate-800">
-      <img
-        src={
-          props.logo ||
-          "https://cdn.pixabay.com/photo/2016/05/08/14/58/icon-1379228__340.png"
-        }
-        alt="contest"
-        className="h-32 sm:h-48 w-full object-cover opacity-80"
-      />
+      <div className="h-36">
+        <img
+          src={
+            props.logo ||
+            "https://cdn.pixabay.com/photo/2016/05/08/14/58/icon-1379228__340.png"
+          }
+          alt="contest"
+          className=" max-h-full max-w-full mx-auto object-cover opacity-80"
+        />
+      </div>
       <div className="p-4 space-y-2">
         <div className="text-2xl text-gray-darker text-cyan-500 py-2 border-b mb-4">
           {props.title}
