@@ -103,7 +103,8 @@ const Problem = () => {
                       <h2 className="text-cyan-500 text-xl py-2">
                         Constraints :
                       </h2>
-                      {data.constraints}
+                      {data?.constraints &&
+                        data?.constraints?.map((constr) => <p>{constr}</p>)}
                     </>
                     <div className="text-cyan-500 text-xl py-3">
                       <strong>Input</strong>
