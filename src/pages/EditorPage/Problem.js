@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
 const Problem = () => {
-  const [data, setData] = useState({ example: [] });
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { questionId } = useParams();
   useEffect(() => {
@@ -67,8 +67,10 @@ const Problem = () => {
                         {data?.description}
                       </div>
                     )}
-                    <h2 className="text-cyan-500 text-xl py-2">Example</h2>
-                    {data.example.map((example, i) => {
+                    {data?.example && (
+                      <h2 className="text-cyan-500 text-xl py-2">Example</h2>
+                    )}
+                    {data.example?.map((example, i) => {
                       return (
                         <div className="py-1" key={i}>
                           <h2 cla>Input : </h2>
