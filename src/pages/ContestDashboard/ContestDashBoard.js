@@ -37,6 +37,7 @@ function ContestDashBoard() {
     "dark"
   );
   useEffect(() => {
+    window.location.replace("https://www.hackerrank.com/codestrike2023");
     setIsLoading(true);
     if (contestId) {
       Requests.getQuestions(contestId)
