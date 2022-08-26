@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CustomModal = ({ onClose, onSubmit }, props) => {
+  const [submitLoading, setSubmitLoading] = useState(false);
+
   return (
     <div>
       <div
@@ -37,9 +39,17 @@ const CustomModal = ({ onClose, onSubmit }, props) => {
               <button
                 type="button"
                 className="submit-btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                onClick={onSubmit}
+                disabled={props.isLoading || submitLoading}
+                onClick={() => {
+                  setSubmitLoading(true);
+                  onSubmit();
+                }}
               >
-                {props.isLoading ? <p>Loading..</p> : <p>Submit</p>}
+                {props.isLoading || submitLoading ? (
+                  <p>Loading..</p>
+                ) : (
+                  <p>Submit</p>
+                )}
               </button>
               <button
                 type="button"
