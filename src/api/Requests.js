@@ -4,7 +4,7 @@ const backend = axios.create({
   baseURL: `${process.env.REACT_APP_OJ_API}`,
 });
 
-backend.defaults.headers.common["key"] = process.env.API_KEY || "pcsboj";
+backend.defaults.headers.common["key"] = `${process.env.API_KEY}` || "pcsboj";
 
 export const login = (data, config) => {
   return backend.post("/auth/login", data, config);
